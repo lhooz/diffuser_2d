@@ -1,0 +1,78 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       polyBoundaryMesh;
+    location    "constant/polyMesh";
+    object      boundary;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+8
+(
+    inlet
+    {
+        type            inlet;
+        nFaces          50;
+        startFace       11079;
+        faces           ( ( 3 7 6 2 ) );
+    }
+    outlet
+    {
+        type            outlet;
+        nFaces          56;
+        startFace       11129;
+        faces           ( ( 2 6 5 1 ) );
+    }
+    wall
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          112;
+        startFace       11185;
+    }
+    front
+    {
+        type            empty;
+        inGroups        1(empty);
+        nFaces          5654;
+        startFace       11297;
+    }
+    back
+    {
+        type            empty;
+        inGroups        1(empty);
+        nFaces          5654;
+        startFace       16951;
+    }
+    vane
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          394;
+        startFace       22605;
+    }
+    vaneu
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          396;
+        startFace       22999;
+    }
+    vanel
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          396;
+        startFace       23395;
+    }
+)
+
+// ************************************************************************* //
