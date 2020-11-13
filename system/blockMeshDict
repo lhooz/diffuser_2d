@@ -13,19 +13,20 @@ FoamFile
     object      blockMeshDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+scale   1;
 
 #include "meshParameters"
 
 vertices
 (
-    ( $xin  $yinl -0.5)
+    ( $xin  $yinl  -0.5)
     ($xout  $youtl -0.5)
     ($xout  $youtu -0.5)
-    ( $xin  $yinu -0.5)
-    ( $xin  $yinl  0.5)
+    ( $xin  $yinu  -0.5)
+    ( $xin  $yinl   0.5)
     ($xout  $youtl  0.5)
     ($xout  $youtu  0.5)
-    ( $xin  $yinu  0.5)
+    ( $xin  $yinu   0.5)
 );
 
 blocks
@@ -44,7 +45,7 @@ boundary
         type inlet;
         faces
         (
-            (3 7 6 2)
+            (0 4 7 3)
         );
     }
     outlet
@@ -61,7 +62,7 @@ boundary
         faces
         (
             (1 5 4 0)
-            (0 4 7 3)
+            (3 7 6 2)
         );
     }
     front

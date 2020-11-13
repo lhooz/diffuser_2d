@@ -19,10 +19,10 @@ addLayers       false;
 
 geometry
 {
-    "single_vane.stl"
+    "single_vanem.stl"
     {
         type    triSurfaceMesh;
-        name    vane;
+        name    vanem;
     }
     "single_vaneu.stl"
     {
@@ -56,7 +56,7 @@ castellatedMeshControls
     features 
     (
         { 
-        file "single_vane.eMesh"; 
+        file "single_vanem.eMesh"; 
         level 2;
         }
         { 
@@ -71,7 +71,7 @@ castellatedMeshControls
 
     refinementSurfaces
     {
-        vane
+        vanem
         {
             level (2 2);
         }
@@ -118,7 +118,7 @@ addLayersControls
 
     layers
     {
-        wing
+        wall
         {
             nSurfaceLayers 3;
         }

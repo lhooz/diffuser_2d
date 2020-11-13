@@ -8,12 +8,12 @@
 Build  : _f3950763fe-20191219 OPENFOAM=1912
 Arch   : "LSB;label=32;scalar=64"
 Exec   : checkMesh
-Date   : Nov 12 2020
-Time   : 21:40:07
+Date   : Nov 13 2020
+Time   : 00:58:09
 Host   : 53bbc2ec95fa
-PID    : 1460
+PID    : 1456
 I/O    : uncollated
-Case   : /home/hao/OpenFOAM/hao-v1912/run/diffuser
+Case   : /home/hao/OpenFOAM/hao-v1912/diffuser_2d
 nProcs : 1
 trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
 fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
@@ -22,38 +22,34 @@ allowSystemOperations : Allowing user-supplied system call operations
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 Create time
 
---> FOAM Warning : 
-    From function static Foam::instantList Foam::timeSelector::select0(Foam::Time&, const Foam::argList&)
-    in file db/Time/timeSelector.C at line 258
-    No time specified or available, selecting 'constant'
-Create mesh for time = constant
+Create mesh for time = 0
 
-Time = constant
+Time = 0
 
 Mesh stats
-    points:           13660
+    points:           34588
     internal points:  0
-    faces:            23791
-    internal faces:   11079
-    cells:            5654
-    faces per cell:   6.16732
+    faces:            62335
+    internal faces:   29531
+    cells:            15014
+    faces per cell:   6.11869
     boundary patches: 8
     point zones:      0
     face zones:       0
     cell zones:       0
 
 Overall number of cells of each type:
-    hexahedra:     4687
-    prisms:        50
+    hexahedra:     13134
+    prisms:        92
     wedges:        0
     pyramids:      0
     tet wedges:    0
     tetrahedra:    0
-    polyhedra:     917
+    polyhedra:     1788
     Breakdown of polyhedra by number of faces:
         faces   number of cells
-            7   838
-            8   79
+            7   1702
+            8   86
 
 Checking topology...
     Boundary definition OK.
@@ -65,14 +61,14 @@ Checking topology...
 
 Checking patch topology for multiply connected surfaces...
                    Patch    Faces   Points                  Surface topology
-                   inlet       50      102  ok (non-closed singly connected)
-                  outlet       56      120  ok (non-closed singly connected)
-                    wall      112      226  ok (non-closed singly connected)
-                   front     5654     6830  ok (non-closed singly connected)
-                    back     5654     6830  ok (non-closed singly connected)
-                    vane      394      790  ok (non-closed singly connected)
-                   vaneu      396      794  ok (non-closed singly connected)
-                   vanel      396      794  ok (non-closed singly connected)
+                   inlet      100      202  ok (non-closed singly connected)
+                  outlet      110      228  ok (non-closed singly connected)
+                    wall      200      404  ok (non-closed singly connected)
+                   front    15014    17294  ok (non-closed singly connected)
+                    back    15014    17294  ok (non-closed singly connected)
+                   vanem      786     1574  ok (non-closed singly connected)
+                   vaneu      790     1582  ok (non-closed singly connected)
+                   vanel      790     1582  ok (non-closed singly connected)
 
 Checking faceZone topology for multiply connected surfaces...
     No faceZones found.
@@ -81,19 +77,19 @@ Checking basic cellZone addressing...
     No cellZones found.
 
 Checking geometry...
-    Overall domain bounding box (-6.55988e-05 -1.35 -0.5) (2 1.35 0.5)
+    Overall domain bounding box (-1.64674e-07 -2.19 -0.5) (4 2.19 0.5)
     Mesh has 2 geometric (non-empty/wedge) directions (1 1 0)
     Mesh has 2 solution (non-empty) directions (1 1 0)
     All edges aligned with or perpendicular to non-empty directions.
-    Boundary openness (-1.07122e-18 6.4273e-18 7.03795e-17) OK.
-    Max cell openness = 2.1219e-16 OK.
-    Max aspect ratio = 3.33894 OK.
-    Minimum face area = 2.29495e-05. Maximum face area = 0.0551.  Face area magnitudes OK.
-    Min volume = 2.29495e-05. Max volume = 0.00219874.  Total volume = 3.11459.  Cell volumes OK.
-    Mesh non-orthogonality Max: 47.0677 average: 15.8806
+    Boundary openness (-4.79195e-19 0 -1.29566e-17) OK.
+    Max cell openness = 2.36128e-16 OK.
+    Max aspect ratio = 5.89698 OK.
+    Minimum face area = 1.38132e-05. Maximum face area = 0.04413.  Face area magnitudes OK.
+    Min volume = 1.38132e-05. Max volume = 0.00177236.  Total volume = 10.0457.  Cell volumes OK.
+    Mesh non-orthogonality Max: 59.9218 average: 16.8437
     Non-orthogonality check OK.
     Face pyramids OK.
-    Max skewness = 1.87628 OK.
+    Max skewness = 2.75282 OK.
     Coupled point location match (average 0) OK.
 
 Mesh OK.

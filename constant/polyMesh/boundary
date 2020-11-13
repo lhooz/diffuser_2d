@@ -20,58 +20,58 @@ FoamFile
     inlet
     {
         type            inlet;
-        nFaces          50;
-        startFace       11079;
-        faces           ( ( 3 7 6 2 ) );
+        nFaces          100;
+        startFace       29531;
+        faces           ( ( 0 4 7 3 ) );
     }
     outlet
     {
         type            outlet;
-        nFaces          56;
-        startFace       11129;
+        nFaces          110;
+        startFace       29631;
         faces           ( ( 2 6 5 1 ) );
     }
     wall
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          112;
-        startFace       11185;
+        nFaces          200;
+        startFace       29741;
     }
     front
     {
         type            empty;
         inGroups        1(empty);
-        nFaces          5654;
-        startFace       11297;
+        nFaces          15014;
+        startFace       29941;
     }
     back
     {
         type            empty;
         inGroups        1(empty);
-        nFaces          5654;
-        startFace       16951;
+        nFaces          15014;
+        startFace       44955;
     }
-    vane
+    vanem
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          394;
-        startFace       22605;
+        nFaces          786;
+        startFace       59969;
     }
     vaneu
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          396;
-        startFace       22999;
+        nFaces          790;
+        startFace       60755;
     }
     vanel
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          396;
-        startFace       23395;
+        nFaces          790;
+        startFace       61545;
     }
 )
 

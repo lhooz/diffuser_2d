@@ -14,7 +14,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-single_vane.stl
+single_vanem.stl
 {
     extractionMethod    extractFromSurface;
     includedAngle       170;

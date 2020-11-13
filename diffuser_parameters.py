@@ -5,9 +5,9 @@ import numpy as np
 
 w1 = 1
 theta = 25
-l_w1 = 2
-hmesh_no = 50
-vmesh_no = 50
+l_w1 = 4
+hmesh_no = 100
+vmesh_no = 100
 
 #----------------------------------------------------
 xin = 0
@@ -34,7 +34,6 @@ with open(save_file_par, 'w') as f:
         '%s\n' %
         r'\*---------------------------------------------------------------------------*/'
     )
-    f.write('%s%s;\n' % (r'scale   ', '{0:.3g}'.format(w1)))
     f.write('%s%s;\n' % (r'xin   ', '{0:.3g}'.format(xin)))
     f.write('%s%s;\n' % (r'yinl   ', '{0:.3g}'.format(yinl)))
     f.write('%s%s;\n' % (r'yinu   ', '{0:.3g}'.format(yinu)))
@@ -49,10 +48,13 @@ with open(save_file_sh, 'w') as f:
     f.write('cd constant\n')
     f.write('cd triSurface\n')
     f.write(
-        'surfaceTransformPoints -rollPitchYaw \'(0 0 %s)\' single_vane.stl single_vaneu.stl\n'
+        'surfaceTransformPoints -scale \'(%s %s 1)\' basic_vane.stl single_vanem.stl\n'
+        % ('{0:.3g}'.format(w1), '{0:.3g}'.format(w1)))
+    f.write(
+        'surfaceTransformPoints -rollPitchYaw \'(0 0 %s)\' single_vanem.stl single_vaneu.stl\n'
         % '{0:.3g}'.format(vane_angleu))
     f.write(
-        'surfaceTransformPoints -rollPitchYaw \'(0 0 %s)\' single_vane.stl single_vanel.stl\n'
+        'surfaceTransformPoints -rollPitchYaw \'(0 0 %s)\' single_vanem.stl single_vanel.stl\n'
         % '{0:.3g}'.format(vane_anglel))
     f.write(
         'surfaceTransformPoints -translate \'(0 %s 0)\' single_vaneu.stl single_vaneu.stl\n'

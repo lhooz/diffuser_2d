@@ -16,21 +16,21 @@ FoamFile
 
 libs            ("liboverset.so");
 
-application     snappyHexMesh;
+application     simpleFoam;
 
-startFrom       latestTime;
+startFrom       startTime;
 
 startTime       0;
 
 stopAt          endTime;
 
-endTime         100;
+endTime         500;
 
 deltaT          1;
 
-writeControl    runTime;
+writeControl    timeStep;
 
-writeInterval   1;
+writeInterval   10;
 
 purgeWrite      0;
 
