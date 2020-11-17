@@ -1,0 +1,72 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _f3950763fe-20191219 OPENFOAM=1912
+Arch   : "LSB;label=32;scalar=64"
+Exec   : snappyHexMesh -overwrite
+Date   : Nov 16 2020
+Time   : 18:58:33
+Host   : 53bbc2ec95fa
+PID    : 4166
+I/O    : uncollated
+Case   : /home/hao/OpenFOAM/hao-v1912/diffuser_2d
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Read mesh in = 0.22 s
+
+Overall mesh bounding box  : (-5.44633e-08 -1.18 -0.5) (2 1.18 0.5)
+Relative tolerance         : 1e-06
+Absolute matching distance : 3.25109e-06
+
+Reading refinement surfaces.
+Read refinement surfaces in = 0 s
+
+Reading refinement shells.
+Read refinement shells in = 0 s
+
+Setting refinement level of surface to be consistent with shells.
+For geometry single_vanem.stl detected 0 uncached triangles out of 148
+For geometry single_vaneu.stl detected 0 uncached triangles out of 148
+For geometry single_vanel.stl detected 0 uncached triangles out of 148
+Checked shell refinement in = 0.01 s
+
+Reading features.
+Read edgeMesh single_vanem.eMesh
+    points      : 76
+    edges       : 96
+    boundingBox : (0.15 -0.03 -1) (5.21 0.03 1)
+
+Refinement level according to distance to "single_vanem.eMesh" (76 points, 96 edges).
+    level 2 for all cells within 0 metre.
+Read edgeMesh single_vaneu.eMesh
+    points      : 76
+    edges       : 95
+    boundingBox : (0.14487 0.313002 -1) (5.06041 1.56554 1)
+
+Refinement level according to distance to "single_vaneu.eMesh" (76 points, 95 edges).
+    level 2 for all cells within 0 metre.
+Read edgeMesh single_vanel.eMesh
+    points      : 76
+    edges       : 95
+    boundingBox : (0.14487 -1.56554 -1) (5.06041 -0.313002 1)
+
+Refinement level according to distance to "single_vanel.eMesh" (76 points, 95 edges).
+    level 2 for all cells within 0 metre.
+Read features in = 0 s
+
+
+Determining initial surface intersections
+-----------------------------------------
+
