@@ -19,29 +19,7 @@ addLayers       false;
 
 geometry
 {
-    "single_vanem.stl"
-    {
-        type    triSurfaceMesh;
-        name    vanem;
-    }
-    "single_vaneu.stl"
-    {
-        type    triSurfaceMesh;
-        name    vaneu;
-    }
-    "single_vanel.stl"
-    {
-        type    triSurfaceMesh;
-        name    vanel;
-    }
-
-    refinementBox
-    {
-        type    searchableBox;
-        min     (-4 -4 -1);
-        max     ( 4  4  1);
-    }
-
+    #include "snappy_geo"
 };
 
 castellatedMeshControls
@@ -55,34 +33,12 @@ castellatedMeshControls
 
     features 
     (
-        { 
-        file "single_vanem.eMesh"; 
-        level 2;
-        }
-        { 
-        file "single_vaneu.eMesh"; 
-        level 2;
-        }
-        { 
-        file "single_vanel.eMesh"; 
-        level 2;
-        }
+        #include "snappy_feature"
     );
 
     refinementSurfaces
     {
-        vanem
-        {
-            level (2 2);
-        }
-        vaneu
-        {
-            level (2 2);
-        }
-        vanel
-        {
-            level (2 2);
-        }
+        #include "snappy_refSurf"
     }
 
     resolveFeatureAngle 60;

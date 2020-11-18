@@ -9,11 +9,25 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       dictionary;
-    object      surfaceFeatureExtractDict;
+    class       regIOobject;
+    location    "constant/polyMesh";
+    object      pointZones;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-#include "surfExtract"
+2
+(
+interface1interface20CutPointZone
+{
+    type pointZone;
+pointLabels     0();
+}
+
+interface3interface41CutPointZone
+{
+    type pointZone;
+pointLabels     0();
+}
+)
 
 // ************************************************************************* //

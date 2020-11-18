@@ -1,5 +1,5 @@
 #!/bin/bash
-python diffuser_parameters.py
+python3 diffuser_parameters.py
 
 foamCleanTutorials
 sh transform_stl.sh

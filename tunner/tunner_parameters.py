@@ -6,9 +6,12 @@ import numpy as np
 w = 1.0
 l1 = 1.0
 l2 = 2.0
-R = 0.2 * w
-hmesh_no1 = 50
-vmesh_no1 = 50
+R = 0.1 * w
+hmesh_no1 = 80
+vmesh_no1 = 80
+#---------------------------------------------------
+refledge = '2'
+refl = '2'
 #----------------------------------------------------
 D = 2 * R / 2**0.5
 dh = l1 / hmesh_no1
@@ -17,6 +20,8 @@ hmesh_no2 = np.round(l2 / dh)
 hmesh_no3 = np.ceil(1.2 * D / dh)
 vmesh_no2 = vmesh_no1
 vmesh_no3 = vmesh_no1
+#---------------------------------------------------
+N_vanes = int(np.ceil(1.414 * w / (D / 2)))
 #----------------------------------------------------
 x1inl = 0
 x1inu = 0
@@ -59,6 +64,10 @@ p2span = 20 * R
 cwd = os.getcwd()
 save_file_par = os.path.join(cwd, 'system', 'meshParameters')
 save_file_sh = os.path.join(cwd, 'transform_stl.sh')
+save_file_snappy_geo = os.path.join(cwd, 'system', 'snappy_geo')
+save_file_snappy_feature = os.path.join(cwd, 'system', 'snappy_feature')
+save_file_snappy_refSurf = os.path.join(cwd, 'system', 'snappy_refSurf')
+save_file_sufExtract = os.path.join(cwd, 'system', 'surfExtract')
 with open(save_file_par, 'w') as f:
     f.write(
         '%s\n' %
@@ -114,24 +123,98 @@ with open(save_file_par, 'w') as f:
     f.write('%s%s;\n' % (r'hm3   ', '{0:.3g}'.format(hmesh_no3)))
     f.write('%s%s;\n' % (r'vm3   ', '{0:.3g}'.format(vmesh_no3)))
 
-# with open(save_file_sh, 'w') as f:
-# f.write('#!/bin/bash\n')
-# f.write('cd constant\n')
-# f.write('cd triSurface\n')
-# f.write(
-# 'surfaceTransformPoints -scale \'(%s %s 1)\' basic_vane.stl single_vanem.stl\n'
-# % ('{0:.3g}'.format(w1), '{0:.3g}'.format(w1)))
-# f.write(
-# 'surfaceTransformPoints -rollPitchYaw \'(0 0 %s)\' single_vanem.stl single_vaneu.stl\n'
-# % '{0:.3g}'.format(vane_angleu))
-# f.write(
-# 'surfaceTransformPoints -rollPitchYaw \'(0 0 %s)\' single_vanem.stl single_vanel.stl\n'
-# % '{0:.3g}'.format(vane_anglel))
-# f.write(
-# 'surfaceTransformPoints -translate \'(0 %s 0)\' single_vaneu.stl single_vaneu.stl\n'
-# % '{0:.3g}'.format(wu))
-# f.write(
-# 'surfaceTransformPoints -translate \'(0 %s 0)\' single_vanel.stl single_vanel.stl\n'
-# % '{0:.3g}'.format(wl))
-# f.write('cd ..\n')
-# f.write('cd ..\n')
+rota = -45
+dh = w / (N_vanes - 1)
+xy_vane = []
+x0 = x3inl + 0.5 * R
+y0 = y3inl - 0.5 * R
+for i in range(1, N_vanes - 1):
+    xy_vane.append([x0 + i * dh, y0 + i * dh])
+
+with open(save_file_sh, 'w') as f:
+    f.write('#!/bin/bash\n')
+    f.write('cd constant\n')
+    f.write('cd triSurface\n')
+    f.write(
+        'surfaceTransformPoints -scale \'(%s %s 1)\' tunner_vane.stl vane0.stl\n'
+        % ('{0:.3g}'.format(R), '{0:.3g}'.format(R)))
+    f.write(
+        'surfaceTransformPoints -rollPitchYaw \'(0 0 %s)\' vane0.stl vane0.stl\n'
+        % '{0:.3g}'.format(rota))
+
+    for i in range(len(xy_vane)):
+        vname = 'vane' + str(i + 1)
+        f.write(
+            'surfaceTransformPoints -translate \'(%s 0 0)\' vane0.stl %s.stl\n'
+            % ('{0:.3g}'.format(xy_vane[i][0]), vname))
+        f.write(
+            'surfaceTransformPoints -translate \'(0 %s 0)\' %s.stl %s.stl\n' %
+            ('{0:.3g}'.format(xy_vane[i][1]), vname, vname))
+    f.write('cd ..\n')
+    f.write('cd ..\n')
+
+with open(save_file_snappy_geo, 'w') as f:
+    f.write(
+        '%s\n' %
+        '/*--------------------------------*- C++ -*----------------------------------*\\'
+    )
+    f.write(
+        '%s\n' %
+        r'\*---------------------------------------------------------------------------*/'
+    )
+    for i in range(len(xy_vane)):
+        vname = 'vane' + str(i + 1)
+        f.write('\"%s.stl\"\n' % vname)
+        f.write('{\n')
+        f.write('    type    triSurfaceMesh;\n')
+        f.write('    name    %s;\n' % vname)
+        f.write('}\n')
+
+with open(save_file_snappy_feature, 'w') as f:
+    f.write(
+        '%s\n' %
+        '/*--------------------------------*- C++ -*----------------------------------*\\'
+    )
+    f.write(
+        '%s\n' %
+        r'\*---------------------------------------------------------------------------*/'
+    )
+    for i in range(len(xy_vane)):
+        vname = 'vane' + str(i + 1)
+        f.write('{\n')
+        f.write('file "%s.eMesh";\n' % vname)
+        f.write('level %s;\n' % refledge)
+        f.write('}\n')
+
+with open(save_file_snappy_refSurf, 'w') as f:
+    f.write(
+        '%s\n' %
+        '/*--------------------------------*- C++ -*----------------------------------*\\'
+    )
+    f.write(
+        '%s\n' %
+        r'\*---------------------------------------------------------------------------*/'
+    )
+    for i in range(len(xy_vane)):
+        vname = 'vane' + str(i + 1)
+        f.write('%s\n' % vname)
+        f.write('{\n')
+        f.write('    level (%s %s);\n' % (refl, refl))
+        f.write('}\n')
+
+with open(save_file_sufExtract, 'w') as f:
+    f.write(
+        '%s\n' %
+        '/*--------------------------------*- C++ -*----------------------------------*\\'
+    )
+    f.write(
+        '%s\n' %
+        r'\*---------------------------------------------------------------------------*/'
+    )
+    for i in range(len(xy_vane)):
+        vname = 'vane' + str(i + 1)
+        f.write('%s.stl\n' % vname)
+        f.write('{\n')
+        f.write('    extractionMethod    extractFromSurface;\n')
+        f.write('    includedAngle       170;\n')
+        f.write('}\n')

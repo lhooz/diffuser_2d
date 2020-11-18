@@ -145,6 +145,38 @@ boundary
             (19 23 22 18)
         );
     }
+    interface1
+    {
+        type patch;
+        faces
+        (
+            (2 6 5 1)
+        );
+    }
+    interface2
+    {
+        type patch;
+        faces
+        (
+            (19 23 20 16)
+        );
+    }
+    interface3
+    {
+        type patch;
+        faces
+        (
+            (18 22 21 17)
+        );
+    }
+    interface4
+    {
+        type patch;
+        faces
+        (
+            (11 15 12 8)
+        );
+    }
     front
     {
         type empty;
@@ -152,6 +184,7 @@ boundary
         (
             (4 5 6 7)
             (12 13 14 15)
+            (20 21 22 23)
         );
     }
 
@@ -162,12 +195,15 @@ boundary
         (
             (0 3 2 1)
             (8 11 10 9)
+            (16 19 18 17)
         );
     }
 );
 
 mergePatchPairs
 (
+(interface1 interface2)
+(interface3 interface4)
 );
 
 // ************************************************************************* //

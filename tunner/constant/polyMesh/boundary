@@ -15,49 +15,168 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-6
+23
 (
     inlet
     {
         type            inlet;
-        nFaces          50;
-        startFace       16383;
+        nFaces          80;
+        startFace       50380;
         faces           ( ( 0 4 7 3 ) );
     }
     outlet
     {
         type            outlet;
-        nFaces          50;
-        startFace       16433;
+        nFaces          80;
+        startFace       50460;
         faces           ( ( 10 14 13 9 ) );
     }
     wall
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          334;
-        startFace       16483;
+        nFaces          508;
+        startFace       50540;
     }
     front
     {
         type            empty;
         inGroups        1(empty);
-        nFaces          7500;
-        startFace       16817;
+        nFaces          25420;
+        startFace       51048;
     }
     back
     {
         type            empty;
         inGroups        1(empty);
-        nFaces          7500;
-        startFace       24317;
+        nFaces          25420;
+        startFace       76468;
     }
-    defaultFaces
+    vane1
     {
-        type            empty;
-        inGroups        1(empty);
-        nFaces          1900;
-        startFace       31817;
+        type            wall;
+        inGroups        1(wall);
+        nFaces          118;
+        startFace       101888;
+    }
+    vane2
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          122;
+        startFace       102006;
+    }
+    vane3
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          122;
+        startFace       102128;
+    }
+    vane4
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          126;
+        startFace       102250;
+    }
+    vane5
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          121;
+        startFace       102376;
+    }
+    vane6
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          121;
+        startFace       102497;
+    }
+    vane7
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          120;
+        startFace       102618;
+    }
+    vane8
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          120;
+        startFace       102738;
+    }
+    vane9
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          120;
+        startFace       102858;
+    }
+    vane10
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          120;
+        startFace       102978;
+    }
+    vane11
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          120;
+        startFace       103098;
+    }
+    vane12
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          121;
+        startFace       103218;
+    }
+    vane13
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          118;
+        startFace       103339;
+    }
+    vane14
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          118;
+        startFace       103457;
+    }
+    vane15
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          122;
+        startFace       103575;
+    }
+    vane16
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          121;
+        startFace       103697;
+    }
+    vane17
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          119;
+        startFace       103818;
+    }
+    vane18
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          120;
+        startFace       103937;
     }
 )
 
