@@ -33,7 +33,7 @@ boundaryField
 	value		$internalField;
     }
 
-    wall
+    walls
     {
         type            zeroGradient;
     }

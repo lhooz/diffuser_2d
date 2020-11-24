@@ -2,73 +2,21 @@
 \*---------------------------------------------------------------------------*/
 vane1
 {
-    level (2 2);
+    level (3 4);
 }
 vane2
 {
-    level (2 2);
+    level (3 4);
 }
 vane3
 {
-    level (2 2);
+    level (3 4);
 }
 vane4
 {
-    level (2 2);
+    level (3 4);
 }
 vane5
 {
-    level (2 2);
-}
-vane6
-{
-    level (2 2);
-}
-vane7
-{
-    level (2 2);
-}
-vane8
-{
-    level (2 2);
-}
-vane9
-{
-    level (2 2);
-}
-vane10
-{
-    level (2 2);
-}
-vane11
-{
-    level (2 2);
-}
-vane12
-{
-    level (2 2);
-}
-vane13
-{
-    level (2 2);
-}
-vane14
-{
-    level (2 2);
-}
-vane15
-{
-    level (2 2);
-}
-vane16
-{
-    level (2 2);
-}
-vane17
-{
-    level (2 2);
-}
-vane18
-{
-    level (2 2);
+    level (3 4);
 }

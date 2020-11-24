@@ -92,6 +92,15 @@ vertices
     project ($x3outl  $y3outl  0.5) (cylinder1 frontPlane1)
     project ($x3outu  $y3outu  0.5) (cylinder2 frontPlane2)
     project ( $x3inu  $y3inu   0.5) (cylinder2 frontPlane2)
+
+    /*( $x3inl  $y3inl  -0.5)
+    ($x3outl  $y3outl -0.5)
+    ($x3outu  $y3outu -0.5)
+    ( $x3inu  $y3inu  -0.5)
+    ( $x3inl  $y3inl   0.5)
+    ($x3outl  $y3outl  0.5)
+    ($x3outu  $y3outu  0.5)
+    ( $x3inu  $y3inu   0.5)*/
 );
 
 blocks

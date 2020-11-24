@@ -4,24 +4,26 @@ import os
 import numpy as np
 
 w = 1.0
-l1 = 1.0
-l2 = 2.0
-R = 0.1 * w
-hmesh_no1 = 80
+l1 = 0.5
+l2 = 0.8
+R = 0.2 * w
+hmesh_no1 = 50
 vmesh_no1 = 80
 #---------------------------------------------------
-refledge = '2'
-refl = '2'
+refledge = '4'
+refl = '3'
+reflcurvature = '4'
 #----------------------------------------------------
 D = 2 * R / 2**0.5
 dh = l1 / hmesh_no1
 dv = w / vmesh_no1
 hmesh_no2 = np.round(l2 / dh)
-hmesh_no3 = np.ceil(1.2 * D / dh)
+hmesh_no3 = np.ceil(D / dh)
 vmesh_no2 = vmesh_no1
 vmesh_no3 = vmesh_no1
 #---------------------------------------------------
-N_vanes = int(np.ceil(1.414 * w / (D / 2)))
+N_vanes = int(np.ceil(1.414 * w / (D / 2))) - 3
+# N_vanes = 3
 #----------------------------------------------------
 x1inl = 0
 x1inu = 0
@@ -123,7 +125,7 @@ with open(save_file_par, 'w') as f:
     f.write('%s%s;\n' % (r'hm3   ', '{0:.3g}'.format(hmesh_no3)))
     f.write('%s%s;\n' % (r'vm3   ', '{0:.3g}'.format(vmesh_no3)))
 
-rota = -45
+rota = -50
 dh = w / (N_vanes - 1)
 xy_vane = []
 x0 = x3inl + 0.5 * R
@@ -199,7 +201,7 @@ with open(save_file_snappy_refSurf, 'w') as f:
         vname = 'vane' + str(i + 1)
         f.write('%s\n' % vname)
         f.write('{\n')
-        f.write('    level (%s %s);\n' % (refl, refl))
+        f.write('    level (%s %s);\n' % (refl, reflcurvature))
         f.write('}\n')
 
 with open(save_file_sufExtract, 'w') as f:

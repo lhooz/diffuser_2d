@@ -25,7 +25,7 @@ boundaryField
     inlet
     {
         type            fixedValue;
-        value           uniform (1 0 0);
+        value           uniform (102 0 0);
     }
 
     outlet
@@ -33,7 +33,7 @@ boundaryField
         type            zeroGradient;
     }
 
-    wall
+    walls
     {
         type            noSlip;
     }

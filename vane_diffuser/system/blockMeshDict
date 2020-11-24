@@ -19,19 +19,21 @@ scale   1;
 
 vertices
 (
-    ( $xin  $yinl  -0.5)
-    ($xout  $youtl -0.5)
-    ($xout  $youtu -0.5)
-    ( $xin  $yinu  -0.5)
-    ( $xin  $yinl   0.5)
-    ($xout  $youtl  0.5)
-    ($xout  $youtu  0.5)
-    ( $xin  $yinu   0.5)
+    ( $xin  $yl  -0.5)
+    ($xout  $yl  -0.5)
+    ($xout  $yu  -0.5)
+    ( $xin  $yu  -0.5)
+    ( $xin  $yl   0.5)
+    ($xout  $yl   0.5)
+    ($xout  $yu   0.5)
+    ( $xin  $yu   0.5)
 );
 
 blocks
 (
-    hex (0 1 2 3 4 5 6 7) ($hm $vm 1) simpleGrading (1 1 1)
+    hex (0 1 2 3 4 5 6 7) ($hm $vm 1) 
+    simpleGrading 
+    (1 1 1)
 );
 
 edges
@@ -54,15 +56,6 @@ boundary
         faces
         (
             (2 6 5 1)
-        );
-    }
-    wall
-    {
-        type wall;
-        faces
-        (
-            (1 5 4 0)
-            (3 7 6 2)
         );
     }
     front

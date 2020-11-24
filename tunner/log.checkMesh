@@ -8,10 +8,10 @@
 Build  : _f3950763fe-20191219 OPENFOAM=1912
 Arch   : "LSB;label=32;scalar=64"
 Exec   : checkMesh
-Date   : Nov 18 2020
-Time   : 01:14:09
+Date   : Nov 19 2020
+Time   : 12:27:07
 Host   : 53bbc2ec95fa
-PID    : 2406
+PID    : 1091
 I/O    : uncollated
 Case   : /home/hao/OpenFOAM/hao-v1912/diffuser_2d/tunner
 nProcs : 1
@@ -31,30 +31,29 @@ Create mesh for time = constant
 Time = constant
 
 Mesh stats
-    points:           55560
+    points:           46732
     internal points:  0
-    faces:            104057
-    internal faces:   50380
-    cells:            25420
-    faces per cell:   6.07541
-    boundary patches: 23
+    faces:            84663
+    internal faces:   40534
+    cells:            20431
+    faces per cell:   6.1278
+    boundary patches: 10
     point zones:      2
     face zones:       6
     cell zones:       0
 
 Overall number of cells of each type:
-    hexahedra:     23814
-    prisms:        17
+    hexahedra:     17997
+    prisms:        0
     wedges:        0
     pyramids:      0
     tet wedges:    0
     tetrahedra:    0
-    polyhedra:     1589
+    polyhedra:     2434
     Breakdown of polyhedra by number of faces:
         faces   number of cells
-            7   1246
-            8   341
-            9   2
+            7   2257
+            8   177
 
 Checking topology...
     Boundary definition OK.
@@ -68,34 +67,21 @@ Checking patch topology for multiply connected surfaces...
                    Patch    Faces   Points                  Surface topology
                    inlet       80      162  ok (non-closed singly connected)
                   outlet       80      162  ok (non-closed singly connected)
-                    wall      508     1020  ok (non-closed singly connected)
-                   front    25420    27780  ok (non-closed singly connected)
-                    back    25420    27780  ok (non-closed singly connected)
-                   vane1      118      236  ok (non-closed singly connected)
-                   vane2      122      244  ok (non-closed singly connected)
-                   vane3      122      244  ok (non-closed singly connected)
-                   vane4      126      252  ok (non-closed singly connected)
-                   vane5      121      242  ok (non-closed singly connected)
-                   vane6      121      242  ok (non-closed singly connected)
-                   vane7      120      240  ok (non-closed singly connected)
-                   vane8      120      240  ok (non-closed singly connected)
-                   vane9      120      240  ok (non-closed singly connected)
-                  vane10      120      240  ok (non-closed singly connected)
-                  vane11      120      240  ok (non-closed singly connected)
-                  vane12      121      242  ok (non-closed singly connected)
-                  vane13      118      236  ok (non-closed singly connected)
-                  vane14      118      236  ok (non-closed singly connected)
-                  vane15      122      244  ok (non-closed singly connected)
-                  vane16      121      242  ok (non-closed singly connected)
-                  vane17      119      238  ok (non-closed singly connected)
-                  vane18      120      240  ok (non-closed singly connected)
+                    wall      318      640  ok (non-closed singly connected)
+                   front    20431    23366  ok (non-closed singly connected)
+                    back    20431    23366  ok (non-closed singly connected)
+                   vane1      575     1150  ok (non-closed singly connected)
+                   vane2      564     1128  ok (non-closed singly connected)
+                   vane3      550     1100  ok (non-closed singly connected)
+                   vane4      549     1098  ok (non-closed singly connected)
+                   vane5      551     1102  ok (non-closed singly connected)
 
 Checking faceZone topology for multiply connected surfaces...
                 FaceZone    Faces   Points                  Surface topology
-    interface1interface20MasterZone      179      378  ok (non-closed singly connected)
+    interface1interface20MasterZone      121      254  ok (non-closed singly connected)
     interface1interface20SlaveZone        0        0                        ok (empty)
     interface1interface20CutFaceZone        0        0                        ok (empty)
-    interface3interface41MasterZone      176      372  ok (non-closed singly connected)
+    interface3interface41MasterZone      119      250  ok (non-closed singly connected)
     interface3interface41SlaveZone        0        0                        ok (empty)
     interface3interface41CutFaceZone        0        0                        ok (empty)
 
@@ -103,19 +89,19 @@ Checking basic cellZone addressing...
     No cellZones found.
 
 Checking geometry...
-    Overall domain bounding box (0 -2.6 -0.5) (2.10009 0.500177 0.5)
+    Overall domain bounding box (0 -1.5 -0.5) (1.7 0.5 0.5)
     Mesh has 2 geometric (non-empty/wedge) directions (1 1 0)
     Mesh has 2 solution (non-empty) directions (1 1 0)
     All edges aligned with or perpendicular to non-empty directions.
-    Boundary openness (4.27892e-17 4.44563e-18 -6.63841e-15) OK.
-    Max cell openness = 2.26095e-16 OK.
-    Max aspect ratio = 3.70061 OK.
-    Minimum face area = 2.20719e-06. Maximum face area = 0.0279333.  Face area magnitudes OK.
-    Min volume = 2.20719e-06. Max volume = 0.000488123.  Total volume = 4.17045.  Cell volumes OK.
-    Mesh non-orthogonality Max: 60.299 average: 28.2586
+    Boundary openness (3.05646e-17 1.33982e-17 1.82269e-15) OK.
+    Max cell openness = 2.33361e-16 OK.
+    Max aspect ratio = 3.38 OK.
+    Minimum face area = 5.38035e-07. Maximum face area = 0.03.  Face area magnitudes OK.
+    Min volume = 5.38035e-07. Max volume = 0.000373438.  Total volume = 2.6794.  Cell volumes OK.
+    Mesh non-orthogonality Max: 59.774 average: 28.3274
     Non-orthogonality check OK.
     Face pyramids OK.
-    Max skewness = 1.78979 OK.
+    Max skewness = 3.15438 OK.
     Coupled point location match (average 0) OK.
 
 Mesh OK.

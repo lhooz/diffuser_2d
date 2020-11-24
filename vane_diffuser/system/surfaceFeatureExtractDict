@@ -29,5 +29,15 @@ single_vanel.stl
     extractionMethod    extractFromSurface;
     includedAngle       170;
 }
+dwallu.stl
+{
+    extractionMethod    extractFromSurface;
+    includedAngle       170;
+}
+dwalll.stl
+{
+    extractionMethod    extractFromSurface;
+    includedAngle       170;
+}
 
 // ************************************************************************* //

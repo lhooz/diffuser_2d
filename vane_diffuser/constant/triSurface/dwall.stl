@@ -1,0 +1,86 @@
+solid diffuser_wall
+ facet normal 0 -1 0
+  outer loop
+   vertex -0.055 -0.0055 1
+   vertex -0.055 -0.0055 -1
+   vertex 0.495 -0.0055 1
+  endloop
+ endfacet
+ facet normal 0 -1 -0
+  outer loop
+   vertex 0.495 -0.0055 1
+   vertex -0.055 -0.0055 -1
+   vertex 0.495 -0.0055 -1
+  endloop
+ endfacet
+ facet normal -1 -0 -0
+  outer loop
+   vertex -0.055 0.0055 1
+   vertex -0.055 0.0055 -1
+   vertex -0.055 -0.0055 1
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex -0.055 -0.0055 1
+   vertex -0.055 0.0055 -1
+   vertex -0.055 -0.0055 -1
+  endloop
+ endfacet
+ facet normal 0 1 0
+  outer loop
+   vertex 0.495 0.0055 1
+   vertex 0.495 0.0055 -1
+   vertex -0.055 0.0055 1
+  endloop
+ endfacet
+ facet normal 0 1 0
+  outer loop
+   vertex -0.055 0.0055 1
+   vertex 0.495 0.0055 -1
+   vertex -0.055 0.0055 -1
+  endloop
+ endfacet
+ facet normal 1 -0 0
+  outer loop
+   vertex 0.495 -0.0055 1
+   vertex 0.495 -0.0055 -1
+   vertex 0.495 0.0055 1
+  endloop
+ endfacet
+ facet normal 1 0 0
+  outer loop
+   vertex 0.495 0.0055 1
+   vertex 0.495 -0.0055 -1
+   vertex 0.495 0.0055 -1
+  endloop
+ endfacet
+ facet normal 0 0 -1
+  outer loop
+   vertex -0.055 0.0055 -1
+   vertex 0.495 0.0055 -1
+   vertex -0.055 -0.0055 -1
+  endloop
+ endfacet
+ facet normal 0 0 -1
+  outer loop
+   vertex -0.055 -0.0055 -1
+   vertex 0.495 0.0055 -1
+   vertex 0.495 -0.0055 -1
+  endloop
+ endfacet
+ facet normal 0 0 1
+  outer loop
+   vertex 0.495 0.0055 1
+   vertex -0.055 0.0055 1
+   vertex 0.495 -0.0055 1
+  endloop
+ endfacet
+ facet normal 0 0 1
+  outer loop
+   vertex 0.495 -0.0055 1
+   vertex -0.055 0.0055 1
+   vertex -0.055 -0.0055 1
+  endloop
+ endfacet
+endsolid diffuser_wall
