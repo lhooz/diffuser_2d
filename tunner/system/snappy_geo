@@ -1,27 +1,52 @@
 /*--------------------------------*- C++ -*----------------------------------*\
 \*---------------------------------------------------------------------------*/
+"twall.stl"
+{
+    type    triSurfaceMesh;
+    name    twalls;
+}
 "vane1.stl"
 {
     type    triSurfaceMesh;
-    name    vane1;
+    name    twalls;
 }
 "vane2.stl"
 {
     type    triSurfaceMesh;
-    name    vane2;
+    name    twalls;
 }
 "vane3.stl"
 {
     type    triSurfaceMesh;
-    name    vane3;
+    name    twalls;
 }
 "vane4.stl"
 {
     type    triSurfaceMesh;
-    name    vane4;
+    name    twalls;
 }
 "vane5.stl"
 {
     type    triSurfaceMesh;
-    name    vane5;
+    name    twalls;
+}
+"vane6.stl"
+{
+    type    triSurfaceMesh;
+    name    twalls;
+}
+"vane7.stl"
+{
+    type    triSurfaceMesh;
+    name    twalls;
+}
+"vane8.stl"
+{
+    type    triSurfaceMesh;
+    name    twalls;
+}
+"vane9.stl"
+{
+    type    triSurfaceMesh;
+    name    twalls;
 }

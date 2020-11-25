@@ -1,21 +1,26 @@
 #!/bin/bash
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions
+
 python3 diffuser_parameters.py
 
 foamCleanTutorials
-sh transform_stl.sh
+
+restore0Dir
 blockMesh
+sh transform_stl.sh
 surfaceFeatureExtract
-snappyHexMesh -overwrite | tee log.snappyHexMesh
-extrudeMesh
 
-rm -r 0
-cp -r 0_org 0
+cp -f system/decomposeParDict.hierarchical system/decomposeParDict
+decomposePar
+cp -f system/decomposeParDict.ptscotch system/decomposeParDict
+runParallel snappyHexMesh -overwrite
+runParallel extrudeMesh
 
-checkMesh |  tee log.checkMesh
+restore0Dir -processor
+
+runParallel checkMesh
 
 touch open.foam
 
-#decomposePar
-#mpirun -np 4 renumberMesh -overwrite -parallel | tee log.renumberMesh
-##mpirun -np 4 pimpleFoam -parallel | tee log.solver
-#mpirun -np 4 simpleFoam -parallel | tee log.solver
+runParallel pimpleFoam
+#runParallel simpleFoam

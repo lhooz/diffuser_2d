@@ -25,9 +25,9 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         5;
+endTime         0.1;
 
-deltaT          1e-3;
+deltaT          1e-4;
 
 writeControl    adjustableRunTime;
 
@@ -48,9 +48,14 @@ timePrecision   10;
 runTimeModifiable true;
 
 adjustTimeStep  yes;
-/*
-maxCo           0.5;
+
+maxCo           4;
 
 maxDeltaT       0.01;
-*/
+
 // ************************************************************************* //
+functions
+{
+#include "FOyPlus"
+}
+

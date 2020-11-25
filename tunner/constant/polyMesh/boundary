@@ -15,77 +15,42 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-10
+5
 (
     inlet
     {
         type            inlet;
-        nFaces          80;
-        startFace       40534;
+        nFaces          181;
+        startFace       65160;
         faces           ( ( 0 4 7 3 ) );
     }
     outlet
     {
         type            outlet;
-        nFaces          80;
-        startFace       40614;
-        faces           ( ( 10 14 13 9 ) );
-    }
-    wall
-    {
-        type            wall;
-        inGroups        1(wall);
-        nFaces          318;
-        startFace       40694;
+        nFaces          181;
+        startFace       65341;
+        faces           ( ( 0 1 5 4 ) );
     }
     front
     {
         type            empty;
         inGroups        1(empty);
-        nFaces          20431;
-        startFace       41012;
+        nFaces          32761;
+        startFace       65522;
     }
     back
     {
         type            empty;
         inGroups        1(empty);
-        nFaces          20431;
-        startFace       61443;
+        nFaces          32761;
+        startFace       98283;
     }
-    vane1
+    defaultFaces
     {
-        type            wall;
-        inGroups        1(wall);
-        nFaces          575;
-        startFace       81874;
-    }
-    vane2
-    {
-        type            wall;
-        inGroups        1(wall);
-        nFaces          564;
-        startFace       82449;
-    }
-    vane3
-    {
-        type            wall;
-        inGroups        1(wall);
-        nFaces          550;
-        startFace       83013;
-    }
-    vane4
-    {
-        type            wall;
-        inGroups        1(wall);
-        nFaces          549;
-        startFace       83563;
-    }
-    vane5
-    {
-        type            wall;
-        inGroups        1(wall);
-        nFaces          551;
-        startFace       84112;
+        type            empty;
+        inGroups        1(empty);
+        nFaces          362;
+        startFace       131044;
     }
 )
 

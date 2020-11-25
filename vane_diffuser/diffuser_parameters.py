@@ -6,9 +6,14 @@ import numpy as np
 w1 = 0.11
 theta = 25
 l_w1 = 2
-mesh_size = w1 / 30
-
-#----------------------------------------------------
+mesh_size = w1 / 50
+#---------------------------------------------------
+refledge = 3
+refl = 3
+reflcurvature = 3
+#--------------------------------------------------
+wall_layer_thickness = 1e-4
+#---------------------------------------------------
 xin = 0
 xout = l_w1 * w1
 yu = 1.2 * (0.5 * w1 + np.sin(theta * np.pi / 180) * (xout - xin))
@@ -29,6 +34,7 @@ dwalll = -(0.5 + 0.1 / 2) * w1
 cwd = os.getcwd()
 save_file_par = os.path.join(cwd, 'system', 'meshParameters')
 save_file_sh = os.path.join(cwd, 'transform_stl.sh')
+save_file_snappy_parameters = os.path.join(cwd, 'system', 'snappy_parameters')
 with open(save_file_par, 'w') as f:
     f.write(
         '%s\n' %
@@ -94,3 +100,18 @@ with open(save_file_sh, 'w') as f:
     #------------------
     f.write('cd ..\n')
     f.write('cd ..\n')
+
+with open(save_file_snappy_parameters, 'w') as f:
+    f.write(
+        '%s\n' %
+        '/*--------------------------------*- C++ -*----------------------------------*\\'
+    )
+    f.write(
+        '%s\n' %
+        r'\*---------------------------------------------------------------------------*/'
+    )
+    f.write('%s%s;\n' % (r'refledge   ', '{0:.3g}'.format(refledge)))
+    f.write('%s%s;\n' % (r'refl   ', '{0:.3g}'.format(refl)))
+    f.write('%s%s;\n' % (r'reflcurvature   ', '{0:.3g}'.format(reflcurvature)))
+    f.write('%s%s;\n' %
+            (r'blthickness   ', '{0:.3g}'.format(wall_layer_thickness)))
