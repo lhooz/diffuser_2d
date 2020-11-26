@@ -1,0 +1,32 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+\*---------------------------------------------------------------------------*/
+"twall.stl"
+{
+    type    triSurfaceMesh;
+    name    twalls;
+}
+"vane1.stl"
+{
+    type    triSurfaceMesh;
+    name    twalls;
+}
+"vane2.stl"
+{
+    type    triSurfaceMesh;
+    name    twalls;
+}
+"vane3.stl"
+{
+    type    triSurfaceMesh;
+    name    twalls;
+}
+"vane4.stl"
+{
+    type    triSurfaceMesh;
+    name    twalls;
+}
+"vane5.stl"
+{
+    type    triSurfaceMesh;
+    name    twalls;
+}

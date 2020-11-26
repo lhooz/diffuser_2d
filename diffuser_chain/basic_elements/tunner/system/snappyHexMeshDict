@@ -1,0 +1,134 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  7                                     |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      snappyHexMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+castellatedMesh true;
+snap            true;
+addLayers       false;
+#include "snappy_parameters"
+
+geometry
+{
+    #include "snappy_geo"
+};
+
+castellatedMeshControls
+{
+    maxLocalCells 1000000;
+    maxGlobalCells 20000000;
+    minRefinementCells 10;
+    maxLoadUnbalance 0.10;
+
+    nCellsBetweenLevels 5;
+
+    features 
+    (
+        #include "snappy_feature"
+    );
+
+    refinementSurfaces
+    {
+        twalls
+        {
+            level ($refl $reflcurvature);
+        }
+    }
+
+    resolveFeatureAngle 30;
+
+    refinementRegions
+    {
+        /*refinementBox
+        {
+            mode inside;
+            levels ((1e15 2));
+        }*/
+    }
+
+    locationInMesh (0.01 0 0);
+    allowFreeStandingZoneFaces true;
+}
+
+snapControls
+{
+    nSmoothPatch 10;
+    tolerance 4.0;
+    nSolveIter 50;
+    nRelaxIter 5;
+    nFeatureSnapIter 20;
+    implicitFeatureSnap true;
+    explicitFeatureSnap false;
+    multiRegionFeatureSnap false;
+}
+
+addLayersControls
+{
+    relativeSizes false;
+
+    layers
+    {
+        twalls
+        {
+            nSurfaceLayers 2;
+        }
+    }
+
+    meshShrinker    displacementMotionSolver;
+    solver          displacementLaplacian;
+    displacementLaplacianCoeffs
+    {
+        diffusivity     inverseDistance (twalls);
+    }
+
+    expansionRatio 1.0;
+    finalLayerThickness $blthickness;
+    minThickness 1e-6;
+    nGrow 5;
+    featureAngle 180;
+    nRelaxIter 50;
+    nSmoothSurfaceNormals 3;
+    nSmoothNormals 5;
+    nSmoothThickness 10;
+    maxFaceThicknessRatio 0.5;
+    maxThicknessToMedialRatio 0.3;
+    minMedianAxisAngle 90;
+    nBufferCellsNoExtrude 1;
+    nLayerIter 100;
+}
+
+meshQualityControls
+{
+    maxNonOrtho 60;
+    maxBoundarySkewness 20;
+    maxInternalSkewness 4;
+    maxConcave 80;
+    minVol -1;
+    minTetQuality -1;
+    minArea -1;
+    minTwist 0.01;
+    minDeterminant 0.001;
+    minFaceWeight 0.05;
+    minVolRatio 0.01;
+    minTriangleTwist -1;
+    nSmoothScale 4;
+    errorReduction 0.75;
+    relaxed
+    {
+        maxNonOrtho 75;
+    }
+}
+
+mergeTolerance 1e-6;
+
+// ************************************************************************* //

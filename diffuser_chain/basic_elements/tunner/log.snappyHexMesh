@@ -1,0 +1,2871 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _f3950763fe-20191219 OPENFOAM=1912
+Arch   : "LSB;label=32;scalar=64"
+Exec   : snappyHexMesh -parallel -overwrite
+Date   : Nov 25 2020
+Time   : 14:14:36
+Host   : 53bbc2ec95fa
+PID    : 1763
+I/O    : uncollated
+Case   : /home/hao/OpenFOAM/hao-v1912/diffuser_2d/tunner
+nProcs : 4
+Hosts  :
+(
+    (53bbc2ec95fa 4)
+)
+Pstream initialized with:
+    floatTransfer      : 0
+    nProcsSimpleSum    : 0
+    commsType          : nonBlocking
+    polling iterations : 0
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Read mesh in = 0.03 s
+
+Overall mesh bounding box  : (0 -0.07 -0.5) (0.15 0.08 0.5)
+Relative tolerance         : 1e-06
+Absolute matching distance : 1.02225e-06
+
+Reading refinement surfaces.
+Read refinement surfaces in = 0 s
+
+Reading refinement shells.
+Read refinement shells in = 0 s
+
+Setting refinement level of surface to be consistent with shells.
+For geometry twall.stl detected 0 uncached triangles out of 400
+For geometry vane1.stl detected 0 uncached triangles out of 444
+For geometry vane2.stl detected 0 uncached triangles out of 444
+For geometry vane3.stl detected 0 uncached triangles out of 444
+For geometry vane4.stl detected 0 uncached triangles out of 444
+For geometry vane5.stl detected 0 uncached triangles out of 444
+Checked shell refinement in = 0.03 s
+
+Reading features.
+Read edgeMesh twall.eMesh
+    points      : 204
+    edges       : 212
+    boundingBox : (-0.02 -0.09 -1) (0.13 0.06 1)
+
+Refinement level according to distance to "twall.eMesh" (204 points, 212 edges).
+    level 2 for all cells within 0 metre.
+Read edgeMesh vane1.eMesh
+    points      : 224
+    edges       : 230
+    boundingBox : (0.0156656 -0.0556774 -1) (0.036628 -0.0319784 1)
+
+Refinement level according to distance to "vane1.eMesh" (224 points, 230 edges).
+    level 2 for all cells within 0 metre.
+Read edgeMesh vane2.eMesh
+    points      : 224
+    edges       : 230
+    boundingBox : (0.0322656 -0.0390774 -1) (0.053228 -0.0153784 1)
+
+Refinement level according to distance to "vane2.eMesh" (224 points, 230 edges).
+    level 2 for all cells within 0 metre.
+Read edgeMesh vane3.eMesh
+    points      : 224
+    edges       : 230
+    boundingBox : (0.0489656 -0.0223774 -1) (0.069928 0.0013216 1)
+
+Refinement level according to distance to "vane3.eMesh" (224 points, 230 edges).
+    level 2 for all cells within 0 metre.
+Read edgeMesh vane4.eMesh
+    points      : 224
+    edges       : 230
+    boundingBox : (0.0656656 -0.0057074 -1) (0.086628 0.0179916 1)
+
+Refinement level according to distance to "vane4.eMesh" (224 points, 230 edges).
+    level 2 for all cells within 0 metre.
+Read edgeMesh vane5.eMesh
+    points      : 224
+    edges       : 230
+    boundingBox : (0.0822656 0.0109226 -1) (0.103228 0.0346216 1)
+
+Refinement level according to distance to "vane5.eMesh" (224 points, 230 edges).
+    level 2 for all cells within 0 metre.
+Read features in = 0.01 s
+
+
+Determining initial surface intersections
+-----------------------------------------
+
+Edge intersection testing:
+    Number of edges             : 23256
+    Number of edges to retest   : 0
+    Number of intersected edges : 0
+Edge intersection testing:
+    Number of edges             : 23256
+    Number of edges to retest   : 23256
+    Number of intersected edges : 482
+Calculated surface intersections in = 0.03 s
+
+Initial mesh : cells:5776  faces:23256  points:11858
+Cells per refinement level:
+    0	5776
+
+Adding patches for surface regions
+----------------------------------
+
+Patch Type                Region                        
+----- ----                ------                        
+twalls:
+
+5     wall                twalls                        
+
+twalls:
+
+5     wall                twalls                        
+
+twalls:
+
+5     wall                twalls                        
+
+twalls:
+
+5     wall                twalls                        
+
+twalls:
+
+5     wall                twalls                        
+
+twalls:
+
+5     wall                twalls                        
+
+Added patches in = 0 s
+
+Edge intersection testing:
+    Number of edges             : 23256
+    Number of edges to retest   : 0
+    Number of intersected edges : 482
+Selecting decompositionMethod ptscotch [4]
+
+Refinement phase
+----------------
+
+Found point (0.01 0 0) in cell 1335 on processor 0
+
+Feature refinement iteration 0
+------------------------------
+
+Marked for refinement due to explicit features             : 0 cells.
+Determined cells to refine in = 0.02 s
+Selected for feature refinement : 0 cells (out of 5776)
+Stopping refining since too few cells selected.
+
+
+Surface refinement iteration 0
+------------------------------
+
+Marked for refinement due to surface intersection          : 737 cells.
+Determined cells to refine in = 0.01 s
+Selected for refinement : 737 cells (out of 5776)
+Edge intersection testing:
+    Number of edges             : 42204
+    Number of edges to retest   : 25160
+    Number of intersected edges : 2052
+Refined mesh in = 0.05 s
+After refinement surface refinement iteration 0 : cells:10935  faces:42204  points:20917
+Cells per refinement level:
+    0	5039
+    1	5896
+Balanced mesh in = 0.1 s
+After balancing surface refinement iteration 0 : cells:10935  faces:42204  points:20917
+Cells per refinement level:
+    0	5039
+    1	5896
+
+Surface refinement iteration 1
+------------------------------
+
+Marked for refinement due to surface intersection          : 3161 cells.
+Determined cells to refine in = 0 s
+Selected for refinement : 3266 cells (out of 10935)
+Edge intersection testing:
+    Number of edges             : 120813
+    Number of edges to retest   : 101559
+    Number of intersected edges : 8152
+Refined mesh in = 0.14 s
+After refinement surface refinement iteration 1 : cells:33797  faces:120813  points:54652
+Cells per refinement level:
+    0	4927
+    1	3638
+    2	25232
+Balanced mesh in = 0.29 s
+After balancing surface refinement iteration 1 : cells:33797  faces:120813  points:54652
+Cells per refinement level:
+    0	4927
+    1	3638
+    2	25232
+
+Surface refinement iteration 2
+------------------------------
+
+Marked for refinement due to surface intersection          : 16 cells.
+Determined cells to refine in = 0.01 s
+Selected for refinement : 17 cells (out of 33797)
+Edge intersection testing:
+    Number of edges             : 121215
+    Number of edges to retest   : 1139
+    Number of intersected edges : 8176
+Refined mesh in = 0.07 s
+After refinement surface refinement iteration 2 : cells:33916  faces:121215  points:54819
+Cells per refinement level:
+    0	4926
+    1	3630
+    2	25360
+Skipping balancing since max unbalance 0.0311357 is less than allowable 0.1
+
+Surface refinement iteration 3
+------------------------------
+
+Marked for refinement due to surface intersection          : 0 cells.
+Determined cells to refine in = 0.01 s
+Selected for refinement : 0 cells (out of 33916)
+Stopping refining since too few cells selected.
+
+
+Removing mesh beyond surface intersections
+------------------------------------------
+
+Setting cellZones according to locationsInMesh:
+Location : (0.01 0 0)
+    cellZone : none
+
+For cellZone none found point (0.01 0 0) in global region 0 out of 10 regions.
+Keeping all cells containing inside points
+Selected for keeping : 33916 cells.
+Edge intersection testing:
+    Number of edges             : 121215
+    Number of edges to retest   : 0
+    Number of intersected edges : 8176
+Setting cellZones according to locationsInMesh:
+Location : (0.01 0 0)
+    cellZone : none
+
+For cellZone none found point (0.01 0 0) in global region 0 out of 10 regions.
+Keeping all cells containing inside points
+Selected for keeping : 30056 cells.
+Edge intersection testing:
+    Number of edges             : 113945
+    Number of edges to retest   : 8620
+    Number of intersected edges : 8176
+
+Shell refinement iteration 0
+----------------------------
+
+Marked for refinement due to distance to explicit features : 0 cells.
+Marked for refinement due to refinement shells             : 0 cells.
+Determined cells to refine in = 0.14 s
+Selected for internal refinement : 0 cells (out of 30056)
+Stopping refining since too few cells selected.
+
+
+Dangling coarse cells refinement iteration 0
+--------------------------------------------
+
+Determined cells to refine in = 0 s
+Selected for refinement : 0 cells (out of 30056)
+Stopping refining since too few cells selected.
+
+
+Dangling coarse cells refinement iteration 0
+--------------------------------------------
+
+Determined cells to refine in = 0 s
+Selected for refinement : 0 cells (out of 30056)
+Stopping refining since too few cells selected.
+
+
+Refinement transition refinement iteration 0
+--------------------------------------------
+
+Determined cells to refine in = 0 s
+Selected for refinement : 0 cells (out of 30056)
+Stopping refining since too few cells selected.
+
+
+Splitting mesh at surface intersections
+---------------------------------------
+
+Introducing baffles for 8176 faces that are intersected by the surface.
+
+Setting cellZones according to locationsInMesh:
+Location : (0.01 0 0)
+    cellZone : none
+
+For cellZone none found point (0.01 0 0) in global region 0 out of 10 regions.
+Edge intersection testing:
+    Number of edges             : 122121
+    Number of edges to retest   : 59828
+    Number of intersected edges : 16352
+Created baffles in = 0.09 s
+
+
+After introducing baffles : cells:30056  faces:122121  points:53991
+Cells per refinement level:
+    0	4926
+    1	3630
+    2	21500
+
+Introducing baffles to block off problem cells
+----------------------------------------------
+
+markFacesOnProblemCells : marked 5774 additional internal faces to be converted into baffles.
+Analyzed problem cells in = 0.04 s
+
+
+Introducing baffles to delete problem cells.
+
+Edge intersection testing:
+    Number of edges             : 127895
+    Number of edges to retest   : 27385
+    Number of intersected edges : 16352
+Created baffles in = 0.06 s
+
+
+After introducing baffles : cells:30056  faces:127895  points:53991
+Cells per refinement level:
+    0	4926
+    1	3630
+    2	21500
+Setting cellZones according to locationsInMesh:
+Location : (0.01 0 0)
+    cellZone : none
+
+For cellZone none found point (0.01 0 0) in global region 0 out of 2322 regions.
+Edge intersection testing:
+    Number of edges             : 127895
+    Number of edges to retest   : 65348
+    Number of intersected edges : 16352
+
+Remove unreachable sections of mesh
+-----------------------------------
+
+Keeping all cells containing points 1((0.01 0 0))
+Selected for keeping : 12849 cells.
+Edge intersection testing:
+    Number of edges             : 50592
+    Number of edges to retest   : 0
+    Number of intersected edges : 5912
+Split mesh in = 0.2 s
+
+
+After subsetting : cells:12849  faces:50592  points:26284
+Cells per refinement level:
+    0	3183
+    1	1846
+    2	7820
+
+Introducing zones for interfaces
+--------------------------------
+
+Setting cellZones according to locationsInMesh:
+Location : (0.01 0 0)
+    cellZone : none
+
+For cellZone none found point (0.01 0 0) in global region 0 out of 1 regions.
+Setting faceZones according to neighbouring cellZones:
+
+Edge intersection testing:
+    Number of edges             : 50592
+    Number of edges to retest   : 0
+    Number of intersected edges : 5912
+
+Handling cells with snap problems
+---------------------------------
+
+Introducing baffles for 5912 faces that are intersected by the surface.
+
+Setting cellZones according to locationsInMesh:
+Location : (0.01 0 0)
+    cellZone : none
+
+For cellZone none found point (0.01 0 0) in global region 0 out of 1 regions.
+Edge intersection testing:
+    Number of edges             : 50592
+    Number of edges to retest   : 21314
+    Number of intersected edges : 5912
+Created baffles in = 0.09 s
+
+
+After introducing baffles : cells:12849  faces:50592  points:26284
+Cells per refinement level:
+    0	3183
+    1	1846
+    2	7820
+
+Introducing baffles to block off problem cells
+----------------------------------------------
+
+markFacesOnProblemCells : marked 0 additional internal faces to be converted into baffles.
+Analyzed problem cells in = 0.02 s
+
+
+Introducing baffles to delete problem cells.
+
+Created baffles in = 0.01 s
+
+
+After introducing baffles : cells:12849  faces:50592  points:26284
+Cells per refinement level:
+    0	3183
+    1	1846
+    2	7820
+Setting cellZones according to locationsInMesh:
+Location : (0.01 0 0)
+    cellZone : none
+
+For cellZone none found point (0.01 0 0) in global region 0 out of 1 regions.
+Edge intersection testing:
+    Number of edges             : 50592
+    Number of edges to retest   : 21314
+    Number of intersected edges : 5912
+
+Remove unreachable sections of mesh
+-----------------------------------
+
+Split mesh in = 0.06 s
+
+
+After subsetting : cells:12849  faces:50592  points:26284
+Cells per refinement level:
+    0	3183
+    1	1846
+    2	7820
+
+Merge free-standing baffles
+---------------------------
+
+freeStandingBaffles : detected 0 free-standing baffles out of 0
+
+Detected free-standing baffles : 0
+Merged free-standing baffles in = 0.02 s
+
+
+dupNonManifoldPoints : Found : 0 non-manifold points (out of 26786)
+Detected unsplittable baffles : 0
+
+Merge refined boundary faces
+----------------------------
+
+Merging 0 sets of faces.
+
+No faces merged ...
+
+Merging all points on surface that
+- are used by only two boundary faces and
+- make an angle with a cosine of more than 0.707107.
+
+No straight edges simplified and no points removed ...
+
+Doing final balancing
+---------------------
+
+Found 0 zoned faces to keep together.
+Found 0 separated coupled faces to keep together.
+Refined mesh : cells:12849  faces:50592  points:26284
+Cells per refinement level:
+    0	3183
+    1	1846
+    2	7820
+Writing mesh to time constant
+Wrote mesh in = 0.24 s.
+Mesh refined in = 1.67 s.
+
+Morphing phase
+--------------
+
+Duplicating 0 points on faceZones of type boundary
+Snapping to features in 20 iterations ...
+Constructing mesh displacer ...
+Using mesh parameters 
+{
+    maxNonOrtho     60;
+    maxBoundarySkewness 20;
+    maxInternalSkewness 4;
+    maxConcave      80;
+    minVol          -1;
+    minTetQuality   -1;
+    minArea         -1;
+    minTwist        0.01;
+    minDeterminant  0.001;
+    minFaceWeight   0.05;
+    minVolRatio     0.01;
+    minTriangleTwist -1;
+    nSmoothScale    4;
+    errorReduction  0.75;
+    relaxed
+    {
+        maxNonOrtho     75;
+    }
+}
+
+
+Checking initial mesh ...
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Detected 7946 illegal faces (concave, zero area or negative cell pyramid volume)
+Checked initial mesh in = 0.04 s
+
+
+Smoothing patch points ...
+Smoothing iteration 0
+Found 0 non-manifold point(s).
+
+Scaling iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+--> FOAM Warning : 
+    From function void Foam::twoDPointCorrector::calcAddressing() const
+    in file twoDPointCorrector/twoDPointCorrector.C at line 153
+    the number of vertices in the geometry is odd - this should not be the case for a 2-D case. Please check the geometry.
+--> FOAM Warning : 
+    From function void Foam::twoDPointCorrector::calcAddressing() const
+    in file twoDPointCorrector/twoDPointCorrector.C at line 162
+    The number of points in the mesh is not equal to twice the number of edges normal to the plane - this may be OK only for wedge geometries.
+    Please check the geometry or adjust the orthogonality tolerance.
+
+Number of normal edges: 4659 number of points: 6793
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+
+Smoothing iteration 1
+Found 0 non-manifold point(s).
+
+Scaling iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+
+Smoothing iteration 2
+Found 0 non-manifold point(s).
+
+Scaling iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+
+Smoothing iteration 3
+Found 0 non-manifold point(s).
+
+Scaling iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+
+Smoothing iteration 4
+Found 0 non-manifold point(s).
+
+Scaling iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+
+Smoothing iteration 5
+Found 0 non-manifold point(s).
+
+Scaling iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+
+Smoothing iteration 6
+Found 0 non-manifold point(s).
+
+Scaling iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+
+Smoothing iteration 7
+Found 0 non-manifold point(s).
+
+Scaling iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+
+Smoothing iteration 8
+Found 0 non-manifold point(s).
+
+Scaling iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+
+Smoothing iteration 9
+Found 0 non-manifold point(s).
+
+Scaling iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+
+Patch points smoothed in = 2.98 s
+
+
+
+Morph iteration 0
+-----------------
+Calculating patchDisplacement as distance to nearest surface point ...
+    non-zone points : attract to nearest of all non-zone surfaces
+    zone points     : attract to zone surface only
+
+Wanted displacement : average:0.000175951 min:2.51256e-07 max:0.00037471
+Calculated surface displacement in = 0.02 s
+
+
+Detecting near surfaces ...
+Overriding nearest with intersection of close gaps at 0 out of 7440 points.
+Overriding displacement on features :
+   implicit features    : true
+   explicit features    : false
+   multi-patch features : false
+
+Attraction:
+    linear   : max:(0.000374681 -4.6273e-06 1.11022e-16) avg:(3.72454e-05 3.68375e-05 1.52151e-13)
+    feature  : max:(-0.000811336 0.000468414 0) avg:(3.54316e-05 3.61312e-05 0)
+Feature analysis : total master points :7400 of which attracted to :
+    feature point   : 0
+    feature edge    : 140
+    nearest surface : 7260
+    rest            : 0
+
+--> FOAM Warning : Displacement (1.31686e-06 -9.68419e-07 3.90153e-12) at mesh point 5260 coord (0.0694268 -0.0218994 -0.5) points through the surrounding patch faces
+Smoothing displacement ...
+Iteration 0
+Iteration 10
+Iteration 20
+Iteration 30
+Iteration 40
+Displacement smoothed in = 0.06 s
+
+
+Moving mesh ...
+
+Iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+Moved mesh in = 0.29 s
+
+
+
+Morph iteration 1
+-----------------
+Calculating patchDisplacement as distance to nearest surface point ...
+    non-zone points : attract to nearest of all non-zone surfaces
+    zone points     : attract to zone surface only
+
+Wanted displacement : average:0.000167386 min:1.54455e-06 max:0.000355492
+Calculated surface displacement in = 0.02 s
+
+
+Detecting near surfaces ...
+Overriding nearest with intersection of close gaps at 0 out of 7440 points.
+Overriding displacement on features :
+   implicit features    : true
+   explicit features    : false
+   multi-patch features : false
+
+Attraction:
+    linear   : max:(0.000355465 -4.38997e-06 2.85544e-10) avg:(3.54062e-05 3.50336e-05 1.99925e-12)
+    feature  : max:(-0.000798769 0.000476737 0) avg:(3.36125e-05 3.42965e-05 0)
+Feature analysis : total master points :7400 of which attracted to :
+    feature point   : 0
+    feature edge    : 140
+    nearest surface : 7260
+    rest            : 0
+
+--> FOAM Warning : Displacement (2.3701e-06 -3.2671e-06 -3.62354e-15) at mesh point 5260 coord (0.0694298 -0.0219025 -0.5) points through the surrounding patch faces
+Smoothing displacement ...
+Iteration 0
+Iteration 10
+Iteration 20
+Iteration 30
+Iteration 40
+Displacement smoothed in = 0.05 s
+
+
+Moving mesh ...
+
+Iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+Moved mesh in = 0.31 s
+
+
+
+Morph iteration 2
+-----------------
+Calculating patchDisplacement as distance to nearest surface point ...
+    non-zone points : attract to nearest of all non-zone surfaces
+    zone points     : attract to zone surface only
+
+Wanted displacement : average:0.000151116 min:8.82896e-07 max:0.000323871
+Calculated surface displacement in = 0.02 s
+
+
+Detecting near surfaces ...
+Overriding nearest with intersection of close gaps at 0 out of 7440 points.
+Overriding displacement on features :
+   implicit features    : true
+   explicit features    : false
+   multi-patch features : false
+
+Attraction:
+    linear   : max:(0.000323847 -3.99949e-06 2.85544e-10) avg:(3.19144e-05 3.16054e-05 -1.8215e-12)
+    feature  : max:(-0.000846264 0.000187387 0) avg:(2.96204e-05 3.06379e-05 0)
+Feature analysis : total master points :7400 of which attracted to :
+    feature point   : 0
+    feature edge    : 140
+    nearest surface : 7260
+    rest            : 0
+
+--> FOAM Warning : Displacement (3.1701e-06 -6.78723e-06 1.18038e-11) at mesh point 5260 coord (0.0694322 -0.0219057 -0.5) points through the surrounding patch faces
+Smoothing displacement ...
+Iteration 0
+Iteration 10
+Iteration 20
+Iteration 30
+Iteration 40
+Displacement smoothed in = 0.06 s
+
+
+Moving mesh ...
+
+Iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+Moved mesh in = 0.29 s
+
+
+
+Morph iteration 3
+-----------------
+Calculating patchDisplacement as distance to nearest surface point ...
+    non-zone points : attract to nearest of all non-zone surfaces
+    zone points     : attract to zone surface only
+
+Wanted displacement : average:0.000129092 min:5.45878e-08 max:0.000280066
+Calculated surface displacement in = 0.03 s
+
+
+Detecting near surfaces ...
+Overriding nearest with intersection of close gaps at 0 out of 7440 points.
+Overriding displacement on features :
+   implicit features    : true
+   explicit features    : false
+   multi-patch features : false
+
+Attraction:
+    linear   : max:(0.000280045 -3.45854e-06 2.85544e-10) avg:(2.7126e-05 2.69362e-05 -5.3468e-13)
+    feature  : max:(-0.000634158 -0.00072074 0) avg:(2.49614e-05 2.64054e-05 0)
+Feature analysis : total master points :7400 of which attracted to :
+    feature point   : 0
+    feature edge    : 140
+    nearest surface : 7260
+    rest            : 0
+
+--> FOAM Warning : Displacement (6.81539e-06 -2.557e-05 -4.53268e-12) at mesh point 5260 coord (0.0694353 -0.0219123 -0.5) points through the surrounding patch faces
+Smoothing displacement ...
+Iteration 0
+Iteration 10
+Iteration 20
+Iteration 30
+Iteration 40
+Displacement smoothed in = 0.08 s
+
+
+Moving mesh ...
+
+Iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+Moved mesh in = 0.26 s
+
+
+
+Morph iteration 4
+-----------------
+Calculating patchDisplacement as distance to nearest surface point ...
+    non-zone points : attract to nearest of all non-zone surfaces
+    zone points     : attract to zone surface only
+
+Wanted displacement : average:0.000104016 min:2.82164e-07 max:0.000229528
+Calculated surface displacement in = 0.01 s
+
+
+Detecting near surfaces ...
+Overriding nearest with intersection of close gaps at 0 out of 7440 points.
+Overriding displacement on features :
+   implicit features    : true
+   explicit features    : false
+   multi-patch features : false
+
+Attraction:
+    linear   : max:(0.000229511 -2.83445e-06 -2.85544e-10) avg:(2.17206e-05 2.17216e-05 6.05115e-13)
+    feature  : max:(-0.000273758 -0.000795184 0) avg:(2.00691e-05 2.10113e-05 0)
+Feature analysis : total master points :7400 of which attracted to :
+    feature point   : 0
+    feature edge    : 140
+    nearest surface : 7260
+    rest            : 0
+
+--> FOAM Warning : Displacement (6.67101e-07 -1.51524e-05 -1.07156e-11) at mesh point 5260 coord (0.0694421 -0.0219378 -0.5) points through the surrounding patch faces
+Smoothing displacement ...
+Iteration 0
+Iteration 10
+Iteration 20
+Iteration 30
+Iteration 40
+Displacement smoothed in = 0.05 s
+
+
+Moving mesh ...
+
+Iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+Moved mesh in = 0.29 s
+
+
+
+Morph iteration 5
+-----------------
+Calculating patchDisplacement as distance to nearest surface point ...
+    non-zone points : attract to nearest of all non-zone surfaces
+    zone points     : attract to zone surface only
+
+Wanted displacement : average:7.88544e-05 min:7.77924e-08 max:0.000178516
+Calculated surface displacement in = 0.02 s
+
+
+Detecting near surfaces ...
+Overriding nearest with intersection of close gaps at 0 out of 7440 points.
+Overriding displacement on features :
+   implicit features    : true
+   explicit features    : false
+   multi-patch features : false
+
+Attraction:
+    linear   : max:(0.000178502 -2.2045e-06 0) avg:(1.6385e-05 1.64546e-05 -3.3321e-13)
+    feature  : max:(-0.000227153 -0.000749553 0) avg:(1.4848e-05 1.57016e-05 0)
+Feature analysis : total master points :7400 of which attracted to :
+    feature point   : 0
+    feature edge    : 150
+    nearest surface : 7250
+    rest            : 0
+
+--> FOAM Warning : Displacement (7.05265e-07 -1.98132e-05 -2.1937e-12) at mesh point 5260 coord (0.0694428 -0.0219528 -0.5) points through the surrounding patch faces
+Smoothing displacement ...
+Iteration 0
+Iteration 10
+Iteration 20
+Iteration 30
+Iteration 40
+Displacement smoothed in = 0.08 s
+
+
+Moving mesh ...
+
+Iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+Moved mesh in = 0.27 s
+
+
+
+Morph iteration 6
+-----------------
+Calculating patchDisplacement as distance to nearest surface point ...
+    non-zone points : attract to nearest of all non-zone surfaces
+    zone points     : attract to zone surface only
+
+Wanted displacement : average:5.61038e-05 min:9.22992e-08 max:0.000143252
+Calculated surface displacement in = 0.02 s
+
+
+Detecting near surfaces ...
+Overriding nearest with intersection of close gaps at 0 out of 7440 points.
+Overriding displacement on features :
+   implicit features    : true
+   explicit features    : false
+   multi-patch features : false
+
+Attraction:
+    linear   : max:(-2.69124e-07 0.000143252 -1.11022e-16) avg:(1.15579e-05 1.17419e-05 6.98564e-13)
+    feature  : max:(-0.00018185 -0.000685581 0) avg:(1.03823e-05 1.11229e-05 0)
+Feature analysis : total master points :7400 of which attracted to :
+    feature point   : 0
+    feature edge    : 155
+    nearest surface : 7245
+    rest            : 0
+
+--> FOAM Warning : Displacement (4.03759e-07 -2.3166e-05 -1.91094e-12) at mesh point 5260 coord (0.0694436 -0.0219725 -0.5) points through the surrounding patch faces
+Smoothing displacement ...
+Iteration 0
+Iteration 10
+Iteration 20
+Iteration 30
+Iteration 40
+Displacement smoothed in = 0.06 s
+
+
+Moving mesh ...
+
+Iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+Moved mesh in = 0.3 s
+
+
+
+Morph iteration 7
+-----------------
+Calculating patchDisplacement as distance to nearest surface point ...
+    non-zone points : attract to nearest of all non-zone surfaces
+    zone points     : attract to zone surface only
+
+Wanted displacement : average:3.75977e-05 min:5.5366e-10 max:0.000105821
+Calculated surface displacement in = 0.01 s
+
+
+Detecting near surfaces ...
+Overriding nearest with intersection of close gaps at 0 out of 7440 points.
+Overriding displacement on features :
+   implicit features    : true
+   explicit features    : false
+   multi-patch features : false
+
+Attraction:
+    linear   : max:(-1.98803e-07 0.000105821 0) avg:(7.61979e-06 7.82322e-06 1.67378e-12)
+    feature  : max:(-0.000396101 0.000296865 0) avg:(6.47141e-06 7.66566e-06 0)
+Feature analysis : total master points :7400 of which attracted to :
+    feature point   : 0
+    feature edge    : 165
+    nearest surface : 7235
+    rest            : 0
+
+--> FOAM Warning : Displacement (-5.31512e-06 -1.60517e-05 -2.44951e-12) at mesh point 5260 coord (0.0694441 -0.0219955 -0.5) points through the surrounding patch faces
+Smoothing displacement ...
+Iteration 0
+Iteration 10
+Iteration 20
+Iteration 30
+Iteration 40
+Displacement smoothed in = 0.06 s
+
+
+Moving mesh ...
+
+Iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+Moved mesh in = 0.29 s
+
+
+
+Morph iteration 8
+-----------------
+Calculating patchDisplacement as distance to nearest surface point ...
+    non-zone points : attract to nearest of all non-zone surfaces
+    zone points     : attract to zone surface only
+
+Wanted displacement : average:2.39422e-05 min:1.90638e-09 max:7.61303e-05
+Calculated surface displacement in = 0.02 s
+
+
+Detecting near surfaces ...
+Overriding nearest with intersection of close gaps at 0 out of 7440 points.
+Overriding displacement on features :
+   implicit features    : true
+   explicit features    : false
+   multi-patch features : false
+
+Attraction:
+    linear   : max:(5.28888e-05 5.47595e-05 2.77556e-16) avg:(4.69744e-06 4.82523e-06 1.5119e-13)
+    feature  : max:(-0.000336403 0.000249292 0) avg:(3.76324e-06 4.75107e-06 0)
+Feature analysis : total master points :7400 of which attracted to :
+    feature point   : 0
+    feature edge    : 165
+    nearest surface : 7235
+    rest            : 0
+
+--> FOAM Warning : Displacement (-1.2788e-05 -1.1092e-05 -5.14384e-13) at mesh point 5260 coord (0.0694388 -0.0220116 -0.5) points through the surrounding patch faces
+Smoothing displacement ...
+Iteration 0
+Iteration 10
+Iteration 20
+Iteration 30
+Iteration 40
+Displacement smoothed in = 0.06 s
+
+
+Moving mesh ...
+
+Iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+Moved mesh in = 0.29 s
+
+
+
+Morph iteration 9
+-----------------
+Calculating patchDisplacement as distance to nearest surface point ...
+    non-zone points : attract to nearest of all non-zone surfaces
+    zone points     : attract to zone surface only
+
+Wanted displacement : average:1.47173e-05 min:6.27243e-08 max:0.000123089
+Calculated surface displacement in = 0.01 s
+
+
+Detecting near surfaces ...
+Overriding nearest with intersection of close gaps at 0 out of 7440 points.
+Overriding displacement on features :
+   implicit features    : true
+   explicit features    : false
+   multi-patch features : false
+
+Attraction:
+    linear   : max:(0.00012307 2.15308e-06 5.55112e-17) avg:(2.7031e-06 2.76706e-06 -1.4014e-12)
+    feature  : max:(0.000119612 0.000199247 0) avg:(2.20417e-06 2.86434e-06 0)
+Feature analysis : total master points :7400 of which attracted to :
+    feature point   : 0
+    feature edge    : 170
+    nearest surface : 7230
+    rest            : 0
+
+--> FOAM Warning : Displacement (-2.33944e-05 -3.44272e-05 -2.77556e-17) at mesh point 3580 coord (0.0689946 -0.0222625 -0.5) points through the surrounding patch faces
+Smoothing displacement ...
+Iteration 0
+Iteration 10
+Iteration 20
+Iteration 30
+Iteration 40
+Displacement smoothed in = 0.07 s
+
+
+Moving mesh ...
+
+Iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+Moved mesh in = 0.25 s
+
+
+
+Morph iteration 10
+-----------------
+Calculating patchDisplacement as distance to nearest surface point ...
+    non-zone points : attract to nearest of all non-zone surfaces
+    zone points     : attract to zone surface only
+
+Wanted displacement : average:8.7373e-06 min:5.81376e-09 max:6.15436e-05
+Calculated surface displacement in = 0.01 s
+
+
+Detecting near surfaces ...
+Overriding nearest with intersection of close gaps at 0 out of 7440 points.
+Overriding displacement on features :
+   implicit features    : true
+   explicit features    : false
+   multi-patch features : false
+
+Attraction:
+    linear   : max:(6.15342e-05 1.07652e-06 5.55112e-17) avg:(1.39438e-06 1.4553e-06 7.36316e-13)
+    feature  : max:(5.89447e-05 0.000148894 0) avg:(1.13512e-06 1.62255e-06 0)
+Feature analysis : total master points :7400 of which attracted to :
+    feature point   : 0
+    feature edge    : 170
+    nearest surface : 7230
+    rest            : 0
+
+--> FOAM Warning : Displacement (-2.41928e-05 -2.71649e-05 0) at mesh point 3580 coord (0.0689712 -0.0222969 -0.5) points through the surrounding patch faces
+Smoothing displacement ...
+Iteration 0
+Iteration 10
+Iteration 20
+Iteration 30
+Iteration 40
+Displacement smoothed in = 0.05 s
+
+
+Moving mesh ...
+
+Iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+Moved mesh in = 0.25 s
+
+
+
+Morph iteration 11
+-----------------
+Calculating patchDisplacement as distance to nearest surface point ...
+    non-zone points : attract to nearest of all non-zone surfaces
+    zone points     : attract to zone surface only
+
+Wanted displacement : average:5.06445e-06 min:2.1334e-09 max:4.49546e-05
+Calculated surface displacement in = 0.01 s
+
+
+Detecting near surfaces ...
+Overriding nearest with intersection of close gaps at 0 out of 7440 points.
+Overriding displacement on features :
+   implicit features    : true
+   explicit features    : false
+   multi-patch features : false
+
+Attraction:
+    linear   : max:(3.12305e-05 3.23353e-05 1.11022e-16) avg:(6.5797e-07 7.12625e-07 -3.32883e-13)
+    feature  : max:(2.58853e-05 0.000103586 0) avg:(6.21412e-07 9.46859e-07 0)
+Feature analysis : total master points :7400 of which attracted to :
+    feature point   : 0
+    feature edge    : 170
+    nearest surface : 7230
+    rest            : 0
+
+--> FOAM Warning : Displacement (-2.1628e-05 -2.0421e-05 2.66454e-17) at mesh point 3580 coord (0.068947 -0.0223241 -0.5) points through the surrounding patch faces
+Smoothing displacement ...
+Iteration 0
+Iteration 10
+Iteration 20
+Iteration 30
+Iteration 40
+Displacement smoothed in = 0.05 s
+
+
+Moving mesh ...
+
+Iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+Moved mesh in = 0.26 s
+
+
+
+Morph iteration 12
+-----------------
+Calculating patchDisplacement as distance to nearest surface point ...
+    non-zone points : attract to nearest of all non-zone surfaces
+    zone points     : attract to zone surface only
+
+Wanted displacement : average:2.85293e-06 min:1.32239e-10 max:5.12387e-05
+Calculated surface displacement in = 0.02 s
+
+
+Detecting near surfaces ...
+Overriding nearest with intersection of close gaps at 5 out of 7440 points.
+Overriding displacement on features :
+   implicit features    : true
+   explicit features    : false
+   multi-patch features : false
+
+Attraction:
+    linear   : max:(-1.37491e-08 -8.81478e-08 -5.4782e-05) avg:(2.8231e-07 3.28313e-07 -1.2648e-11)
+    feature  : max:(9.92131e-06 6.61783e-05 0) avg:(4.35388e-07 6.19269e-07 0)
+Feature analysis : total master points :7400 of which attracted to :
+    feature point   : 0
+    feature edge    : 170
+    nearest surface : 7230
+    rest            : 0
+
+--> FOAM Warning : Displacement (1.85011e-07 1.33614e-07 4.05075e-08) at mesh point 4574 coord (0.0532257 -0.0359533 -0.25) points through the surrounding patch faces
+Smoothing displacement ...
+Iteration 0
+Iteration 10
+Iteration 20
+Iteration 30
+Iteration 40
+Displacement smoothed in = 0.07 s
+
+
+Moving mesh ...
+
+Iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 0
+
+Iteration 1
+Moving mesh using displacement scaling : min:0.75  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+Moved mesh in = 0.56 s
+
+
+
+Morph iteration 13
+-----------------
+Calculating patchDisplacement as distance to nearest surface point ...
+    non-zone points : attract to nearest of all non-zone surfaces
+    zone points     : attract to zone surface only
+
+Wanted displacement : average:1.6636e-06 min:2.26959e-10 max:4.4813e-05
+Calculated surface displacement in = 0.01 s
+
+
+Detecting near surfaces ...
+Overriding nearest with intersection of close gaps at 5 out of 7440 points.
+Overriding displacement on features :
+   implicit features    : true
+   explicit features    : false
+   multi-patch features : false
+
+Attraction:
+    linear   : max:(8.41886e-08 -4.48129e-05 0) avg:(1.32127e-07 1.7063e-07 -3.16994e-12)
+    feature  : max:(8.41886e-08 -4.48129e-05 -0) avg:(3.99794e-07 5.04248e-07 0)
+Feature analysis : total master points :7400 of which attracted to :
+    feature point   : 0
+    feature edge    : 170
+    nearest surface : 7230
+    rest            : 0
+
+--> FOAM Warning : Displacement (1.32958e-07 3.10249e-07 9.92542e-08) at mesh point 2214 coord (0.0532214 -0.0364369 -0.5) points through the surrounding patch faces
+Smoothing displacement ...
+Iteration 0
+Iteration 10
+Iteration 20
+Iteration 30
+Iteration 40
+Displacement smoothed in = 0.05 s
+
+
+Moving mesh ...
+
+Iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 0
+
+Iteration 1
+Moving mesh using displacement scaling : min:0.75  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 0
+
+Iteration 2
+Moving mesh using displacement scaling : min:0.5625  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 0
+
+Iteration 3
+Moving mesh using displacement scaling : min:0.421875  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 0
+
+Iteration 4
+Moving mesh using displacement scaling : min:0.316406  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 0
+
+Iteration 5
+Displacement scaling for error reduction set to 0.
+Moving mesh using displacement scaling : min:0.237305  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 4
+    faces on cells with determinant < 0.001                : 0
+
+Iteration 6
+Moving mesh using displacement scaling : min:0  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+Moved mesh in = 1.97 s
+
+
+
+Morph iteration 14
+-----------------
+Calculating patchDisplacement as distance to nearest surface point ...
+    non-zone points : attract to nearest of all non-zone surfaces
+    zone points     : attract to zone surface only
+
+Wanted displacement : average:1.58908e-06 min:1.20032e-09 max:4.30262e-05
+Calculated surface displacement in = 0.02 s
+
+
+Detecting near surfaces ...
+Overriding nearest with intersection of close gaps at 5 out of 7440 points.
+Overriding displacement on features :
+   implicit features    : true
+   explicit features    : false
+   multi-patch features : false
+
+Attraction:
+    linear   : max:(8.08319e-08 -4.30261e-05 0) avg:(1.31274e-07 1.71321e-07 5.70805e-14)
+    feature  : max:(8.08319e-08 -4.30261e-05 -0) avg:(4.00278e-07 5.04722e-07 0)
+Feature analysis : total master points :7400 of which attracted to :
+    feature point   : 0
+    feature edge    : 170
+    nearest surface : 7230
+    rest            : 0
+
+--> FOAM Warning : Displacement (2.56523e-07 3.49077e-07 8.86366e-08) at mesh point 2214 coord (0.0532214 -0.0364369 -0.5) points through the surrounding patch faces
+Smoothing displacement ...
+Iteration 0
+Iteration 10
+Iteration 20
+Iteration 30
+Iteration 40
+Displacement smoothed in = 0.06 s
+
+
+Moving mesh ...
+
+Iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 0
+
+Iteration 1
+Moving mesh using displacement scaling : min:0.75  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 0
+
+Iteration 2
+Moving mesh using displacement scaling : min:0.5625  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 0
+
+Iteration 3
+Moving mesh using displacement scaling : min:0.421875  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 0
+
+Iteration 4
+Moving mesh using displacement scaling : min:0.316406  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 0
+
+Iteration 5
+Displacement scaling for error reduction set to 0.
+Moving mesh using displacement scaling : min:0.237305  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 0
+
+Iteration 6
+Moving mesh using displacement scaling : min:0  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+Moved mesh in = 1.96 s
+
+
+
+Morph iteration 15
+-----------------
+Calculating patchDisplacement as distance to nearest surface point ...
+    non-zone points : attract to nearest of all non-zone surfaces
+    zone points     : attract to zone surface only
+
+Wanted displacement : average:1.51949e-06 min:1.30064e-09 max:4.11382e-05
+Calculated surface displacement in = 0.02 s
+
+
+Detecting near surfaces ...
+Overriding nearest with intersection of close gaps at 5 out of 7440 points.
+Overriding displacement on features :
+   implicit features    : true
+   explicit features    : false
+   multi-patch features : false
+
+Attraction:
+    linear   : max:(7.72849e-08 -4.11381e-05 0) avg:(1.30094e-07 1.71861e-07 -3.70676e-12)
+    feature  : max:(7.72849e-08 -4.11381e-05 -0) avg:(4.0051e-07 5.0504e-07 0)
+Feature analysis : total master points :7400 of which attracted to :
+    feature point   : 0
+    feature edge    : 170
+    nearest surface : 7230
+    rest            : 0
+
+--> FOAM Warning : Displacement (3.64447e-07 3.91329e-07 7.56294e-08) at mesh point 2214 coord (0.0532215 -0.0364368 -0.5) points through the surrounding patch faces
+Smoothing displacement ...
+Iteration 0
+Iteration 10
+Iteration 20
+Iteration 30
+Iteration 40
+Displacement smoothed in = 0.05 s
+
+
+Moving mesh ...
+
+Iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 21
+
+Iteration 1
+Moving mesh using displacement scaling : min:0.75  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 0
+
+Iteration 2
+Moving mesh using displacement scaling : min:0.5625  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 0
+
+Iteration 3
+Moving mesh using displacement scaling : min:0.421875  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 0
+
+Iteration 4
+Moving mesh using displacement scaling : min:0.316406  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 0
+
+Iteration 5
+Displacement scaling for error reduction set to 0.
+Moving mesh using displacement scaling : min:0.237305  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 0
+
+Iteration 6
+Moving mesh using displacement scaling : min:0  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+Moved mesh in = 1.99 s
+
+
+
+Morph iteration 16
+-----------------
+Calculating patchDisplacement as distance to nearest surface point ...
+    non-zone points : attract to nearest of all non-zone surfaces
+    zone points     : attract to zone surface only
+
+Wanted displacement : average:1.4563e-06 min:2.70724e-09 max:3.91552e-05
+Calculated surface displacement in = 0.01 s
+
+
+Detecting near surfaces ...
+Overriding nearest with intersection of close gaps at 10 out of 7440 points.
+Overriding displacement on features :
+   implicit features    : true
+   explicit features    : false
+   multi-patch features : false
+
+Attraction:
+    linear   : max:(5.77838e-08 -5.05466e-08 -8.84526e-05) avg:(1.28725e-07 1.72246e-07 -1.5616e-12)
+    feature  : max:(3.82883e-06 4.0756e-05 0) avg:(3.98215e-07 5.04512e-07 0)
+Feature analysis : total master points :7400 of which attracted to :
+    feature point   : 0
+    feature edge    : 170
+    nearest surface : 7230
+    rest            : 0
+
+--> FOAM Warning : Displacement (4.54609e-07 4.37227e-07 6.03141e-08) at mesh point 2214 coord (0.0532215 -0.0364367 -0.5) points through the surrounding patch faces
+Smoothing displacement ...
+Iteration 0
+Iteration 10
+Iteration 20
+Iteration 30
+Iteration 40
+Displacement smoothed in = 0.06 s
+
+
+Moving mesh ...
+
+Iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 21
+
+Iteration 1
+Moving mesh using displacement scaling : min:0.75  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 21
+
+Iteration 2
+Moving mesh using displacement scaling : min:0.5625  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 21
+
+Iteration 3
+Moving mesh using displacement scaling : min:0.421875  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 0
+
+Iteration 4
+Moving mesh using displacement scaling : min:0.316406  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 0
+
+Iteration 5
+Displacement scaling for error reduction set to 0.
+Moving mesh using displacement scaling : min:0.237305  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 0
+
+Iteration 6
+Moving mesh using displacement scaling : min:0  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+Moved mesh in = 1.92 s
+
+
+
+Morph iteration 17
+-----------------
+Calculating patchDisplacement as distance to nearest surface point ...
+    non-zone points : attract to nearest of all non-zone surfaces
+    zone points     : attract to zone surface only
+
+Wanted displacement : average:1.40045e-06 min:2.6687e-09 max:3.70987e-05
+Calculated surface displacement in = 0.02 s
+
+
+Detecting near surfaces ...
+Overriding nearest with intersection of close gaps at 10 out of 7440 points.
+Overriding displacement on features :
+   implicit features    : true
+   explicit features    : false
+   multi-patch features : false
+
+Attraction:
+    linear   : max:(4.93763e-08 -4.25158e-08 -7.44749e-05) avg:(1.27146e-07 1.72508e-07 -3.52837e-13)
+    feature  : max:(3.82883e-06 4.0756e-05 0) avg:(3.8874e-07 5.01784e-07 0)
+Feature analysis : total master points :7400 of which attracted to :
+    feature point   : 0
+    feature edge    : 170
+    nearest surface : 7230
+    rest            : 0
+
+--> FOAM Warning : Displacement (5.24301e-07 4.87004e-07 4.25392e-08) at mesh point 2214 coord (0.0532216 -0.0364366 -0.5) points through the surrounding patch faces
+Smoothing displacement ...
+Iteration 0
+Iteration 10
+Iteration 20
+Iteration 30
+Iteration 40
+Displacement smoothed in = 0.06 s
+
+
+Moving mesh ...
+
+Iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 21
+
+Iteration 1
+Moving mesh using displacement scaling : min:0.75  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 21
+
+Iteration 2
+Moving mesh using displacement scaling : min:0.5625  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 21
+
+Iteration 3
+Moving mesh using displacement scaling : min:0.421875  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 21
+
+Iteration 4
+Moving mesh using displacement scaling : min:0.316406  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 21
+
+Iteration 5
+Displacement scaling for error reduction set to 0.
+Moving mesh using displacement scaling : min:0.237305  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 21
+
+Iteration 6
+Moving mesh using displacement scaling : min:0  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+Moved mesh in = 1.98 s
+
+
+
+Morph iteration 18
+-----------------
+Calculating patchDisplacement as distance to nearest surface point ...
+    non-zone points : attract to nearest of all non-zone surfaces
+    zone points     : attract to zone surface only
+
+Wanted displacement : average:1.35269e-06 min:8.11072e-10 max:3.49943e-05
+Calculated surface displacement in = 0.01 s
+
+
+Detecting near surfaces ...
+Overriding nearest with intersection of close gaps at 10 out of 7440 points.
+Overriding displacement on features :
+   implicit features    : true
+   explicit features    : false
+   multi-patch features : false
+
+Attraction:
+    linear   : max:(4.16856e-08 -3.53522e-08 -6.19975e-05) avg:(1.2544e-07 1.72639e-07 -1.53059e-12)
+    feature  : max:(3.82883e-06 4.07559e-05 0) avg:(3.88493e-07 5.01657e-07 0)
+Feature analysis : total master points :7400 of which attracted to :
+    feature point   : 0
+    feature edge    : 170
+    nearest surface : 7230
+    rest            : 0
+
+--> FOAM Warning : Displacement (5.72299e-07 5.40853e-07 2.24705e-08) at mesh point 2214 coord (0.0532218 -0.0364365 -0.5) points through the surrounding patch faces
+Smoothing displacement ...
+Iteration 0
+Iteration 10
+Iteration 20
+Iteration 30
+Iteration 40
+Displacement smoothed in = 0.05 s
+
+
+Moving mesh ...
+
+Iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 21
+
+Iteration 1
+Moving mesh using displacement scaling : min:0.75  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 21
+
+Iteration 2
+Moving mesh using displacement scaling : min:0.5625  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 21
+
+Iteration 3
+Moving mesh using displacement scaling : min:0.421875  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 21
+
+Iteration 4
+Moving mesh using displacement scaling : min:0.316406  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 21
+
+Iteration 5
+Displacement scaling for error reduction set to 0.
+Moving mesh using displacement scaling : min:0.237305  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 21
+
+Iteration 6
+Moving mesh using displacement scaling : min:0  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+Moved mesh in = 2 s
+
+
+
+Morph iteration 19
+-----------------
+Calculating patchDisplacement as distance to nearest surface point ...
+    non-zone points : attract to nearest of all non-zone surfaces
+    zone points     : attract to zone surface only
+
+Wanted displacement : average:1.31178e-06 min:2.00645e-09 max:3.28709e-05
+Calculated surface displacement in = 0.02 s
+
+
+Detecting near surfaces ...
+Overriding nearest with intersection of close gaps at 10 out of 7440 points.
+Overriding displacement on features :
+   implicit features    : true
+   explicit features    : false
+   multi-patch features : false
+
+Attraction:
+    linear   : max:(3.47529e-08 -2.90551e-08 -5.10185e-05) avg:(1.23641e-07 1.72775e-07 1.14979e-13)
+    feature  : max:(3.82883e-06 4.07559e-05 0) avg:(3.88106e-07 5.01523e-07 0)
+Feature analysis : total master points :7400 of which attracted to :
+    feature point   : 0
+    feature edge    : 170
+    nearest surface : 7230
+    rest            : 0
+
+--> FOAM Warning : Displacement (2.08338e-07 -2.18245e-09 -1.11022e-16) at mesh point 2214 coord (0.0532219 -0.0364364 -0.5) points through the surrounding patch faces
+Smoothing displacement ...
+Iteration 0
+Iteration 10
+Iteration 20
+Iteration 30
+Iteration 40
+Displacement smoothed in = 0.05 s
+
+
+Moving mesh ...
+
+Iteration 0
+Moving mesh using displacement scaling : min:1  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 21
+
+Iteration 1
+Moving mesh using displacement scaling : min:0.75  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 21
+
+Iteration 2
+Moving mesh using displacement scaling : min:0.5625  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 21
+
+Iteration 3
+Moving mesh using displacement scaling : min:0.421875  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 21
+
+Iteration 4
+Moving mesh using displacement scaling : min:0.316406  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 21
+
+Iteration 5
+Displacement scaling for error reduction set to 0.
+Moving mesh using displacement scaling : min:0.237305  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 9
+    faces on cells with determinant < 0.001                : 21
+
+Iteration 6
+Moving mesh using displacement scaling : min:0  max:1
+Correcting 2-D mesh motion--> FOAM Warning : 
+    From function void Foam::motionSmootherAlgo::modifyMotionPoints(Foam::pointField&) const
+    in file motionSmoother/motionSmootherAlgo.C at line 648
+    2D mesh-motion probably not correct in parallel
+ ...done
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Successfully moved mesh
+Moved mesh in = 1.99 s
+
+
+Repatching faces according to nearest surface ...
+Repatched 0 faces in = 0.02 s
+
+
+Edge intersection testing:
+    Number of edges             : 50592
+    Number of edges to retest   : 48463
+    Number of intersected edges : 5912
+Merging 1196 sets of faces.
+
+Edge intersection testing:
+    Number of edges             : 49396
+    Number of edges to retest   : 5083
+    Number of intersected edges : 4716
+
+Undo iteration 0
+----------------
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Masters that need to be restored:264
+Edge intersection testing:
+    Number of edges             : 49660
+    Number of edges to retest   : 1386
+    Number of intersected edges : 4980
+
+
+Undo iteration 1
+----------------
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Masters that need to be restored:0
+
+Merging all points on surface that
+- are used by only two boundary faces and
+- make an angle with a cosine of more than 0.866025.
+
+Removing 1165 straight edge points ...
+
+Edge intersection testing:
+    Number of edges             : 49660
+    Number of edges to retest   : 3961
+    Number of intersected edges : 4980
+
+Undo iteration 0
+----------------
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 17
+Detected 9 error faces on boundaries that have been merged. These will be restored to their original faces.
+
+Edge intersection testing:
+    Number of edges             : 49660
+    Number of edges to retest   : 17
+    Number of intersected edges : 4980
+
+Undo iteration 1
+----------------
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Detected 0 error faces on boundaries that have been merged. These will be restored to their original faces.
+
+Detected 7946 error faces in mesh. Restoring neighbours of faces in error.
+
+Edge intersection testing:
+    Number of edges             : 49660
+    Number of edges to retest   : 39086
+    Number of intersected edges : 4980
+Snapped mesh : cells:12849  faces:49660  points:25124
+Cells per refinement level:
+    0	3183
+    1	1846
+    2	7820
+Writing mesh to time constant
+Wrote mesh in = 0.39 s.
+Mesh snapped in = 22.66 s.
+Checking final mesh ...
+Checking faces in error :
+    non-orthogonality > 60  degrees                        : 7946
+    faces with face pyramid volume < -1                    : 0
+    faces with face-decomposition tet quality < -1         : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.01                           : 0
+    faces on cells with determinant < 0.001                : 0
+Finished meshing with 7946 illegal faces (concave, zero area or negative cell pyramid volume)
+Finished meshing in = 24.45 s.
+End
+
+Finalising parallel run

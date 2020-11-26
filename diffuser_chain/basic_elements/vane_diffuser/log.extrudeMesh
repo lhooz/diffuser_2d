@@ -1,0 +1,59 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _f3950763fe-20191219 OPENFOAM=1912
+Arch   : "LSB;label=32;scalar=64"
+Exec   : extrudeMesh -parallel
+Date   : Nov 25 2020
+Time   : 00:48:17
+Host   : 53bbc2ec95fa
+PID    : 5141
+I/O    : uncollated
+Case   : /home/hao/OpenFOAM/hao-v1912/diffuser_2d/vane_diffuser
+nProcs : 4
+Hosts  :
+(
+    (53bbc2ec95fa 4)
+)
+Pstream initialized with:
+    floatTransfer      : 0
+    nProcsSimpleSum    : 0
+    commsType          : nonBlocking
+    polling iterations : 0
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Selecting extrudeModel linearNormal
+Selected extrudeModel for linearNormal using coeffs 
+{
+    thickness       1;
+}
+
+Extruding from patch using model linearNormal
+Flipping normals before extruding
+Not collapsing any edges after extrusion
+
+Extruding patches 1(front) on mesh "/home/hao/OpenFOAM/hao-v1912/diffuser_2d/vane_diffuser"
+
+Create mesh for time = 0
+
+Adding overall 0 processor patches.
+Mesh bounding box : (0 -0.1568487655 -0.5) (0.22 0.1568487655 0.5)
+        with span : (0.22 0.313697531 1)
+Merge distance    : 0
+
+Writing mesh to "/home/hao/OpenFOAM/hao-v1912/diffuser_2d/vane_diffuser/processor0/constant/region0"
+
+End
+
+Finalising parallel run

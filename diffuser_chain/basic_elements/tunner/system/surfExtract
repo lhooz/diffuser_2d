@@ -1,0 +1,32 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+\*---------------------------------------------------------------------------*/
+twall.stl
+{
+    extractionMethod    extractFromSurface;
+    includedAngle       170;
+}
+vane1.stl
+{
+    extractionMethod    extractFromSurface;
+    includedAngle       170;
+}
+vane2.stl
+{
+    extractionMethod    extractFromSurface;
+    includedAngle       170;
+}
+vane3.stl
+{
+    extractionMethod    extractFromSurface;
+    includedAngle       170;
+}
+vane4.stl
+{
+    extractionMethod    extractFromSurface;
+    includedAngle       170;
+}
+vane5.stl
+{
+    extractionMethod    extractFromSurface;
+    includedAngle       170;
+}

@@ -1,0 +1,40 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _f3950763fe-20191219 OPENFOAM=1912
+Arch   : "LSB;label=32;scalar=64"
+Exec   : transformPoints -parallel -translate (-0.5 0 0)
+Date   : Nov 25 2020
+Time   : 14:44:15
+Host   : 53bbc2ec95fa
+PID    : 2721
+I/O    : uncollated
+Case   : /home/hao/OpenFOAM/hao-v1912/diffuser_2d/tube
+nProcs : 4
+Hosts  :
+(
+    (53bbc2ec95fa 4)
+)
+Pstream initialized with:
+    floatTransfer      : 0
+    nProcsSimpleSum    : 0
+    commsType          : nonBlocking
+    polling iterations : 0
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Translating points by (-0.5 0 0)
+Writing points into directory "/home/hao/OpenFOAM/hao-v1912/diffuser_2d/tube/processor0/constant/polyMesh"
+
+
+End
+
+Finalising parallel run
