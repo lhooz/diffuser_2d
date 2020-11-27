@@ -1,16 +1,17 @@
 """main script for organizing diffuser design"""
 import os
 import shutil
+
 import numpy as np
 
 diffusers = ['diffuser_25_2', 'diffuser_25_2']
 inlet_w = 0.11
 #---------------------------------------------------
-h_loc = [0.0, 1.0]
-v_loc = [0.0, -1.0]
+layer_out = [[0.0, 0.0], [1.0, -1.0]]
 layer_width = [0.0, 1.0]
+layer_orientation = [-1, -90]
 #---------------------------------------------------
-refl = 3
+refl = 1
 #----------------------------------------------------
 wall_layer_thickness = 1e-3
 #----------------------------------------------------
@@ -22,7 +23,7 @@ cwd = os.getcwd()
 
 output_folder = os.path.join(cwd, 'diffuser_design')
 basic_df = os.path.join(cwd, 'basic_elements', 'vaned_diffuser')
-basic_tunner = os.path.join(cwd, 'basic_elements', 'tunner')
+basic_turnp = os.path.join(cwd, 'basic_elements', 'turnp')
 basic_tube = os.path.join(cwd, 'basic_elements', 'tube')
 
 if os.path.exists(output_folder):
@@ -30,71 +31,93 @@ if os.path.exists(output_folder):
 os.mkdir(output_folder)
 
 w_in = [inlet_w]
-coordinates_in = [[0, 0]]
+layer_ins = [[-1.0, 1.0]]
 for li in range(len(diffusers)):
     no_dfs = len(w_in)
-    if li != 0:
-        if li % 2 == 0:
-            h_dfs = np.linspace(h_loc[li], h_loc[li] + layer_width[li], no_dfs)
-            v_dfs = np.zeros(no_dfs) + v_loc[li]
-        else:
-            h_dfs = np.zeros(no_dfs) + h_loc[li]
-            v_dfs = np.linspace(v_loc[li], v_loc[li] + layer_width[li], no_dfs)
+    orientation = layer_orientation[li]
+    if orientation in [1, -1]:
+        h_dfs = np.zeros(no_dfs) + layer_out[li][0]
+        v_dfs = np.linspace(layer_out[li][1],
+                            layer_out[li][1] + layer_width[li], no_dfs)
+    elif orientation in [90, -90]:
+        h_dfs = np.linspace(layer_out[li][0],
+                            layer_out[li][0] + layer_width[li], no_dfs)
+        v_dfs = np.zeros(no_dfs) + layer_out[li][1]
+    df_locs = [[x, y] for x, y in zip(h_dfs, v_dfs)]
 
     for dfi in range(no_dfs):
         theta = float(diffusers[li].split('_')[1])
         l_w = float(diffusers[li].split('_')[2])
-        w_out, coordinates_out, l, w_end = cal_diffuder(
-            coordinates_in[dfi], w_in[dfi], theta, l_w, li)
+        df_in, w_out, layer_ins_next, l = cal_diffuder(df_locs[dfi], w_in[dfi],
+                                                       theta, l_w, orientation)
+        #---------------------------------------------------------
         if li == 0:
-            shutil.copytree(basic_df,
-                            os.path.join(output_folder, 'diffuser_main'))
+            df_folder = os.path.join(output_folder, 'diffuser_main')
         else:
-            shutil.copytree(
-                basic_df,
-                os.path.join(output_folder, 'df_' + str(li) + '_' + str(dfi)))
+            df_folder = os.path.join(output_folder,
+                                     'df_' + str(li) + '_' + str(dfi))
+        ftb_folder = os.path.join(output_folder,
+                                  'ftb_' + str(li) + '_' + str(dfi))
+        btb_folder = os.path.join(output_folder,
+                                  'btb_' + str(li) + '_' + str(dfi))
+        turnp_folder = os.path.join(output_folder,
+                                    'turnp_' + str(li) + '_' + str(dfi))
+        df_file = os.path.join(df_folder, 'df_parameters')
+        ftb_file = os.path.join(ftb_folder, 'tb_parameters')
+        btb_file = os.path.join(btb_folder, 'tb_parameters')
+        turnp_file = os.path.join(turnp_folder, 'turnp_parameters')
+        #------------------------------------------------------------------
 
-        if li != 0:
-            if li % 2 == 0:
-                htube_l = h_dfs[dfi] - coordinates_in[dfi][
-                    0] - 0.7 * w_in[dfi] - l
-                vtube_l = v_dfs[dfi] - coordinates_in[dfi][1] - 0.7 * w_in[dfi]
-                tunner_in = [
-                    coordinates_in[dfi][0], coordinates_in[dfi][1] + vtube_l
-                ]
-                tunner_out = [
-                    tunner_in[0] + 0.7 * w_in[dfi],
-                    tunner_in[1] + 0.7 * w_in[dfi]
-                ]
-                tunner_rot = 90.0
-                tube_rot = 90.0
-            else:
-                htube_l = h_dfs[dfi] - coordinates_in[dfi][0] - 0.7 * w_in[dfi]
-                vtube_l = v_dfs[dfi] - coordinates_in[dfi][
-                    1] - 0.7 * w_in[dfi] - l
-                tunner_in = [
-                    coordinates_in[dfi][0] + htube_l, coordinates_in[dfi][1]
-                ]
-                tunner_out = [
-                    tunner_in[0] + 0.7 * w_in[dfi],
-                    tunner_in[1] - 0.7 * w_in[dfi]
-                ]
-                tunner_rot = 0.0
-                tube_rot = -90.0
+        if orientation == -1:
+            ftb_l = -df_in[1] + layer_ins[dfi][1] - 0.7 * w_in[dfi]
+            btb_l = df_in[0] - layer_ins[dfi][0] - 0.7 * w_in[dfi]
+            ftb_in = layer_ins[dfi]
+            turnp_in = [ftb_in[0], ftb_in[1] - ftb_l]
+            btb_in = [
+                turnp_in[0] + 0.7 * w_in[dfi], turnp_in[1] - 0.7 * w_in[dfi]
+            ]
+        elif orientation == 1:
+            ftb_l = df_in[1] - layer_ins[dfi][1] - 0.7 * w_in[dfi]
+            btb_l = df_in[0] - layer_ins[dfi][0] - 0.7 * w_in[dfi]
+            ftb_in = layer_ins[dfi]
+            turnp_in = [ftb_in[0], ftb_in[1] + ftb_l]
+            btb_in = [
+                turnp_in[0] + 0.7 * w_in[dfi], turnp_in[1] + 0.7 * w_in[dfi]
+            ]
+        elif orientation == -90:
+            ftb_l = df_in[0] - layer_ins[dfi][0] - 0.7 * w_in[dfi]
+            btb_l = -df_in[1] + layer_ins[dfi][1] - 0.7 * w_in[dfi]
+            ftb_in = layer_ins[dfi]
+            turnp_in = [ftb_in[0] + ftb_l, ftb_in[1]]
+            btb_in = [
+                turnp_in[0] + 0.7 * w_in[dfi], turnp_in[1] - 0.7 * w_in[dfi]
+            ]
+        elif orientation == 90:
+            ftb_l = df_in[0] - layer_ins[dfi][0] - 0.7 * w_in[dfi]
+            btb_l = df_in[1] - layer_ins[dfi][1] - 0.7 * w_in[dfi]
+            ftb_in = layer_ins[dfi]
+            turnp_in = [ftb_in[0] + ftb_l, ftb_in[1]]
+            btb_in = [
+                turnp_in[0] + 0.7 * w_in[dfi], turnp_in[1] + 0.7 * w_in[dfi]
+            ]
 
-            shutil.copytree(
-                basic_tube,
-                os.path.join(output_folder, 'htb_' + str(li) + '_' + str(dfi)))
-            shutil.copytree(
-                basic_tube,
-                os.path.join(output_folder, 'vtb_' + str(li) + '_' + str(dfi)))
-            shutil.copytree(
-                basic_tunner,
-                os.path.join(output_folder,
-                             'tunner_' + str(li) + '_' + str(dfi)))
+        htb_parameters = [[dfi], w_in[dfi], htube_l, mesh_size, refl, refledge,
+                          reflcurvature, 0.0]
+        vtb_parameters = [
+            w_in[dfi], vtube_l, mesh_size, refl, refledge, reflcurvature, -90.0
+        ]
+        shutil.copytree(basic_tube, htb_folder)
+        shutil.copytree(basic_tube, vtb_folder)
+        shutil.copytree(basic_turnp, turnp_folder)
+
+        df_parameters = [
+            coordinates_in[dfi], w_in[dfi], theta, l_w, mesh_size, refl,
+            refledge, reflcurvature
+        ]
+        shutil.copytree(basic_df, df_folder)
 
 
-def cal_diffuder(xy, w, theta, l_w, i):
+def cal_diffuder(df_loc, w, theta, l_w, orientation):
     """function for calculation diffuser geometry"""
     l = l_w * w
     v1 = 0.03 * w
@@ -110,19 +133,35 @@ def cal_diffuder(xy, w, theta, l_w, i):
     w_end = 2 * v4
     wout = [w2, w1, w1, w2]
 
-    if i % 2 == 0:
-        x_out = xy[0] + l
-        y1 = xy[1] - vco2
-        y2 = xy[1] - vco1
-        y3 = xy[1] + vco1
-        y4 = xy[1] + vco2
-        coordinates_out = [[x_out, y1], [x_out, y2], [x_out, y3], [x_out, y4]]
-    else:
-        y_out = xy[1] - l
-        x1 = xy[0] - vco2
-        x2 = xy[0] - vco1
-        x3 = xy[0] + vco1
-        x4 = xy[0] + vco2
-        coordinates_out = [[x1, y_out], [x2, y_out], [x3, y_out], [x4, y_out]]
+    if orientation in [1, -1]:
+        x_in = df_loc[0] - l
+        y_in = df_loc[1]
+        x_out = df_loc[0]
+        y1 = y_in - vco2
+        y2 = y_in - vco1
+        y3 = y_in + vco1
+        y4 = y_in + vco2
+        df_in = [x_in, y_in]
+        layer_ins_next = [[x_out, y1], [x_out, y2], [x_out, y3], [x_out, y4]]
+    elif orientation == -90:
+        y_in = df_loc[1] + l
+        x_in = df_loc[0]
+        y_out = df_loc[1]
+        x1 = x_in - vco2
+        x2 = x_in - vco1
+        x3 = x_in + vco1
+        x4 = x_in + vco2
+        df_in = [x_in, y_in]
+        layer_ins_next = [[x1, y_out], [x2, y_out], [x3, y_out], [x4, y_out]]
+    elif orientation == 90:
+        y_in = df_loc[1] - l
+        x_in = df_loc[0]
+        y_out = df_loc[1]
+        x1 = x_in - vco2
+        x2 = x_in - vco1
+        x3 = x_in + vco1
+        x4 = x_in + vco2
+        df_in = [x_in, y_in]
+        layer_ins_next = [[x1, y_out], [x2, y_out], [x3, y_out], [x4, y_out]]
 
-    return w_out, coordinates_out, l, w_end
+    return df_in, w_out, layer_ins_next, l

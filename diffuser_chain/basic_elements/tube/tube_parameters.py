@@ -4,7 +4,7 @@ import os
 import numpy as np
 
 w = 0.1
-l = 0.5
+l = 0.2
 mesh_size = w / 50
 #---------------------------------------------------
 refledge = 2

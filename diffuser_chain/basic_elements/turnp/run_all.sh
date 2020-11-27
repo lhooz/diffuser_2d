@@ -1,7 +1,7 @@
 #!/bin/bash
 . ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions
 
-python3 tunner_parameters.py
+python3 turnp_parameters.py
 
 foamCleanTutorials
 blockMesh
