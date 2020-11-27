@@ -58,7 +58,7 @@ castellatedMeshControls
     {
     }
 
-    locationInMesh (0.001 0.015 0);
+    locationInMesh ($locInMeshx $locInMeshy 0);
     allowFreeStandingZoneFaces true;
 }
 

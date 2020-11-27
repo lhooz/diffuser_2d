@@ -1,15 +1,42 @@
 """script for calculating diffuser geo parameters"""
+import csv
 import os
 
 import numpy as np
 
-w = 0.1
-R = 0.2 * w
-mesh_size = w / 50
+
+def read_parameters(parameters):
+    """read design parameters"""
+    par_array = []
+    with open(parameters) as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter='\t')
+        line_count = 0
+
+        for row in csv_reader:
+            par_array.append(float(row[0]))
+            line_count += 1
+
+        print(f'Processed {line_count} lines in {parameters}')
+
+    par_array = np.array(par_array)
+    return par_array
+
+
 #---------------------------------------------------
-refledge = 2
-refl = 2
-reflcurvature = 2
+cwd = os.getcwd()
+turnp_parameters = read_parameters(os.path.join(cwd, 'turnp_parameters'))
+
+turnp_inx = turnp_parameters[0]
+turnp_iny = turnp_parameters[1]
+w = turnp_parameters[2]
+R = turnp_parameters[3] * w
+mesh_size = turnp_parameters[4]
+#---------------------------------------------------
+refl = turnp_parameters[5]
+refledge = turnp_parameters[6]
+reflcurvature = turnp_parameters[7]
+mesh_rot = turnp_parameters[8]
+mesh_yscale = turnp_parameters[9]
 #----------------------------------------------------
 wall_layer_thickness = 1e-4
 #----------------------------------------------------
@@ -24,10 +51,11 @@ yl = -0.7 * w
 yu = 0.8 * w
 hmesh_no = np.ceil((xout - xin) / mesh_size)
 vmesh_no = np.ceil((yu - yl) / mesh_size)
+loc_in_mesh = [0.01 * w, 0.01 * w]
 #--------------------------------------------------
-cwd = os.getcwd()
 save_file_par = os.path.join(cwd, 'system', 'meshParameters')
 save_file_sh = os.path.join(cwd, 'transform_stl.sh')
+save_file_mshsh = os.path.join(cwd, 'transform_mesh.sh')
 save_file_snappy_geo = os.path.join(cwd, 'system', 'snappy_geo')
 save_file_snappy_feature = os.path.join(cwd, 'system', 'snappy_feature')
 save_file_snappy_parameters = os.path.join(cwd, 'system', 'snappy_parameters')
@@ -46,8 +74,8 @@ with open(save_file_par, 'w') as f:
     f.write('%s%s;\n' % (r'yl   ', '{0:.3g}'.format(yl)))
     f.write('%s%s;\n' % (r'yu   ', '{0:.3g}'.format(yu)))
 
-    f.write('%s%s;\n' % (r'hm   ', '{0:.3g}'.format(hmesh_no)))
-    f.write('%s%s;\n' % (r'vm   ', '{0:.3g}'.format(vmesh_no)))
+    f.write('%s%s;\n' % (r'hm   ', '{0:.0f}'.format(hmesh_no)))
+    f.write('%s%s;\n' % (r'vm   ', '{0:.0f}'.format(vmesh_no)))
 
 rota = -49
 dh = w / (N_vanes - 1)
@@ -86,6 +114,18 @@ with open(save_file_sh, 'w') as f:
     f.write('cd ..\n')
     f.write('cd ..\n')
 
+with open(save_file_mshsh, 'w') as f:
+    f.write('#!/bin/bash\n')
+    f.write('. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions\n')
+    f.write('runParallel transformPoints -rollPitchYaw \'(0 0 %s)\'\n' %
+            '{0:.3g}'.format(mesh_rot))
+    f.write('rm log.transformPoints\n')
+    f.write('runParallel transformPoints -scale \'(0 %s 0)\'\n' %
+            '{0:.3g}'.format(mesh_yscale))
+    f.write('rm log.transformPoints\n')
+    f.write('runParallel transformPoints -translate \'(%s %s 0)\'\n' %
+            ('{0:.3g}'.format(turnp_inx), '{0:.3g}'.format(turnp_iny)))
+
 with open(save_file_snappy_geo, 'w') as f:
     f.write(
         '%s\n' %
@@ -119,13 +159,13 @@ with open(save_file_snappy_feature, 'w') as f:
     )
     f.write('{\n')
     f.write('file "twall.eMesh";\n')
-    f.write('level %s;\n' % refledge)
+    f.write('level %s;\n' % '{0:.0g}'.format(refledge))
     f.write('}\n')
     for i in range(len(xy_vane)):
         vname = 'vane' + str(i + 1)
         f.write('{\n')
         f.write('file "%s.eMesh";\n' % vname)
-        f.write('level %s;\n' % '{0:.3g}'.format(refledge))
+        f.write('level %s;\n' % '{0:.0g}'.format(refledge))
         f.write('}\n')
 
 with open(save_file_snappy_parameters, 'w') as f:
@@ -137,9 +177,11 @@ with open(save_file_snappy_parameters, 'w') as f:
         '%s\n' %
         r'\*---------------------------------------------------------------------------*/'
     )
-    f.write('%s%s;\n' % (r'refledge   ', '{0:.3g}'.format(refledge)))
-    f.write('%s%s;\n' % (r'refl   ', '{0:.3g}'.format(refl)))
-    f.write('%s%s;\n' % (r'reflcurvature   ', '{0:.3g}'.format(reflcurvature)))
+    f.write('%s%s;\n' % (r'refledge   ', '{0:.0f}'.format(refledge)))
+    f.write('%s%s;\n' % (r'refl   ', '{0:.0f}'.format(refl)))
+    f.write('%s%s;\n' % (r'reflcurvature   ', '{0:.0f}'.format(reflcurvature)))
+    f.write('%s%s;\n' % (r'locInMeshx   ', '{0:.3g}'.format(loc_in_mesh[0])))
+    f.write('%s%s;\n' % (r'locInMeshy   ', '{0:.3g}'.format(loc_in_mesh[1])))
     f.write('%s%s;\n' %
             (r'blthickness   ', '{0:.3g}'.format(wall_layer_thickness)))
 
