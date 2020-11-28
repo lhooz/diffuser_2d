@@ -71,10 +71,10 @@ with open(save_file_par, 'w') as f:
         '%s\n' %
         r'\*---------------------------------------------------------------------------*/'
     )
-    f.write('%s%s;\n' % (r'xin   ', '{0:.3g}'.format(xin)))
-    f.write('%s%s;\n' % (r'xout   ', '{0:.3g}'.format(xout)))
-    f.write('%s%s;\n' % (r'yu   ', '{0:.3g}'.format(yu)))
-    f.write('%s%s;\n' % (r'yl   ', '{0:.3g}'.format(yl)))
+    f.write('%s%s;\n' % (r'xin   ', '{0:.10g}'.format(xin)))
+    f.write('%s%s;\n' % (r'xout   ', '{0:.10g}'.format(xout)))
+    f.write('%s%s;\n' % (r'yu   ', '{0:.10g}'.format(yu)))
+    f.write('%s%s;\n' % (r'yl   ', '{0:.10g}'.format(yl)))
     f.write('%s%s;\n' % (r'hm   ', '{0:.0f}'.format(hmesh_no)))
     f.write('%s%s;\n' % (r'vm   ', '{0:.0f}'.format(vmesh_no)))
 
@@ -84,46 +84,46 @@ with open(save_file_sh, 'w') as f:
     f.write('cd triSurface\n')
     f.write(
         'surfaceTransformPoints -scale \'(%s %s 1)\' basic_vane.stl single_vanem.stl\n'
-        % ('{0:.3g}'.format(w1), '{0:.3g}'.format(w1)))
+        % ('{0:.10g}'.format(w1), '{0:.10g}'.format(w1)))
     f.write(
         'surfaceTransformPoints -scale \'(%s %s 1)\' diffuser_wall.stl dwall.stl\n'
-        % ('{0:.3g}'.format(w1), '{0:.3g}'.format(w1)))
+        % ('{0:.10g}'.format(w1), '{0:.10g}'.format(w1)))
     #--------------
     f.write(
         'surfaceTransformPoints -rollPitchYaw \'(0 0 %s)\' single_vanem.stl single_vaneu.stl\n'
-        % '{0:.3g}'.format(vane_angleu))
+        % '{0:.10g}'.format(vane_angleu))
     f.write(
         'surfaceTransformPoints -rollPitchYaw \'(0 0 %s)\' single_vanem.stl single_vanel.stl\n'
-        % '{0:.3g}'.format(vane_anglel))
+        % '{0:.10g}'.format(vane_anglel))
     f.write(
         'surfaceTransformPoints -rollPitchYaw \'(0 0 %s)\' dwall.stl dwallu.stl\n'
-        % '{0:.3g}'.format(wall_angleu))
+        % '{0:.10g}'.format(wall_angleu))
     f.write(
         'surfaceTransformPoints -rollPitchYaw \'(0 0 %s)\' dwall.stl dwalll.stl\n'
-        % '{0:.3g}'.format(wall_anglel))
+        % '{0:.10g}'.format(wall_anglel))
     #--------------
     f.write(
         'surfaceTransformPoints -translate \'(0 %s 0)\' single_vaneu.stl single_vaneu.stl\n'
-        % '{0:.3g}'.format(wu))
+        % '{0:.10g}'.format(wu))
     f.write(
         'surfaceTransformPoints -translate \'(0 %s 0)\' single_vanel.stl single_vanel.stl\n'
-        % '{0:.3g}'.format(wl))
+        % '{0:.10g}'.format(wl))
     f.write(
         'surfaceTransformPoints -translate \'(0 %s 0)\' dwallu.stl dwallu.stl\n'
-        % '{0:.3g}'.format(dwallu))
+        % '{0:.10g}'.format(dwallu))
     f.write(
         'surfaceTransformPoints -translate \'(0 %s 0)\' dwalll.stl dwalll.stl\n'
-        % '{0:.3g}'.format(dwalll))
+        % '{0:.10g}'.format(dwalll))
     #------------------
     # f.write(
     # 'surfaceTransformPoints -translate \'(%s 0 0)\' single_vaneu.stl single_vaneu.stl\n'
-    # % '{0:.3g}'.format(wl))
+    # % '{0:.10g}'.format(wl))
     # f.write(
     # 'surfaceTransformPoints -translate \'(%s 0 0)\' single_vanel.stl single_vanel.stl\n'
-    # % '{0:.3g}'.format(wl))
+    # % '{0:.10g}'.format(wl))
     # f.write(
     # 'surfaceTransformPoints -translate \'(%s 0 0)\' single_vanem.stl single_vanem.stl\n'
-    # % '{0:.3g}'.format(wl))
+    # % '{0:.10g}'.format(wl))
     #------------------
     f.write('cd ..\n')
     f.write('cd ..\n')
@@ -132,10 +132,10 @@ with open(save_file_mshsh, 'w') as f:
     f.write('#!/bin/bash\n')
     f.write('. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions\n')
     f.write('runParallel transformPoints -rollPitchYaw \'(0 0 %s)\'\n' %
-            '{0:.3g}'.format(mesh_rot))
+            '{0:.10g}'.format(mesh_rot))
     f.write('rm log.transformPoints\n')
     f.write('runParallel transformPoints -translate \'(%s %s 0)\'\n' %
-            ('{0:.3g}'.format(df_inx), '{0:.3g}'.format(df_iny)))
+            ('{0:.10g}'.format(df_inx), '{0:.10g}'.format(df_iny)))
 
 with open(save_file_snappy_parameters, 'w') as f:
     f.write(
@@ -149,7 +149,7 @@ with open(save_file_snappy_parameters, 'w') as f:
     f.write('%s%s;\n' % (r'refledge   ', '{0:.0f}'.format(refledge)))
     f.write('%s%s;\n' % (r'refl   ', '{0:.0f}'.format(refl)))
     f.write('%s%s;\n' % (r'reflcurvature   ', '{0:.0f}'.format(reflcurvature)))
-    f.write('%s%s;\n' % (r'locInMeshx   ', '{0:.3g}'.format(loc_in_mesh[0])))
-    f.write('%s%s;\n' % (r'locInMeshy   ', '{0:.3g}'.format(loc_in_mesh[1])))
+    f.write('%s%s;\n' % (r'locInMeshx   ', '{0:.10g}'.format(loc_in_mesh[0])))
+    f.write('%s%s;\n' % (r'locInMeshy   ', '{0:.10g}'.format(loc_in_mesh[1])))
     f.write('%s%s;\n' %
-            (r'blthickness   ', '{0:.3g}'.format(wall_layer_thickness)))
+            (r'blthickness   ', '{0:.10g}'.format(wall_layer_thickness)))

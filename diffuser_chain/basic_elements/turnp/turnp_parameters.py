@@ -69,10 +69,10 @@ with open(save_file_par, 'w') as f:
         '%s\n' %
         r'\*---------------------------------------------------------------------------*/'
     )
-    f.write('%s%s;\n' % (r'xin   ', '{0:.3g}'.format(xin)))
-    f.write('%s%s;\n' % (r'xout   ', '{0:.3g}'.format(xout)))
-    f.write('%s%s;\n' % (r'yl   ', '{0:.3g}'.format(yl)))
-    f.write('%s%s;\n' % (r'yu   ', '{0:.3g}'.format(yu)))
+    f.write('%s%s;\n' % (r'xin   ', '{0:.10g}'.format(xin)))
+    f.write('%s%s;\n' % (r'xout   ', '{0:.10g}'.format(xout)))
+    f.write('%s%s;\n' % (r'yl   ', '{0:.10g}'.format(yl)))
+    f.write('%s%s;\n' % (r'yu   ', '{0:.10g}'.format(yu)))
 
     f.write('%s%s;\n' % (r'hm   ', '{0:.0f}'.format(hmesh_no)))
     f.write('%s%s;\n' % (r'vm   ', '{0:.0f}'.format(vmesh_no)))
@@ -94,23 +94,23 @@ with open(save_file_sh, 'w') as f:
     )
     f.write(
         'surfaceTransformPoints -scale \'(%s %s 1)\' twall.stl twall.stl\n' %
-        ('{0:.3g}'.format(w), '{0:.3g}'.format(w)))
+        ('{0:.10g}'.format(w), '{0:.10g}'.format(w)))
     f.write(
         'surfaceTransformPoints -scale \'(%s %s 1)\' tunner_vane.stl vane0.stl\n'
-        % ('{0:.3g}'.format(R), '{0:.3g}'.format(R)))
+        % ('{0:.10g}'.format(R), '{0:.10g}'.format(R)))
     #---------------
     f.write(
         'surfaceTransformPoints -rollPitchYaw \'(0 0 %s)\' vane0.stl vane0.stl\n'
-        % '{0:.3g}'.format(rota))
+        % '{0:.10g}'.format(rota))
 
     for i in range(len(xy_vane)):
         vname = 'vane' + str(i + 1)
         f.write(
             'surfaceTransformPoints -translate \'(%s 0 0)\' vane0.stl %s.stl\n'
-            % ('{0:.3g}'.format(xy_vane[i][0]), vname))
+            % ('{0:.10g}'.format(xy_vane[i][0]), vname))
         f.write(
             'surfaceTransformPoints -translate \'(0 %s 0)\' %s.stl %s.stl\n' %
-            ('{0:.3g}'.format(xy_vane[i][1]), vname, vname))
+            ('{0:.10g}'.format(xy_vane[i][1]), vname, vname))
     f.write('cd ..\n')
     f.write('cd ..\n')
 
@@ -118,13 +118,13 @@ with open(save_file_mshsh, 'w') as f:
     f.write('#!/bin/bash\n')
     f.write('. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions\n')
     f.write('runParallel transformPoints -rollPitchYaw \'(0 0 %s)\'\n' %
-            '{0:.3g}'.format(mesh_rot))
+            '{0:.10g}'.format(mesh_rot))
     f.write('rm log.transformPoints\n')
-    f.write('runParallel transformPoints -scale \'(0 %s 0)\'\n' %
-            '{0:.3g}'.format(mesh_yscale))
+    f.write('runParallel transformPoints -scale \'(1 %s 1)\'\n' %
+            '{0:.10g}'.format(mesh_yscale))
     f.write('rm log.transformPoints\n')
     f.write('runParallel transformPoints -translate \'(%s %s 0)\'\n' %
-            ('{0:.3g}'.format(turnp_inx), '{0:.3g}'.format(turnp_iny)))
+            ('{0:.10g}'.format(turnp_inx), '{0:.10g}'.format(turnp_iny)))
 
 with open(save_file_snappy_geo, 'w') as f:
     f.write(
@@ -159,13 +159,13 @@ with open(save_file_snappy_feature, 'w') as f:
     )
     f.write('{\n')
     f.write('file "twall.eMesh";\n')
-    f.write('level %s;\n' % '{0:.0g}'.format(refledge))
+    f.write('level %s;\n' % '{0:.0f}'.format(refledge))
     f.write('}\n')
     for i in range(len(xy_vane)):
         vname = 'vane' + str(i + 1)
         f.write('{\n')
         f.write('file "%s.eMesh";\n' % vname)
-        f.write('level %s;\n' % '{0:.0g}'.format(refledge))
+        f.write('level %s;\n' % '{0:.0f}'.format(refledge))
         f.write('}\n')
 
 with open(save_file_snappy_parameters, 'w') as f:
@@ -180,10 +180,10 @@ with open(save_file_snappy_parameters, 'w') as f:
     f.write('%s%s;\n' % (r'refledge   ', '{0:.0f}'.format(refledge)))
     f.write('%s%s;\n' % (r'refl   ', '{0:.0f}'.format(refl)))
     f.write('%s%s;\n' % (r'reflcurvature   ', '{0:.0f}'.format(reflcurvature)))
-    f.write('%s%s;\n' % (r'locInMeshx   ', '{0:.3g}'.format(loc_in_mesh[0])))
-    f.write('%s%s;\n' % (r'locInMeshy   ', '{0:.3g}'.format(loc_in_mesh[1])))
+    f.write('%s%s;\n' % (r'locInMeshx   ', '{0:.10g}'.format(loc_in_mesh[0])))
+    f.write('%s%s;\n' % (r'locInMeshy   ', '{0:.10g}'.format(loc_in_mesh[1])))
     f.write('%s%s;\n' %
-            (r'blthickness   ', '{0:.3g}'.format(wall_layer_thickness)))
+            (r'blthickness   ', '{0:.10g}'.format(wall_layer_thickness)))
 
 with open(save_file_sufExtract, 'w') as f:
     f.write(

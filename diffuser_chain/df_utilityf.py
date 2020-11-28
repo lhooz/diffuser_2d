@@ -10,7 +10,7 @@ def cal_diffuser(df_loc, w, theta, l_w, orient):
     v_uvane = np.tan(theta / 1.45 * np.pi / 180) * l
     v2 = v_uvane - vane_gap + 0.3 * w
     v3 = v_uvane + vane_gap + 0.3 * w
-    v4 = 0.5 * w + np.sin(theta * np.pi / 180) * l
+    v4 = 0.5 * w + np.tan(theta * np.pi / 180) * l
     vco1 = 0.5 * (v1 + v2)
     vco2 = 0.5 * (v3 + v4)
     w1 = v2 - v1
@@ -56,4 +56,4 @@ def write_parameters(parameters, fileDir):
     """write parameters to file"""
     with open(fileDir, 'w') as f:
         for par in parameters:
-            f.write('%s\n' % '{0:.3g}'.format(par))
+            f.write('%s\n' % '{0:.10g}'.format(par))

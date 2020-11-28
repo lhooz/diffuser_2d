@@ -54,7 +54,7 @@ castellatedMeshControls
     minRefinementCells 10;
     maxLoadUnbalance 0.10;
 
-    nCellsBetweenLevels 5;
+    nCellsBetweenLevels 1;
 
     features 
     (

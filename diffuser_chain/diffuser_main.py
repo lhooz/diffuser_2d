@@ -9,13 +9,13 @@ diffusers = ['diffuser_25_2', 'diffuser_25_2']
 inlet_w = 0.11
 turnp_R = [0.2, 0.2]
 #---------------------------------------------------
-layer_out = [[0.0, 0.0], [0.4, -0.4]]
+layer_out = [[0.0, 0.0], [0.1, -0.35]]
 layer_width = [0.0, 1.0]
 layer_orientation = ['fromUp', 'goingDown']
 #---------------------------------------------------
 refl = 2
 #----------------------------------------------------
-wall_layer_thickness = 1e-3
+wall_layer_thickness = 8e-4
 #----------------------------------------------------
 refledge = refl
 reflcurvature = refl
@@ -37,7 +37,7 @@ with open(config_control_file, 'w') as f:
     f.write('. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions\n')
 
 w_in = [inlet_w]
-layer_ins = [[-1.0, 1.0]]
+layer_ins = [[-0.35, 0.2]]
 for li in range(len(diffusers)):
     no_dfs = len(w_in)
     orientation = layer_orientation[li]
@@ -91,6 +91,7 @@ for li in range(len(diffusers)):
             ]
             rot_chain = [0, 0, -90, -90]
             turnp_yscale = 1
+            # print(df_in[0], turnp_in[0] + 0.7 * w_in[dfi])
         elif orientation == 'goingUp':
             ftb_l = df_in[0] - layer_ins[dfi][0] - 0.7 * w_in[dfi]
             btb_l = df_in[1] - layer_ins[dfi][1] - 0.7 * w_in[dfi]
