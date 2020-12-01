@@ -14,30 +14,6 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-single_vanem.stl
-{
-    extractionMethod    extractFromSurface;
-    includedAngle       170;
-}
-single_vaneu.stl
-{
-    extractionMethod    extractFromSurface;
-    includedAngle       170;
-}
-single_vanel.stl
-{
-    extractionMethod    extractFromSurface;
-    includedAngle       170;
-}
-dwallu.stl
-{
-    extractionMethod    extractFromSurface;
-    includedAngle       170;
-}
-dwalll.stl
-{
-    extractionMethod    extractFromSurface;
-    includedAngle       170;
-}
+#include "surfExtract"
 
 // ************************************************************************* //

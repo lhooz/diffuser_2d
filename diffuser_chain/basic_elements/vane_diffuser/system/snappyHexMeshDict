@@ -20,31 +20,7 @@ addLayers       false;
 
 geometry
 {
-    "single_vanem.stl"
-    {
-        type    triSurfaceMesh;
-        name    dfwall;
-    }
-    "single_vaneu.stl"
-    {
-        type    triSurfaceMesh;
-        name    dfwall;
-    }
-    "single_vanel.stl"
-    {
-        type    triSurfaceMesh;
-        name    dfwall;
-    }
-    "dwallu.stl"
-    {
-        type    triSurfaceMesh;
-        name    dfwall;
-    }
-    "dwalll.stl"
-    {
-        type    triSurfaceMesh;
-        name    dfwall;
-    }
+    #include "snappy_geo"
 };
 
 castellatedMeshControls
@@ -58,26 +34,7 @@ castellatedMeshControls
 
     features 
     (
-        { 
-        file "single_vanem.eMesh"; 
-        level $refledge;
-        }
-        { 
-        file "single_vaneu.eMesh"; 
-        level $refledge;
-        }
-        { 
-        file "single_vanel.eMesh"; 
-        level $refledge;
-        }
-        {
-        file "dwallu.eMesh"; 
-        level $refledge;
-        }
-        {
-        file "dwalll.eMesh"; 
-        level $refledge;
-        }
+        #include "snappy_feature"
     );
 
     refinementSurfaces

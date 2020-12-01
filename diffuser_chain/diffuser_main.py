@@ -5,17 +5,18 @@ import shutil
 import numpy as np
 from df_utilityf import cal_diffuser, write_parameters
 
-diffusers = ['diffuser_25_2', 'diffuser_25_2']
+diffusers = ['diffuser_25_2', 'diffuser_15_2']
 inlet_w = 0.11
-turnp_R = [0.2, 0.2]
+turnp_R = [0.3, 0.3]
 #---------------------------------------------------
 layer_out = [[0.0, 0.0], [0.1, -0.35]]
-layer_width = [0.0, 1.0]
+layer_width = [0.0, 0.52]
 layer_orientation = ['fromUp', 'goingDown']
+initial_pipe = 'straight'
 #---------------------------------------------------
 refl = 2
 #----------------------------------------------------
-wall_layer_thickness = 8e-4
+wall_layer_thickness = 6e-4
 #----------------------------------------------------
 refledge = refl
 reflcurvature = refl
@@ -37,8 +38,11 @@ with open(config_control_file, 'w') as f:
     f.write('. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions\n')
 
 w_in = [inlet_w]
-layer_ins = [[-0.35, 0.2]]
+layer_ins = [[-0.7, 0.2]]
 for li in range(len(diffusers)):
+    #--------------
+    # print(layer_ins)
+    #--------------
     no_dfs = len(w_in)
     orientation = layer_orientation[li]
     if orientation.startswith('from'):
@@ -56,8 +60,12 @@ for li in range(len(diffusers)):
     for dfi in range(no_dfs):
         theta = float(diffusers[li].split('_')[1])
         l_w = float(diffusers[li].split('_')[2])
+        #--------df no of vanes calculation---
+        No_vanes = int(np.ceil(2 * theta / 8))
+        #-------------------------------------
         df_in, w_out, layer_ins_next, l = cal_diffuser(df_locs[dfi], w_in[dfi],
-                                                       theta, l_w, orientation)
+                                                       theta, l_w, orientation,
+                                                       No_vanes)
         wOut_all += w_out
         layerNext_all += layer_ins_next
         #------------------------------------------------------------------
@@ -117,11 +125,14 @@ for li in range(len(diffusers)):
         ]
         df_parameters = [
             df_in[0], df_in[1], w_in[dfi], theta, l_w, mesh_size, refl,
-            refledge, reflcurvature, rot_chain[3]
+            refledge, reflcurvature, rot_chain[3], No_vanes
         ]
+
+        #----------------
+        print([ftb_l, btb_l])
         #---------------------------------------------------------
         if li == 0:
-            df_folder = os.path.join(output_folder, 'diffuser_main')
+            df_folder = os.path.join(output_folder, '0_diffuser_main')
         else:
             df_folder = os.path.join(output_folder,
                                      'df_' + str(li) + '_' + str(dfi))
@@ -151,23 +162,60 @@ for li in range(len(diffusers)):
             f.write('sh run_mesh.sh\n')
             if not df_folder.endswith('diffuser_main'):
                 f.write(
-                    'runParallel mergeMeshes ../diffuser_main . -overwrite\n')
+                    'runParallel mergeMeshes ../0_diffuser_main . -overwrite\n'
+                )
             f.write('cd ..\n')
 
-            f.write('cd %s\n' % ftb_folder)
-            f.write('sh run_mesh.sh\n')
-            f.write('runParallel mergeMeshes ../diffuser_main . -overwrite\n')
-            f.write('cd ..\n')
+            if li == 0:
+                if initial_pipe == 'all':
+                    f.write('cd %s\n' % ftb_folder)
+                    f.write('sh run_mesh.sh\n')
+                    f.write(
+                        'runParallel mergeMeshes ../0_diffuser_main . -overwrite\n'
+                    )
+                    f.write('cd ..\n')
 
-            f.write('cd %s\n' % turnp_folder)
-            f.write('sh run_mesh.sh\n')
-            f.write('runParallel mergeMeshes ../diffuser_main . -overwrite\n')
-            f.write('cd ..\n')
+                    f.write('cd %s\n' % turnp_folder)
+                    f.write('sh run_mesh.sh\n')
+                    f.write(
+                        'runParallel mergeMeshes ../0_diffuser_main . -overwrite\n'
+                    )
+                    f.write('cd ..\n')
 
-            f.write('cd %s\n' % btb_folder)
-            f.write('sh run_mesh.sh\n')
-            f.write('runParallel mergeMeshes ../diffuser_main . -overwrite\n')
-            f.write('cd ..\n')
+                    f.write('cd %s\n' % btb_folder)
+                    f.write('sh run_mesh.sh\n')
+                    f.write(
+                        'runParallel mergeMeshes ../0_diffuser_main . -overwrite\n'
+                    )
+                    f.write('cd ..\n')
+                elif initial_pipe == 'straight':
+                    f.write('cd %s\n' % btb_folder)
+                    f.write('sh run_mesh.sh\n')
+                    f.write(
+                        'runParallel mergeMeshes ../0_diffuser_main . -overwrite\n'
+                    )
+                    f.write('cd ..\n')
+            else:
+                f.write('cd %s\n' % ftb_folder)
+                f.write('sh run_mesh.sh\n')
+                f.write(
+                    'runParallel mergeMeshes ../0_diffuser_main . -overwrite\n'
+                )
+                f.write('cd ..\n')
+
+                f.write('cd %s\n' % turnp_folder)
+                f.write('sh run_mesh.sh\n')
+                f.write(
+                    'runParallel mergeMeshes ../0_diffuser_main . -overwrite\n'
+                )
+                f.write('cd ..\n')
+
+                f.write('cd %s\n' % btb_folder)
+                f.write('sh run_mesh.sh\n')
+                f.write(
+                    'runParallel mergeMeshes ../0_diffuser_main . -overwrite\n'
+                )
+                f.write('cd ..\n')
         #----------------------------------
     w_in = wOut_all
     layer_ins = layerNext_all

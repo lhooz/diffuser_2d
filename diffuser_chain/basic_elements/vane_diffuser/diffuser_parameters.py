@@ -22,6 +22,35 @@ def read_parameters(parameters):
     return par_array
 
 
+def cal_diffuser(w, theta, l_w, vane_angles):
+    """function for calculation diffuser geometry"""
+    l = l_w * w
+    totalw_out = 2 * (0.5 * w + np.tan(theta * np.pi / 180) * l)
+
+    total_gap = 0
+    gaps = []
+    vus = []
+    for vane in vane_angles:
+        vt = 0.03 * w
+        gap = 2 * vt / np.cos(vane * np.pi / 180)
+        gaps.append(gap)
+        total_gap += gap
+
+        vm = np.tan(vane * np.pi / 180) * l
+        vu = vm + gap / 2
+        vus.append(vu)
+
+    wo = (totalw_out - total_gap) / (len(vane_angles) + 1)
+    v_shift = []
+    desired_vu = -totalw_out / 2
+    for vi in range(len(vus)):
+        desired_vu += wo + gaps[vi]
+        shift = desired_vu - vus[vi]
+        v_shift.append(shift)
+
+    return v_shift
+
+
 #---------------------------------------------------
 cwd = os.getcwd()
 df_parameters = read_parameters(os.path.join(cwd, 'df_parameters'))
@@ -37,6 +66,7 @@ refl = df_parameters[6]
 refledge = df_parameters[7]
 reflcurvature = df_parameters[8]
 mesh_rot = df_parameters[9]
+No_vanes = int(df_parameters[10])
 #--------------------------------------------------
 wall_layer_thickness = 1e-4
 #---------------------------------------------------
@@ -51,17 +81,26 @@ loc_in_mesh = [0.01 * w1, 0.01 * w1]
 #-------------------------------------------------
 wall_angleu = theta
 wall_anglel = -theta
-vane_angleu = theta / 1.45
-vane_anglel = -theta / 1.45
-wu = 0.3 * w1
-wl = -0.3 * w1
-dwallu = (0.5 + 0.1 / 2) * w1
-dwalll = -(0.5 + 0.1 / 2) * w1
+wallthicku = 0.1 / 2 * w1
+wallthickl = -0.1 / 2 * w1
+dwallu = 0.5 * w1
+dwalll = -0.5 * w1
+#------------------------------------------------
+vane_angles = np.linspace(-theta, theta, No_vanes)
+if No_vanes >= 3:
+    vane_angles = vane_angles[1:-1]
+else:
+    vane_angles = [0.0]
+
+v_shift = cal_diffuser(w1, theta, l_w1, vane_angles)
 
 save_file_par = os.path.join(cwd, 'system', 'meshParameters')
 save_file_sh = os.path.join(cwd, 'transform_stl.sh')
 save_file_mshsh = os.path.join(cwd, 'transform_mesh.sh')
 save_file_snappy_parameters = os.path.join(cwd, 'system', 'snappy_parameters')
+save_file_snappy_geo = os.path.join(cwd, 'system', 'snappy_geo')
+save_file_snappy_feature = os.path.join(cwd, 'system', 'snappy_feature')
+save_file_sufExtract = os.path.join(cwd, 'system', 'surfExtract')
 with open(save_file_par, 'w') as f:
     f.write(
         '%s\n' %
@@ -83,50 +122,119 @@ with open(save_file_sh, 'w') as f:
     f.write('cd constant\n')
     f.write('cd triSurface\n')
     f.write(
-        'surfaceTransformPoints -scale \'(%s %s 1)\' basic_vane.stl single_vanem.stl\n'
-        % ('{0:.10g}'.format(w1), '{0:.10g}'.format(w1)))
-    f.write(
         'surfaceTransformPoints -scale \'(%s %s 1)\' diffuser_wall.stl dwall.stl\n'
         % ('{0:.10g}'.format(w1), '{0:.10g}'.format(w1)))
-    #--------------
     f.write(
-        'surfaceTransformPoints -rollPitchYaw \'(0 0 %s)\' single_vanem.stl single_vaneu.stl\n'
-        % '{0:.10g}'.format(vane_angleu))
+        'surfaceTransformPoints -translate \'(0 %s 0)\' dwall.stl dwallu.stl\n'
+        % '{0:.10g}'.format(wallthicku))
     f.write(
-        'surfaceTransformPoints -rollPitchYaw \'(0 0 %s)\' single_vanem.stl single_vanel.stl\n'
-        % '{0:.10g}'.format(vane_anglel))
+        'surfaceTransformPoints -translate \'(0 %s 0)\' dwall.stl dwalll.stl\n'
+        % '{0:.10g}'.format(wallthickl))
     f.write(
-        'surfaceTransformPoints -rollPitchYaw \'(0 0 %s)\' dwall.stl dwallu.stl\n'
+        'surfaceTransformPoints -rollPitchYaw \'(0 0 %s)\' dwallu.stl dwallu.stl\n'
         % '{0:.10g}'.format(wall_angleu))
     f.write(
-        'surfaceTransformPoints -rollPitchYaw \'(0 0 %s)\' dwall.stl dwalll.stl\n'
+        'surfaceTransformPoints -rollPitchYaw \'(0 0 %s)\' dwalll.stl dwalll.stl\n'
         % '{0:.10g}'.format(wall_anglel))
-    #--------------
-    f.write(
-        'surfaceTransformPoints -translate \'(0 %s 0)\' single_vaneu.stl single_vaneu.stl\n'
-        % '{0:.10g}'.format(wu))
-    f.write(
-        'surfaceTransformPoints -translate \'(0 %s 0)\' single_vanel.stl single_vanel.stl\n'
-        % '{0:.10g}'.format(wl))
     f.write(
         'surfaceTransformPoints -translate \'(0 %s 0)\' dwallu.stl dwallu.stl\n'
         % '{0:.10g}'.format(dwallu))
     f.write(
         'surfaceTransformPoints -translate \'(0 %s 0)\' dwalll.stl dwalll.stl\n'
         % '{0:.10g}'.format(dwalll))
-    #------------------
-    # f.write(
-    # 'surfaceTransformPoints -translate \'(%s 0 0)\' single_vaneu.stl single_vaneu.stl\n'
-    # % '{0:.10g}'.format(wl))
-    # f.write(
-    # 'surfaceTransformPoints -translate \'(%s 0 0)\' single_vanel.stl single_vanel.stl\n'
-    # % '{0:.10g}'.format(wl))
-    # f.write(
-    # 'surfaceTransformPoints -translate \'(%s 0 0)\' single_vanem.stl single_vanem.stl\n'
-    # % '{0:.10g}'.format(wl))
+    #--------------
+    f.write(
+        'surfaceTransformPoints -scale \'(%s %s 1)\' basic_vane.stl single_vanem.stl\n'
+        % ('{0:.10g}'.format(w1), '{0:.10g}'.format(w1)))
+    for i in range(len(vane_angles)):
+        vname = 'vane' + str(i + 1)
+        f.write(
+            'surfaceTransformPoints -rollPitchYaw \'(0 0 %s)\' single_vanem.stl %s.stl\n'
+            % ('{0:.10g}'.format(vane_angles[i]), vname))
+        f.write(
+            'surfaceTransformPoints -translate \'(0 %s 0)\' %s.stl %s.stl\n' %
+            ('{0:.10g}'.format(v_shift[i]), vname, vname))
     #------------------
     f.write('cd ..\n')
     f.write('cd ..\n')
+
+with open(save_file_snappy_geo, 'w') as f:
+    f.write(
+        '%s\n' %
+        '/*--------------------------------*- C++ -*----------------------------------*\\'
+    )
+    f.write(
+        '%s\n' %
+        r'\*---------------------------------------------------------------------------*/'
+    )
+    f.write('\"dwallu.stl\"\n')
+    f.write('{\n')
+    f.write('    type    triSurfaceMesh;\n')
+    f.write('    name    dfwall;\n')
+    f.write('}\n')
+    f.write('\"dwalll.stl\"\n')
+    f.write('{\n')
+    f.write('    type    triSurfaceMesh;\n')
+    f.write('    name    dfwall;\n')
+    f.write('}\n')
+    for i in range(len(vane_angles)):
+        vname = 'vane' + str(i + 1)
+        f.write('\"%s.stl\"\n' % vname)
+        f.write('{\n')
+        f.write('    type    triSurfaceMesh;\n')
+        f.write('    name    dfwall;\n')
+        f.write('}\n')
+
+with open(save_file_snappy_feature, 'w') as f:
+    f.write(
+        '%s\n' %
+        '/*--------------------------------*- C++ -*----------------------------------*\\'
+    )
+    f.write(
+        '%s\n' %
+        r'\*---------------------------------------------------------------------------*/'
+    )
+    f.write('{\n')
+    f.write('file "dwallu.eMesh";\n')
+    f.write('level %s;\n' % '{0:.0f}'.format(refledge))
+    f.write('}\n')
+    f.write('{\n')
+    f.write('file "dwalll.eMesh";\n')
+    f.write('level %s;\n' % '{0:.0f}'.format(refledge))
+    f.write('}\n')
+    for i in range(len(vane_angles)):
+        vname = 'vane' + str(i + 1)
+        f.write('{\n')
+        f.write('file "%s.eMesh";\n' % vname)
+        f.write('level %s;\n' % '{0:.0f}'.format(refledge))
+        f.write('}\n')
+
+with open(save_file_sufExtract, 'w') as f:
+    f.write(
+        '%s\n' %
+        '/*--------------------------------*- C++ -*----------------------------------*\\'
+    )
+    f.write(
+        '%s\n' %
+        r'\*---------------------------------------------------------------------------*/'
+    )
+    f.write('dwallu.stl\n')
+    f.write('{\n')
+    f.write('    extractionMethod    extractFromSurface;\n')
+    f.write('    includedAngle       170;\n')
+    f.write('}\n')
+    f.write('dwalll.stl\n')
+    f.write('{\n')
+    f.write('    extractionMethod    extractFromSurface;\n')
+    f.write('    includedAngle       170;\n')
+    f.write('}\n')
+    for i in range(len(vane_angles)):
+        vname = 'vane' + str(i + 1)
+        f.write('%s.stl\n' % vname)
+        f.write('{\n')
+        f.write('    extractionMethod    extractFromSurface;\n')
+        f.write('    includedAngle       170;\n')
+        f.write('}\n')
 
 with open(save_file_mshsh, 'w') as f:
     f.write('#!/bin/bash\n')
