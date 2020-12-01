@@ -20,15 +20,24 @@ solvers
     {
         solver          GAMG;
         smoother        GaussSeidel;
-        tolerance       1e-6;
+        tolerance       1e-7;
         relTol          0;
+    }
+
+    Phi
+    {
+        solver          GAMG;
+        smoother        DIC;
+
+        tolerance       1e-07;
+        relTol          0.01;
     }
 
     "(p|pFinal|pcorr.*)"
     {
         solver          GAMG;
         smoother        GaussSeidel;
-        tolerance       1e-6;
+        tolerance       1e-7;
         relTol          0.1;
     }
 
@@ -36,7 +45,7 @@ solvers
     {
         solver          smoothSolver;
         smoother        symGaussSeidel;
-        tolerance       1e-6;
+        tolerance       1e-7;
         relTol          0.1;
     }
 }
@@ -75,7 +84,7 @@ PIMPLE
 
 SIMPLE
 {
-    nNonOrthogonalCorrectors 0;
+    nNonOrthogonalCorrectors 2;
     consistent      yes;
 
     residualControl
@@ -84,6 +93,11 @@ SIMPLE
         p                   1e-4;
         "(k|epsilon|omega)" 1e-5;
     }
+}
+
+potentialFlow
+{
+    nNonOrthogonalCorrectors 5;
 }
 
 relaxationFactors

@@ -53,7 +53,16 @@ boundary
         type patch;
         faces
         (
-            (1 5 6 2)
+            (2 6 5 1)
+        );
+    }
+    walls
+    {
+        type wall;
+        faces
+        (
+            (0 1 5 4)
+            (3 7 6 2)
         );
     }
     front

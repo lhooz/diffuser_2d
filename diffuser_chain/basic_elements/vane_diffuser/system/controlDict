@@ -16,16 +16,15 @@ FoamFile
 
 libs            ("liboverset.so");
 
-//application     pimpleFoam;
-application     simpleFoam;
+application     pimpleFoam;//simpleFoam;
 
-startFrom       startTime;
+startFrom       latestTime;
 
 startTime       0;
 
 stopAt          endTime;
 
-endTime         0.1;
+endTime         0.5;
 
 deltaT          1e-4;
 
@@ -37,7 +36,7 @@ purgeWrite      0;
 
 writeFormat     ascii;
 
-writePrecision  10;
+writePrecision  8;
 
 writeCompression off;
 
@@ -49,7 +48,7 @@ runTimeModifiable true;
 
 adjustTimeStep  yes;
 
-maxCo           4;
+maxCo           10;
 
 maxDeltaT       0.01;
 

@@ -1,0 +1,33 @@
+
+
+--> FOAM FATAL ERROR: 
+attempt to run parallel on 1 processor
+
+    From function static bool Foam::UPstream::init(int&, char**&, bool)
+    in file UPstream.C at line 254.
+
+FOAM aborting
+
+#0  Foam::error::printStack(Foam::Ostream&) at ??:?
+#1  Foam::error::abort() at ??:?
+#2  Foam::UPstream::init(int&, char**&, bool) at ??:?
+#3  Foam::argList::argList(int&, char**&, bool, bool, bool) at ??:?
+#4  ? at ??:?
+#5  __libc_start_main in /lib64/libc.so.6
+#6  ? at ??:?
+[53bbc2ec95fa:07753] *** Process received signal ***
+[53bbc2ec95fa:07753] Signal: Aborted (6)
+[53bbc2ec95fa:07753] Signal code:  (-6)
+[53bbc2ec95fa:07753] [ 0] /lib64/libc.so.6(+0x36400)[0x7faff3346400]
+[53bbc2ec95fa:07753] [ 1] /lib64/libc.so.6(gsignal+0x37)[0x7faff3346387]
+[53bbc2ec95fa:07753] [ 2] /lib64/libc.so.6(abort+0x148)[0x7faff3347a78]
+[53bbc2ec95fa:07753] [ 3] /opt/OpenFOAM/OpenFOAM-v1912/platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so(_ZN4Foam5error5abortEv+0x1b2)[0x7faff4441ef2]
+[53bbc2ec95fa:07753] [ 4] /opt/OpenFOAM/OpenFOAM-v1912/platforms/linux64GccDPInt32Opt/lib/openmpi-1.10.4/libPstream.so(_ZN4Foam8UPstream4initERiRPPcb+0x381)[0x7faff31066e1]
+[53bbc2ec95fa:07753] [ 5] /opt/OpenFOAM/OpenFOAM-v1912/platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so(_ZN4Foam7argListC1ERiRPPcbbb+0xe89)[0x7faff446a249]
+[53bbc2ec95fa:07753] [ 6] simpleFoam[0x41b004]
+[53bbc2ec95fa:07753] [ 7] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7faff3332555]
+[53bbc2ec95fa:07753] [ 8] simpleFoam[0x41ed2a]
+[53bbc2ec95fa:07753] *** End of error message ***
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 7753 on node 53bbc2ec95fa exited on signal 6 (Aborted).
+--------------------------------------------------------------------------

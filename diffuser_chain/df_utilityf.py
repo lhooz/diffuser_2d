@@ -64,7 +64,7 @@ def cal_diffuser(df_loc, w, theta, l_w, orient, No_vanes):
         for vo in v_out:
             layer_ins_next.append([x_in + vo, y_out])
 
-    return df_in, w_out, layer_ins_next, l
+    return df_in, w_out, layer_ins_next, l, totalw_out
 
 
 def write_parameters(parameters, fileDir):

@@ -5,10 +5,10 @@ python3 tube_parameters.py
 
 foamCleanTutorials
 
-blockMesh
+runApplication blockMesh
 
 sh transform_stl.sh
-surfaceFeatureExtract
+runApplication surfaceFeatureExtract
 
 cp -f system/decomposeParDict.hierarchical system/decomposeParDict
 decomposePar
@@ -19,6 +19,8 @@ runParallel extrudeMesh
 
 sh transform_mesh.sh
 
-runParallel checkMesh
+runApplication reconstructParMesh -constant -latestTime -mergeTol 1e-6
+
+runApplication checkMesh
 
 touch open.foam

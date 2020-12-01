@@ -58,6 +58,15 @@ boundary
             (2 6 5 1)
         );
     }
+    walls
+    {
+        type wall;
+        faces
+        (
+            (0 1 5 4)
+            (3 7 6 2)
+        );
+    }
     front
     {
         type empty;
