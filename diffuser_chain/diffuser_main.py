@@ -113,23 +113,32 @@ for li in range(len(diffusers)):
 
         ftb_parameters = [
             ftb_in[0], ftb_in[1], w_in[dfi], ftb_l, mesh_size, refl, refledge,
-            reflcurvature, rot_chain[0]
+            reflcurvature, rot_chain[0], 1
         ]
         turnp_parameters = [
             turnp_in[0], turnp_in[1], w_in[dfi], turnp_R[li], mesh_size, refl,
-            refledge, reflcurvature, rot_chain[1], turnp_yscale
+            refledge, reflcurvature, rot_chain[1], turnp_yscale, 1
         ]
         btb_parameters = [
             btb_in[0], btb_in[1], w_in[dfi], btb_l, mesh_size, refl, refledge,
-            reflcurvature, rot_chain[2]
+            reflcurvature, rot_chain[2], 1
         ]
         df_parameters = [
             df_in[0], df_in[1], w_in[dfi], theta, l_w, mesh_size, refl,
-            refledge, reflcurvature, rot_chain[3], No_vanes
+            refledge, reflcurvature, rot_chain[3], No_vanes, 1
         ]
 
+        if li == 0:
+            if initial_pipe == 'all':
+                ftb_parameters[-1] = 0
+            elif initial_pipe == 'straight':
+                btb_parameters[-1] = 0
+        elif li == len(diffusers) - 1:
+            df_parameters[-1] = 2
+
         #----------------
-        print([ftb_l, btb_l])
+        print('front tube length = %s, back tube length = %s' %
+              ('{0:.10g}'.format(ftb_l), '{0:.10g}'.format(btb_l)))
         #---------------------------------------------------------
         if li == 0:
             df_folder = os.path.join(output_folder, '0_diffuser_main')

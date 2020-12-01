@@ -37,6 +37,7 @@ refledge = turnp_parameters[6]
 reflcurvature = turnp_parameters[7]
 mesh_rot = turnp_parameters[8]
 mesh_yscale = turnp_parameters[9]
+component_type = turnp_parameters[10]
 #----------------------------------------------------
 wall_layer_thickness = 1e-4
 #----------------------------------------------------
@@ -76,6 +77,15 @@ with open(save_file_par, 'w') as f:
 
     f.write('%s%s;\n' % (r'hm   ', '{0:.0f}'.format(hmesh_no)))
     f.write('%s%s;\n' % (r'vm   ', '{0:.0f}'.format(vmesh_no)))
+    if component_type == 0:
+        f.write('inName   inlet;\n')
+        f.write('outName   amiOut;\n')
+    elif component_type == 1:
+        f.write('inName   amiIn;\n')
+        f.write('outName   amiOut;\n')
+    elif component_type == 2:
+        f.write('inName   amiIn;\n')
+        f.write('outName   outlet;\n')
 
 rota = -49
 dh = w / (N_vanes - 1)
@@ -138,14 +148,14 @@ with open(save_file_snappy_geo, 'w') as f:
     f.write('\"twall.stl\"\n')
     f.write('{\n')
     f.write('    type    triSurfaceMesh;\n')
-    f.write('    name    twalls;\n')
+    f.write('    name    walls;\n')
     f.write('}\n')
     for i in range(len(xy_vane)):
         vname = 'vane' + str(i + 1)
         f.write('\"%s.stl\"\n' % vname)
         f.write('{\n')
         f.write('    type    triSurfaceMesh;\n')
-        f.write('    name    twalls;\n')
+        f.write('    name    walls;\n')
         f.write('}\n')
 
 with open(save_file_snappy_feature, 'w') as f:

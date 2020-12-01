@@ -31,7 +31,7 @@ boundaryField
         type            zeroGradient;
     }
 
-    dfwall
+    walls
     {
         type            nutkWallFunction;
         value           uniform 0;

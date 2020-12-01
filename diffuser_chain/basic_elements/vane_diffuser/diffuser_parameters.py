@@ -67,6 +67,7 @@ refledge = df_parameters[7]
 reflcurvature = df_parameters[8]
 mesh_rot = df_parameters[9]
 No_vanes = int(df_parameters[10])
+component_type = df_parameters[11]
 #--------------------------------------------------
 wall_layer_thickness = 1e-4
 #---------------------------------------------------
@@ -116,6 +117,15 @@ with open(save_file_par, 'w') as f:
     f.write('%s%s;\n' % (r'yl   ', '{0:.10g}'.format(yl)))
     f.write('%s%s;\n' % (r'hm   ', '{0:.0f}'.format(hmesh_no)))
     f.write('%s%s;\n' % (r'vm   ', '{0:.0f}'.format(vmesh_no)))
+    if component_type == 0:
+        f.write('inName   inlet;\n')
+        f.write('outName   amiOut;\n')
+    elif component_type == 1:
+        f.write('inName   amiIn;\n')
+        f.write('outName   amiOut;\n')
+    elif component_type == 2:
+        f.write('inName   amiIn;\n')
+        f.write('outName   outlet;\n')
 
 with open(save_file_sh, 'w') as f:
     f.write('#!/bin/bash\n')
@@ -170,19 +180,19 @@ with open(save_file_snappy_geo, 'w') as f:
     f.write('\"dwallu.stl\"\n')
     f.write('{\n')
     f.write('    type    triSurfaceMesh;\n')
-    f.write('    name    dfwall;\n')
+    f.write('    name    walls;\n')
     f.write('}\n')
     f.write('\"dwalll.stl\"\n')
     f.write('{\n')
     f.write('    type    triSurfaceMesh;\n')
-    f.write('    name    dfwall;\n')
+    f.write('    name    walls;\n')
     f.write('}\n')
     for i in range(len(vane_angles)):
         vname = 'vane' + str(i + 1)
         f.write('\"%s.stl\"\n' % vname)
         f.write('{\n')
         f.write('    type    triSurfaceMesh;\n')
-        f.write('    name    dfwall;\n')
+        f.write('    name    walls;\n')
         f.write('}\n')
 
 with open(save_file_snappy_feature, 'w') as f:

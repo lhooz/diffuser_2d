@@ -33,7 +33,7 @@ boundaryField
         type            zeroGradient;
     }
 
-    dfwall
+    walls
     {
         type            kqRWallFunction;
         value           uniform $kInlet;

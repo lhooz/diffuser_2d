@@ -23,7 +23,7 @@ geometry
     "tbwall.stl"
     {
         type    triSurfaceMesh;
-        name    tbwall;
+        name    walls;
     }
 };
 
@@ -46,7 +46,7 @@ castellatedMeshControls
 
     refinementSurfaces
     {
-        tbwall
+        walls
         {
             level ($refl $reflcurvature);
         }
@@ -80,7 +80,7 @@ addLayersControls
 
     layers
     {
-        tbwall
+        walls
         {
             nSurfaceLayers 2;
         }
@@ -90,7 +90,7 @@ addLayersControls
     solver          displacementLaplacian;
     displacementLaplacianCoeffs
     {
-        diffusivity     inverseDistance (tbwall);
+        diffusivity     inverseDistance (walls);
     }
 
     expansionRatio 1.0;

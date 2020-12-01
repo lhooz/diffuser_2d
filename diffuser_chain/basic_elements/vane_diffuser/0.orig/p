@@ -33,7 +33,7 @@ boundaryField
 	value		$internalField;
     }
 
-    dfwall
+    walls
     {
         type            zeroGradient;
     }

@@ -40,17 +40,17 @@ edges
 
 boundary
 (
-    inlet1
+    $inName
     {
-        type inlet;
+        type patch;
         faces
         (
             (0 4 7 3)
         );
     }
-    outlet1
+    $outName
     {
-        type outlet;
+        type patch;
         faces
         (
             (1 5 6 2)

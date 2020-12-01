@@ -39,7 +39,7 @@ castellatedMeshControls
 
     refinementSurfaces
     {
-        dfwall
+        walls
         {
             level ($refl $reflcurvature);
         }
@@ -73,7 +73,7 @@ addLayersControls
 
     layers
     {
-        dfwall
+        walls
         {
             nSurfaceLayers 2;
         }
@@ -83,7 +83,7 @@ addLayersControls
     solver          displacementLaplacian;
     displacementLaplacianCoeffs
     {
-        diffusivity     inverseDistance (dfwall);
+        diffusivity     inverseDistance (walls);
     }
 
     expansionRatio 1.0;
