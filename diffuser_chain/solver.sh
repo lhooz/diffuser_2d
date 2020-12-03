@@ -16,3 +16,5 @@ runParallel simpleFoam
 
 cd ..
 cd ..
+
+mpiexec -n $NSLOTS pvbatch pvpost_diffuser.py | tee log.pvpost

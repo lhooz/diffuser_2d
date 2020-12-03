@@ -3,27 +3,35 @@ import os
 import shutil
 
 import numpy as np
-from df_utilityf import cal_diffuser, write_parameters
+from df_utilityf import cal_diffuser, write_parameters, read_parameters
 
-diffusers = ['diffuser_25_8_2', 'diffuser_25_8_2']
-inlet_w = 0.11
-turnp_R = [0.2, 0.2]
-#---------------------------------------------------
-layer_out = [[0.0, 0.0], [0.1, -0.35]]
-layer_width = [0.0, 0.8]
+cwd = os.getcwd()
+design_parameters = os.path.join(cwd, 'design_parameters')
+dpars = read_parameters(design_parameters)
+
+diffusers = [dpars[0], dpars[1]]
+inlet_w = float(dpars[2])
+turnp_R = [float(dpars[3]), float(dpars[4])]
+layer_out = [[0.0, 0.0], [float(dpars[5]), float(dpars[6])]]
+layer_width = [0.0, float(dpars[7])]
+#-----------------------------------------------------
+# diffusers = ['diffuser_25_8_2', 'diffuser_25_8_2']
+# inlet_w = 0.11
+# turnp_R = [0.2, 0.2]
+# #---------------------------------------------------
+# layer_out = [[0.0, 0.0], [0.1, -0.35]]
+# layer_width = [0.0, 0.8]
 layer_orientation = ['fromUp', 'goingDown']
 initial_pipe = 'straight'
 #---------------------------------------------------
 refl = 2
 #----------------------------------------------------
-wall_layer_thickness = 6e-4
+wall_layer_thickness = 5e-4
 #----------------------------------------------------
 refledge = refl
 reflcurvature = refl
 mesh_size = wall_layer_thickness * 2**refl
 #----------------------------------------------------
-cwd = os.getcwd()
-
 output_folder = os.path.join(cwd, 'diffuser_design')
 basic_df = os.path.join(cwd, 'basic_elements', 'vane_diffuser')
 basic_turnp = os.path.join(cwd, 'basic_elements', 'turnp')
@@ -37,8 +45,54 @@ with open(config_control_file, 'w') as f:
     f.write('#!/bin/bash\n')
     f.write('. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions\n')
 
+#-------ajusting layer width accirding to layer df width------
 w_in = [inlet_w]
-layer_ins = [[-0.7, 0.2]]
+layer_ins = [[-6 * inlet_w, 0.2]]
+totalwO_all = []
+for li in range(len(diffusers)):
+    no_dfs = len(w_in)
+    orientation = layer_orientation[li]
+    if orientation.startswith('from'):
+        h_dfs = np.zeros(no_dfs) + layer_out[li][0]
+        v_dfs = np.linspace(layer_out[li][1],
+                            layer_out[li][1] + layer_width[li], no_dfs)
+    elif orientation.startswith('going'):
+        h_dfs = np.linspace(layer_out[li][0],
+                            layer_out[li][0] + layer_width[li], no_dfs)
+        v_dfs = np.zeros(no_dfs) + layer_out[li][1]
+    df_locs = [[x, y] for x, y in zip(h_dfs, v_dfs)]
+
+    wOut_all = []
+    layerNext_all = []
+    layer_totalwO = []
+    for dfi in range(no_dfs):
+        theta = float(diffusers[li].split('_')[1])
+        vane_angle = float(diffusers[li].split('_')[2])
+        l_w = float(diffusers[li].split('_')[3])
+        #--------df no of vanes calculation---
+        No_vanes = int(np.ceil(2 * theta / vane_angle))
+        #-------------------------------------
+        df_in, w_out, layer_ins_next, l, totalwO = cal_diffuser(
+            df_locs[dfi], w_in[dfi], theta, l_w, orientation, No_vanes)
+        wOut_all += w_out
+
+        layerNext_all += layer_ins_next
+        layer_totalwO.append(totalwO)
+
+    totalwO_all.append(layer_totalwO)
+    w_in = wOut_all
+    layer_ins = layerNext_all
+
+for li in range(1, len(totalwO_all)):
+    if np.sum(totalwO_all[li]) < layer_width[li]:
+        layer_width[li] -= (totalwO_all[li][0] + totalwO_all[li][-1]) / 2
+    else:
+        layer_width[li] = np.sum(totalwO_all[li]) - 0.9 * (
+            totalwO_all[li][0] + totalwO_all[li][-1]) / 2
+
+#------generating final design parameters-------
+w_in = [inlet_w]
+layer_ins = [[-6 * inlet_w, 0.2]]
 for li in range(len(diffusers)):
     #--------------
     # print(layer_ins)

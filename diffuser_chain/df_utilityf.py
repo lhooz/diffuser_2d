@@ -1,4 +1,5 @@
 """utility function for main script"""
+import csv
 import numpy as np
 
 
@@ -72,3 +73,20 @@ def write_parameters(parameters, fileDir):
     with open(fileDir, 'w') as f:
         for par in parameters:
             f.write('%s\n' % '{0:.10g}'.format(par))
+
+
+def read_parameters(parameters):
+    """read design parameters"""
+    par_array = []
+    with open(parameters) as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter='\t')
+        line_count = 0
+
+        for row in csv_reader:
+            par_array.append(row[0])
+            line_count += 1
+
+        print(f'Processed {line_count} lines in {parameters}')
+
+    par_array = np.array(par_array)
+    return par_array
