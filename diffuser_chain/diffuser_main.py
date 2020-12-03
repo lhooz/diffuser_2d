@@ -5,12 +5,12 @@ import shutil
 import numpy as np
 from df_utilityf import cal_diffuser, write_parameters
 
-diffusers = ['diffuser_20_6_2', 'diffuser_25_8_3']
+diffusers = ['diffuser_25_8_2', 'diffuser_25_8_2']
 inlet_w = 0.11
-turnp_R = [0.25, 0.25]
+turnp_R = [0.2, 0.2]
 #---------------------------------------------------
 layer_out = [[0.0, 0.0], [0.1, -0.35]]
-layer_width = [0.0, 0.83]
+layer_width = [0.0, 0.8]
 layer_orientation = ['fromUp', 'goingDown']
 initial_pipe = 'straight'
 #---------------------------------------------------
