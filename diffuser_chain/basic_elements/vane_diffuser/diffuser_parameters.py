@@ -26,6 +26,23 @@ def cal_diffuser(w, theta, l_w, vane_angles):
     """function for calculation diffuser geometry"""
     l = l_w * w
     totalw_out = 2 * (0.5 * w + np.tan(theta * np.pi / 180) * l)
+    #------update vane_angles for equal spacing at inlet-----
+    singlew_out = totalw_out / (len(vane_angles) + 1)
+    singlew_in = w / (len(vane_angles) + 1)
+
+    line_co = []
+    ycoin = -0.5 * w
+    ycoout = -0.5 * totalw_out
+    for i in range(len(vane_angles)):
+        ycoin += singlew_in
+        ycoout += singlew_out
+        line_co.append([ycoin, ycoout])
+
+    vane_angles = []
+    for line in line_co:
+        anglei = np.arctan((line[1] - line[0]) / l) * 180 / np.pi
+        vane_angles.append(anglei)
+    #--------------------------------------------------------
 
     total_gap = 0
     gaps = []
@@ -48,7 +65,7 @@ def cal_diffuser(w, theta, l_w, vane_angles):
         shift = desired_vu - vus[vi]
         v_shift.append(shift)
 
-    return v_shift
+    return v_shift, vane_angles
 
 
 #---------------------------------------------------
@@ -73,7 +90,7 @@ wall_layer_thickness = 1e-4
 #---------------------------------------------------
 xin = 0
 xout = l_w1 * w1
-yu = 1.2 * (0.5 * w1 + np.sin(theta * np.pi / 180) * (xout - xin))
+yu = 1.2 * (0.5 * w1 + np.tan(theta * np.pi / 180) * (xout - xin))
 yl = -yu
 #-----------------
 hmesh_no = np.ceil((xout - xin) / mesh_size)
@@ -93,7 +110,7 @@ if No_vanes >= 3:
 else:
     vane_angles = [0.0]
 
-v_shift = cal_diffuser(w1, theta, l_w1, vane_angles)
+v_shift, vane_angles = cal_diffuser(w1, theta, l_w1, vane_angles)
 
 save_file_par = os.path.join(cwd, 'system', 'meshParameters')
 save_file_sh = os.path.join(cwd, 'transform_stl.sh')

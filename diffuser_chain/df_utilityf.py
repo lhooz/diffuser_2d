@@ -13,6 +13,24 @@ def cal_diffuser(df_loc, w, theta, l_w, orient, No_vanes):
 
     l = l_w * w
     totalw_out = 2 * (0.5 * w + np.tan(theta * np.pi / 180) * l)
+    #------update vane_angles for equal spacing at inlet-----
+    singlew_out = totalw_out / (len(vane_angles) + 1)
+    singlew_in = w / (len(vane_angles) + 1)
+
+    line_co = []
+    ycoin = -0.5 * w
+    ycoout = -0.5 * totalw_out
+    for i in range(len(vane_angles)):
+        ycoin += singlew_in
+        ycoout += singlew_out
+        line_co.append([ycoin, ycoout])
+
+    vane_angles = []
+    for line in line_co:
+        anglei = np.arctan((line[1] - line[0]) / l) * 180 / np.pi
+        vane_angles.append(anglei)
+    #--------------------------------------------------------
+
     total_gap = 0
     gaps = []
     vls = []
