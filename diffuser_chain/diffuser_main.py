@@ -24,7 +24,7 @@ layer_width = [0.0, float(dpars[7])]
 layer_orientation = ['fromUp', 'goingDown']
 initial_pipe = 'straight'
 #---------------------------------------------------
-refl = 2
+refl = 1
 #----------------------------------------------------
 wall_layer_thickness = 4e-4
 #----------------------------------------------------
@@ -70,7 +70,7 @@ for li in range(len(diffusers)):
         vane_angle = float(diffusers[li].split('_')[2])
         l_w = float(diffusers[li].split('_')[3])
         #--------df no of vanes calculation---
-        No_vanes = int(np.ceil(2 * theta / vane_angle))
+        No_vanes = int(np.ceil(2 * theta / vane_angle)) + 1
         #-------------------------------------
         df_in, w_out, layer_ins_next, l, totalwO = cal_diffuser(
             df_locs[dfi], w_in[dfi], theta, l_w, orientation, No_vanes)
@@ -117,7 +117,7 @@ for li in range(len(diffusers)):
         vane_angle = float(diffusers[li].split('_')[2])
         l_w = float(diffusers[li].split('_')[3])
         #--------df no of vanes calculation---
-        No_vanes = int(np.ceil(2 * theta / vane_angle))
+        No_vanes = int(np.ceil(2 * theta / vane_angle)) + 1
         #-------------------------------------
         df_in, w_out, layer_ins_next, l, totalwO = cal_diffuser(
             df_locs[dfi], w_in[dfi], theta, l_w, orientation, No_vanes)

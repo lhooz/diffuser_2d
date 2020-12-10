@@ -48,7 +48,7 @@ def cal_diffuser(w, theta, l_w, vane_angles):
     gaps = []
     vus = []
     for vane in vane_angles:
-        vt = 0.03 * w
+        vt = 0.015 * w
         gap = 2 * vt / np.cos(vane * np.pi / 180)
         gaps.append(gap)
         total_gap += gap
