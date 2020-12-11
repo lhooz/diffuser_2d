@@ -84,7 +84,9 @@ refledge = df_parameters[7]
 reflcurvature = df_parameters[8]
 mesh_rot = df_parameters[9]
 No_vanes = int(df_parameters[10])
-component_type = df_parameters[11]
+layer_no = df_parameters[11]
+component_no = df_parameters[12]
+component_type = df_parameters[13]
 #--------------------------------------------------
 wall_layer_thickness = 1e-4
 #---------------------------------------------------
@@ -136,12 +138,16 @@ with open(save_file_par, 'w') as f:
     f.write('%s%s;\n' % (r'vm   ', '{0:.0f}'.format(vmesh_no)))
     if component_type == 0:
         f.write('inName   inlet;\n')
-        f.write('outName   amiOut;\n')
+        f.write('outName   amiOut_l%s_c%s;\n' %
+                ('{0:.0f}'.format(layer_no), '{0:.0f}'.format(component_no)))
     elif component_type == 1:
-        f.write('inName   amiIn;\n')
-        f.write('outName   amiOut;\n')
+        f.write('inName   amiIn_l%s_c%s;\n' %
+                ('{0:.0f}'.format(layer_no), '{0:.0f}'.format(component_no)))
+        f.write('outName   amiOut_l%s_c%s;\n' %
+                ('{0:.0f}'.format(layer_no), '{0:.0f}'.format(component_no)))
     elif component_type == 2:
-        f.write('inName   amiIn;\n')
+        f.write('inName   amiIn_l%s_c%s;\n' %
+                ('{0:.0f}'.format(layer_no), '{0:.0f}'.format(component_no)))
         f.write('outName   outlet;\n')
 
 with open(save_file_sh, 'w') as f:

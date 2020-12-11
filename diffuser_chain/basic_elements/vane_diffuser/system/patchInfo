@@ -1,0 +1,122 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+\*---------------------------------------------------------------------------*/
+{
+    name            AMIo_l0_c3;
+    patchInfo
+    {
+    type            cyclicAMI;
+    matchTolerance  0.0001;
+    neighbourPatch  AMIi_l0_c3;
+    transform       noOrdering;
+    }
+    constructFrom patches;
+    patches (amiOut_l0_c3);
+}
+{
+    name            AMIi_l1_c3;
+    patchInfo
+    {
+    type            cyclicAMI;
+    matchTolerance  0.0001;
+    neighbourPatch  AMIo_l1_c3;
+    transform       noOrdering;
+    }
+    constructFrom patches;
+    patches (amiIn_l1_c0);
+}
+{
+    name            AMIo_l0_c2;
+    patchInfo
+    {
+    type            cyclicAMI;
+    matchTolerance  0.0001;
+    neighbourPatch  AMIi_l0_c2;
+    transform       noOrdering;
+    }
+    constructFrom patches;
+    patches (amiOut_l0_c2);
+}
+{
+    name            AMIi_l0_c2;
+    patchInfo
+    {
+    type            cyclicAMI;
+    matchTolerance  0.0001;
+    neighbourPatch  AMIo_l0_c2;
+    transform       noOrdering;
+    }
+    constructFrom patches;
+    patches (amiIn_l0_c3);
+}
+{
+    name            AMIo_l1_c0;
+    patchInfo
+    {
+    type            cyclicAMI;
+    matchTolerance  0.0001;
+    neighbourPatch  AMIi_l1_c0;
+    transform       noOrdering;
+    }
+    constructFrom patches;
+    patches (amiOut_l1_c0);
+}
+{
+    name            AMIi_l1_c0;
+    patchInfo
+    {
+    type            cyclicAMI;
+    matchTolerance  0.0001;
+    neighbourPatch  AMIo_l1_c0;
+    transform       noOrdering;
+    }
+    constructFrom patches;
+    patches (amiIn_l1_c1);
+}
+{
+    name            AMIo_l1_c1;
+    patchInfo
+    {
+    type            cyclicAMI;
+    matchTolerance  0.0001;
+    neighbourPatch  AMIi_l1_c1;
+    transform       noOrdering;
+    }
+    constructFrom patches;
+    patches (amiOut_l1_c1);
+}
+{
+    name            AMIi_l1_c1;
+    patchInfo
+    {
+    type            cyclicAMI;
+    matchTolerance  0.0001;
+    neighbourPatch  AMIo_l1_c1;
+    transform       noOrdering;
+    }
+    constructFrom patches;
+    patches (amiIn_l1_c2);
+}
+{
+    name            AMIo_l1_c2;
+    patchInfo
+    {
+    type            cyclicAMI;
+    matchTolerance  0.0001;
+    neighbourPatch  AMIi_l1_c2;
+    transform       noOrdering;
+    }
+    constructFrom patches;
+    patches (amiOut_l1_c2);
+}
+{
+    name            AMIi_l1_c2;
+    patchInfo
+    {
+    type            cyclicAMI;
+    matchTolerance  0.0001;
+    neighbourPatch  AMIo_l1_c2;
+    transform       noOrdering;
+    }
+    constructFrom patches;
+    patches (amiIn_l1_c3);
+}

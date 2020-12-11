@@ -24,9 +24,7 @@ cwd = os.getcwd()
 pvstate_file = os.path.join(
     cwd, 'diffuser_design/0_diffuser_main/paraview/machpost.pvsm')
 datadir = os.path.join(cwd, 'diffuser_design/0_diffuser_main/paraview')
-interal_file = os.path.join(cwd, 'diffuser_design/0_diffuser_main/open.foam')
-inlet_file = os.path.join(cwd, 'diffuser_design/0_diffuser_main/open.foam')
-outlet_file = os.path.join(cwd, 'diffuser_design/0_diffuser_main/open.foam')
+foam_file = os.path.join(cwd, 'diffuser_design/0_diffuser_main/open.foam')
 
 output_folder = os.path.join(cwd, 'pv_results')
 if os.path.exists(output_folder):
@@ -36,9 +34,9 @@ os.mkdir(output_folder)
 LoadState(pvstate_file,
           LoadStateDataFileOptions='Choose File Names',
           DataDirectory=datadir,
-          internalFileName=interal_file,
-          inletFileName=inlet_file,
-          outletFileName=outlet_file)
+          openfoamFileName=foam_file,
+          openfoam1FileName=foam_file,
+          openfoam2FileName=foam_file)
 
 # find view
 spreadSheetView1 = FindViewOrCreate('SpreadSheetView1',

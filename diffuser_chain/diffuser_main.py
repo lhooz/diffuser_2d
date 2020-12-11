@@ -3,7 +3,9 @@ import os
 import shutil
 
 import numpy as np
-from df_utilityf import cal_diffuser, write_parameters, read_parameters
+
+from df_utilityf import (cal_diffuser, read_parameters, write_parameters,
+                         write_patch)
 
 cwd = os.getcwd()
 design_parameters = os.path.join(cwd, 'design_parameters')
@@ -24,19 +26,21 @@ layer_width = [0.0, float(dpars[7])]
 layer_orientation = ['fromUp', 'goingDown']
 initial_pipe = 'straight'
 #---------------------------------------------------
-refl = 1
+refl = 2
 #----------------------------------------------------
-wall_layer_thickness = 4e-4
+wall_layer_thickness = 2e-4
 #----------------------------------------------------
 refledge = refl
 reflcurvature = refl
 mesh_size = wall_layer_thickness * 2**refl
 #----------------------------------------------------
 output_folder = os.path.join(cwd, 'diffuser_design')
+df_main_Dir = os.path.join(output_folder, '0_diffuser_main')
 basic_df = os.path.join(cwd, 'basic_elements', 'vane_diffuser')
 basic_turnp = os.path.join(cwd, 'basic_elements', 'turnp')
 basic_tube = os.path.join(cwd, 'basic_elements', 'tube')
 config_control_file = os.path.join(output_folder, 'config_control.sh')
+patch_file = os.path.join(df_main_Dir, 'system/patchInfo')
 
 if os.path.exists(output_folder):
     shutil.rmtree(output_folder)
@@ -167,23 +171,25 @@ for li in range(len(diffusers)):
             rot_chain = [0, 0, 90, 90]
             turnp_yscale = -1
 
+        #------2nd last number is component no, last is component type---
         ftb_parameters = [
             ftb_in[0], ftb_in[1], w_in[dfi], ftb_l, mesh_size, refl, refledge,
-            reflcurvature, rot_chain[0], 1
+            reflcurvature, rot_chain[0], li, 0, 1
         ]
         turnp_parameters = [
             turnp_in[0], turnp_in[1], w_in[dfi], turnp_R[li], mesh_size, refl,
-            refledge, reflcurvature, rot_chain[1], turnp_yscale, 1
+            refledge, reflcurvature, rot_chain[1], turnp_yscale, li, 1, 1
         ]
         btb_parameters = [
             btb_in[0], btb_in[1], w_in[dfi], btb_l, mesh_size, refl, refledge,
-            reflcurvature, rot_chain[2], 1
+            reflcurvature, rot_chain[2], li, 2, 1
         ]
         df_parameters = [
             df_in[0], df_in[1], w_in[dfi], theta, l_w, mesh_size, refl,
-            refledge, reflcurvature, rot_chain[3], No_vanes, 1
+            refledge, reflcurvature, rot_chain[3], No_vanes, li, 3, 1
         ]
 
+        #----last parameters for component type, 0-inlet, 1-interface, 2-outlet--
         if li == 0:
             if initial_pipe == 'all':
                 ftb_parameters[-1] = 0
@@ -196,8 +202,8 @@ for li in range(len(diffusers)):
               ('{0:.3f}'.format(ftb_l), '{0:.3f}'.format(btb_l),
                '{0:.3f}'.format(totalwO)))
         #---------------------------------------------------------
-        if li == 0:
-            df_folder = os.path.join(output_folder, '0_diffuser_main')
+        if li == dfi == 0:
+            df_folder = df_main_Dir
         else:
             df_folder = os.path.join(output_folder,
                                      'df_' + str(li) + '_' + str(dfi))
@@ -222,6 +228,17 @@ for li in range(len(diffusers)):
         write_parameters(btb_parameters, btb_file)
         write_parameters(df_parameters, df_file)
 
+        if li == dfi == 0:
+            with open(patch_file, 'w') as f:
+                f.write(
+                    '%s\n' %
+                    '/*--------------------------------*- C++ -*----------------------------------*\\'
+                )
+                f.write(
+                    '%s\n' %
+                    r'\*---------------------------------------------------------------------------*/'
+                )
+
         with open(config_control_file, 'a') as f:
             f.write('cd %s\n' % df_folder)
             f.write('sh run_mesh.sh\n')
@@ -230,6 +247,10 @@ for li in range(len(diffusers)):
                     'runApplication mergeMeshes ../0_diffuser_main . -overwrite\n'
                 )
             f.write('cd ..\n')
+
+            #----write df patch, excluding last layer: outlet---
+            if li != len(diffusers) - 1:
+                write_patch(li, 3, patch_file)
 
             if li == 0:
                 if initial_pipe == 'all':
@@ -240,6 +261,11 @@ for li in range(len(diffusers)):
                     )
                     f.write('cd ..\n')
 
+                    #--write ftb patch---
+                    if dfi == 0:
+                        write_patch(li, 0, patch_file)
+                    #-------------------
+
                     f.write('cd %s\n' % turnp_folder)
                     f.write('sh run_mesh.sh\n')
                     f.write(
@@ -247,12 +273,23 @@ for li in range(len(diffusers)):
                     )
                     f.write('cd ..\n')
 
+                    #--write turnp patch---
+                    if dfi == 0:
+                        write_patch(li, 1, patch_file)
+                    #--------------------
+
                     f.write('cd %s\n' % btb_folder)
                     f.write('sh run_mesh.sh\n')
                     f.write(
                         'runApplication mergeMeshes ../0_diffuser_main . -overwrite\n'
                     )
                     f.write('cd ..\n')
+
+                    #--write btb patch---
+                    if dfi == 0:
+                        write_patch(li, 2, patch_file)
+                    #--------------------
+
                 elif initial_pipe == 'straight':
                     f.write('cd %s\n' % btb_folder)
                     f.write('sh run_mesh.sh\n')
@@ -260,6 +297,12 @@ for li in range(len(diffusers)):
                         'runApplication mergeMeshes ../0_diffuser_main . -overwrite\n'
                     )
                     f.write('cd ..\n')
+
+                    #--write btb patch---
+                    if dfi == 0:
+                        write_patch(li, 2, patch_file)
+                    #--------------------
+
             else:
                 f.write('cd %s\n' % ftb_folder)
                 f.write('sh run_mesh.sh\n')
@@ -268,6 +311,11 @@ for li in range(len(diffusers)):
                 )
                 f.write('cd ..\n')
 
+                #--write ftb patch---
+                if dfi == 0:
+                    write_patch(li, 0, patch_file)
+                #-------------------
+
                 f.write('cd %s\n' % turnp_folder)
                 f.write('sh run_mesh.sh\n')
                 f.write(
@@ -275,12 +323,21 @@ for li in range(len(diffusers)):
                 )
                 f.write('cd ..\n')
 
+                #--write turnp patch---
+                if dfi == 0:
+                    write_patch(li, 1, patch_file)
+                #--------------------
+
                 f.write('cd %s\n' % btb_folder)
                 f.write('sh run_mesh.sh\n')
                 f.write(
                     'runApplication mergeMeshes ../0_diffuser_main . -overwrite\n'
                 )
                 f.write('cd ..\n')
+
+                #--write btb patch---
+                if dfi == 0:
+                    write_patch(li, 2, patch_file)
         #----------------------------------
     w_in = wOut_all
     layer_ins = layerNext_all

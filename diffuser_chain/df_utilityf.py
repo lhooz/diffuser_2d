@@ -13,7 +13,6 @@ def cal_diffuser(df_loc, w, theta, l_w, orient, No_vanes):
 
     l = l_w * w
     totalw_out = 2 * (0.5 * w + np.tan(theta * np.pi / 180) * l)
-    print(w)
     #------update vane_angles for equal spacing at inlet-----
     singlew_out = totalw_out / (len(vane_angles) + 1)
     singlew_in = w / (len(vane_angles) + 1)
@@ -92,6 +91,50 @@ def write_parameters(parameters, fileDir):
     with open(fileDir, 'w') as f:
         for par in parameters:
             f.write('%s\n' % '{0:.10g}'.format(par))
+
+
+def write_patch(layer_no, component_no, patch_file):
+    """write create patch info to main folder"""
+    with open(patch_file, 'a') as f:
+
+        layer_no_next = layer_no
+        if component_no == 3:
+            layer_no_next = layer_no + 1
+
+        #------out ami patch----
+        f.write('{\n')
+        f.write('    name            AMIo_l%s_c%s;\n' %
+                ('{0:.0f}'.format(layer_no), '{0:.0f}'.format(component_no)))
+        f.write('    patchInfo\n')
+        f.write('    {\n')
+        f.write('    type            cyclicAMI;\n')
+        f.write('    matchTolerance  0.0001;\n')
+        f.write('    neighbourPatch  AMIi_l%s_c%s;\n' %
+                ('{0:.0f}'.format(layer_no), '{0:.0f}'.format(component_no)))
+        f.write('    transform       noOrdering;\n')
+        f.write('    }\n')
+        f.write('    constructFrom patches;\n')
+        f.write('    patches (amiOut_l%s_c%s);\n' %
+                ('{0:.0f}'.format(layer_no), '{0:.0f}'.format(component_no)))
+        f.write('}\n')
+
+        #-------pairing in ami patch-----------
+        f.write('{\n')
+        f.write('    name            AMIi_l%s_c%s;\n' %
+                ('{0:.0f}'.format(layer_no), '{0:.0f}'.format(component_no)))
+        f.write('    patchInfo\n')
+        f.write('    {\n')
+        f.write('    type            cyclicAMI;\n')
+        f.write('    matchTolerance  0.0001;\n')
+        f.write('    neighbourPatch  AMIo_l%s_c%s;\n' %
+                ('{0:.0f}'.format(layer_no), '{0:.0f}'.format(component_no)))
+        f.write('    transform       noOrdering;\n')
+        f.write('    }\n')
+        f.write('    constructFrom patches;\n')
+        f.write('    patches (amiIn_l%s_c%s);\n' %
+                ('{0:.0f}'.format(layer_no_next), '{0:.0f}'.format(
+                    np.mod((component_no + 1), 4))))
+        f.write('}\n')
 
 
 def read_parameters(parameters):

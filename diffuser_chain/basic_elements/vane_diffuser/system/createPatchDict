@@ -18,33 +18,7 @@ pointSync false;
 
 patches
 (
-    {
-        //- Master side patch
-        name            AMIo;
-        patchInfo
-        {
-            type            cyclicAMI;
-            matchTolerance  0.0001;
-            neighbourPatch  AMIi;
-            transform       noOrdering;
-        }
-        constructFrom patches;
-        patches (amiOut);
-    }
-
-    {
-        //- Slave side patch
-        name            AMIi;
-        patchInfo
-        {
-            type            cyclicAMI;
-            matchTolerance  0.0001;
-            neighbourPatch  AMIo;
-            transform       noOrdering;
-        }
-        constructFrom patches;
-        patches (amiIn);
-    }
+#include "patchInfo"
 );
 
 // ************************************************************************* //

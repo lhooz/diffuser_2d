@@ -36,7 +36,9 @@ refl = tube_parameters[5]
 refledge = tube_parameters[6]
 reflcurvature = tube_parameters[7]
 mesh_rot = tube_parameters[8]
-component_type = tube_parameters[9]
+layer_no = tube_parameters[9]
+component_no = tube_parameters[10]
+component_type = tube_parameters[11]
 #----------------------------------------------------
 wall_layer_thickness = 1e-4
 #---------------------------------------------------
@@ -70,12 +72,16 @@ with open(save_file_par, 'w') as f:
     f.write('%s%s;\n' % (r'vm   ', '{0:.0f}'.format(vmesh_no)))
     if component_type == 0:
         f.write('inName   inlet;\n')
-        f.write('outName   amiOut;\n')
+        f.write('outName   amiOut_l%s_c%s;\n' %
+                ('{0:.0f}'.format(layer_no), '{0:.0f}'.format(component_no)))
     elif component_type == 1:
-        f.write('inName   amiIn;\n')
-        f.write('outName   amiOut;\n')
+        f.write('inName   amiIn_l%s_c%s;\n' %
+                ('{0:.0f}'.format(layer_no), '{0:.0f}'.format(component_no)))
+        f.write('outName   amiOut_l%s_c%s;\n' %
+                ('{0:.0f}'.format(layer_no), '{0:.0f}'.format(component_no)))
     elif component_type == 2:
-        f.write('inName   amiIn;\n')
+        f.write('inName   amiIn_l%s_c%s;\n' %
+                ('{0:.0f}'.format(layer_no), '{0:.0f}'.format(component_no)))
         f.write('outName   outlet;\n')
 
 with open(save_file_sh, 'w') as f:
