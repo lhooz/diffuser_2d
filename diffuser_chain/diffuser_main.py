@@ -28,7 +28,7 @@ initial_pipe = 'straight'
 #---------------------------------------------------
 refl = 2
 #----------------------------------------------------
-wall_layer_thickness = 2e-4
+wall_layer_thickness = 0.75e-4
 #----------------------------------------------------
 refledge = refl
 reflcurvature = refl
