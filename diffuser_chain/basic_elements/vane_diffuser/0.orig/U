@@ -24,13 +24,18 @@ boundaryField
 
     inlet
     {
-        type            fixedValue;
-        value           uniform (102 0 0);
+        /*type            fixedValue;
+        value           uniform (102 0 0);*/
+    	type                flowRateInletVelocity;
+    	volumetricFlowRate  4.386;
+    	value               $internalField;
     }
 
     outlet
     {
-        type            zeroGradient;
+        //type            zeroGradient;
+    	type                pressureInletOutletVelocity;
+    	value               $internalField;
     }
 
     walls

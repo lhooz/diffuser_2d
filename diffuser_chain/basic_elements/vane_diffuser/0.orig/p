@@ -29,8 +29,11 @@ boundaryField
 
     outlet
     {
-        type            fixedValue;
-	value		$internalField;
+        /*type            fixedValue;
+	value		$internalField;*/
+    	type            totalPressure;
+    	p0              $internalField;
+    	value           $internalField;
     }
 
     walls

@@ -36,7 +36,10 @@ LoadState(pvstate_file,
           DataDirectory=datadir,
           openfoamFileName=foam_file,
           openfoam1FileName=foam_file,
-          openfoam2FileName=foam_file)
+          openfoam2FileName=foam_file,
+          openfoam3FileName=foam_file,
+          openfoam4FileName=foam_file,
+          openfoam5FileName=foam_file)
 
 # find view
 spreadSheetView1 = FindViewOrCreate('SpreadSheetView1',
@@ -175,100 +178,106 @@ SetActiveSource(openfoam)
 # set active view
 SetActiveView(spreadSheetView1)
 
-# find source
 aveMach_inlet = FindSource('Ave.Mach_inlet')
-
-# set active source
 SetActiveSource(aveMach_inlet)
-
-# show data in view
 aveMach_inletDisplay = Show(aveMach_inlet, spreadSheetView1)
-
-# show data in view
 aveMach_inletDisplay = Show(aveMach_inlet, spreadSheetView1)
-
-# export view
 ExportView(os.path.join(output_folder, 'Inlet_mach.csv'),
            view=spreadSheetView1)
-
 # find source
 avep_inlet = FindSource('Ave.p_inlet')
-
-# set active source
 SetActiveSource(avep_inlet)
-
-# show data in view
 avep_inletDisplay = Show(avep_inlet, spreadSheetView1)
-
-# show data in view
 avep_inletDisplay = Show(avep_inlet, spreadSheetView1)
-
-# export view
 ExportView(os.path.join(output_folder, 'inlet_p.csv'), view=spreadSheetView1)
-
 # find source
 avetotalp_inlet = FindSource('Ave.totalp_inlet')
-
-# set active source
 SetActiveSource(avetotalp_inlet)
-
-# show data in view
 avetotalp_inletDisplay = Show(avetotalp_inlet, spreadSheetView1)
-
-# show data in view
 avetotalp_inletDisplay = Show(avetotalp_inlet, spreadSheetView1)
-
-# export view
 ExportView(os.path.join(output_folder, 'inlet_totalp.csv'),
            view=spreadSheetView1)
-
 # find source
 aveMach_outlet = FindSource('Ave.Mach_outlet')
-
-# set active source
 SetActiveSource(aveMach_outlet)
-
-# show data in view
 aveMach_outletDisplay = Show(aveMach_outlet, spreadSheetView1)
-
-# show data in view
 aveMach_outletDisplay = Show(aveMach_outlet, spreadSheetView1)
-
-# export view
 ExportView(os.path.join(output_folder, 'outlet_mach.csv'),
            view=spreadSheetView1)
-
 # find source
 avep_outlet = FindSource('Ave.p_outlet')
-
-# set active source
 SetActiveSource(avep_outlet)
-
-# show data in view
 avep_outletDisplay = Show(avep_outlet, spreadSheetView1)
-
-# show data in view
 avep_outletDisplay = Show(avep_outlet, spreadSheetView1)
-
-# export view
 ExportView(os.path.join(output_folder, 'outlet_p.csv'), view=spreadSheetView1)
-
 # find source
 avetotalp_outlet = FindSource('Ave.totalp_outlet')
-
-# set active source
 SetActiveSource(avetotalp_outlet)
-
-# show data in view
 avetotalp_outletDisplay = Show(avetotalp_outlet, spreadSheetView1)
-
-# show data in view
 avetotalp_outletDisplay = Show(avetotalp_outlet, spreadSheetView1)
-
-# export view
 ExportView(os.path.join(output_folder, 'outlet_totalp.csv'),
            view=spreadSheetView1)
-
+# find source
+aveMach_dfl0_in = FindSource('Ave.Mach_dfl0_in')
+SetActiveSource(aveMach_dfl0_in)
+aveMach_dfl0_inDisplay = Show(aveMach_dfl0_in, spreadSheetView1)
+aveMach_dfl0_inDisplay = Show(aveMach_dfl0_in, spreadSheetView1)
+ExportView(os.path.join(output_folder, 'dfl0_in_mach.csv'),
+           view=spreadSheetView1)
+# find source
+avep_dfl0_in = FindSource('Ave.p_dfl0_in')
+SetActiveSource(avep_dfl0_in)
+avep_dfl0_inDisplay = Show(avep_dfl0_in, spreadSheetView1)
+avep_dfl0_inDisplay = Show(avep_dfl0_in, spreadSheetView1)
+ExportView(os.path.join(output_folder, 'dfl0_in_p.csv'), view=spreadSheetView1)
+# find source
+avetotalp_dfl0_in = FindSource('Ave.totalp_dfl0_in')
+SetActiveSource(avetotalp_dfl0_in)
+avetotalp_dfl0_inDisplay = Show(avetotalp_dfl0_in, spreadSheetView1)
+avetotalp_dfl0_inDisplay = Show(avetotalp_dfl0_in, spreadSheetView1)
+ExportView(os.path.join(output_folder, 'dfl0_in_totalp.csv'),
+           view=spreadSheetView1)
+# find source
+aveMach_dfl0_out = FindSource('Ave.Mach_dfl0_out')
+SetActiveSource(aveMach_dfl0_out)
+aveMach_dfl0_outDisplay = Show(aveMach_dfl0_out, spreadSheetView1)
+aveMach_dfl0_outDisplay = Show(aveMach_dfl0_out, spreadSheetView1)
+ExportView(os.path.join(output_folder, 'dfl0_out_mach.csv'),
+           view=spreadSheetView1)
+# find source
+avep_dfl0_out = FindSource('Ave.p_dfl0_out')
+SetActiveSource(avep_dfl0_out)
+avep_dfl0_outDisplay = Show(avep_dfl0_out, spreadSheetView1)
+avep_dfl0_outDisplay = Show(avep_dfl0_out, spreadSheetView1)
+ExportView(os.path.join(output_folder, 'dfl0_out_p.csv'),
+           view=spreadSheetView1)
+# find source
+avetotalp_dfl0_out = FindSource('Ave.totalp_dfl0_out')
+SetActiveSource(avetotalp_dfl0_out)
+avetotalp_dfl0_outDisplay = Show(avetotalp_dfl0_out, spreadSheetView1)
+avetotalp_dfl0_outDisplay = Show(avetotalp_dfl0_out, spreadSheetView1)
+ExportView(os.path.join(output_folder, 'dfl0_out_totalp.csv'),
+           view=spreadSheetView1)
+# find source
+aveMach_dfl1_in = FindSource('Ave.Mach_dfl1_in')
+SetActiveSource(aveMach_dfl1_in)
+aveMach_dfl1_inDisplay = Show(aveMach_dfl1_in, spreadSheetView1)
+aveMach_dfl1_inDisplay = Show(aveMach_dfl1_in, spreadSheetView1)
+ExportView(os.path.join(output_folder, 'dfl1_in_mach.csv'),
+           view=spreadSheetView1)
+# find source
+avep_dfl1_in = FindSource('Ave.p_dfl1_in')
+SetActiveSource(avep_dfl1_in)
+avep_dfl1_inDisplay = Show(avep_dfl1_in, spreadSheetView1)
+avep_dfl1_inDisplay = Show(avep_dfl1_in, spreadSheetView1)
+ExportView(os.path.join(output_folder, 'dfl1_in_p.csv'), view=spreadSheetView1)
+# find source
+avetotalp_dfl1_in = FindSource('Ave.totalp_dfl1_in')
+SetActiveSource(avetotalp_dfl1_in)
+avetotalp_dfl1_inDisplay = Show(avetotalp_dfl1_in, spreadSheetView1)
+avetotalp_dfl1_inDisplay = Show(avetotalp_dfl1_in, spreadSheetView1)
+ExportView(os.path.join(output_folder, 'dfl1_in_totalp.csv'),
+           view=spreadSheetView1)
 #### saving camera placements for all active views
 
 # current camera placement for renderView1
